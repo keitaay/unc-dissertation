@@ -11,6 +11,8 @@
 % Make chapter headings all uppercase, standard font size
 % Omit page numbers
 \titleformat{\chapter}[hang]{\normalfont\fillast\bfseries}{\MakeUppercase{\chaptertitlename} \thechapter: }{0em}{\MakeUppercase}[\thispagestyle{empty}]
+% Comment out above and uncomment below to block center chapter titles; useful with longer chapter titles
+% \titleformat{\chapter}[block]{\normalfont\fillast\bfseries}{\MakeUppercase{\chaptertitlename} \thechapter: }{0em}{\MakeUppercase}[\thispagestyle{empty}]
 
 % Make section headings normal font size, bold
 \titleformat*{\section}{\normalfont\bfseries}
