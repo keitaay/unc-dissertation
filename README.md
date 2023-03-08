@@ -13,3 +13,8 @@ Changes I've made to Björn's template include:
 - Switching from natbib to regular BibTeX
 - Switching from `amsthm` the `ntheorem`
 - Adding a comment function at the end of `macros.tex` to allow color highlighted notes set off by brackets in rendered PDFs
+
+Updates following dissertation approval in March 2023:
+- Updated `layout.tex` to include option for block centering chapter titles
+- Updated `preamble.tex` and `references.tex` to include syntax for biblatex-chicago users
+- Updated `macros.tex` to include option for restarting hypothesis counter at each chapter; useful if doing three-paper dissertation
