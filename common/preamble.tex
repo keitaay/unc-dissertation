@@ -53,6 +53,39 @@
 % PDF links
 \usepackage[hidelinks]{hyperref} % backref=page
 
+%%%%% Syntax below needed if using Biblatex-Chicago %%%%%
+% Packages needed for biblatex support
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage[style=english]{csquotes}
+
+% Biblatex Chicago (17th edition)
+\usepackage[authordate, 
+numbermonth=false, 
+eprint=false, 
+isbn=false, 
+doi=false,
+url=false,
+maxcitenames=3,
+uniquename=false,
+uniquelist=false,
+natbib,
+backend=biber]{biblatex-chicago}
+
+% Puts quotes inside the quotation marks
+\DefineBibliographyExtras{english}{\uspunctuation}
+
+% .bib file
+\addbibresource{/Users/bgforester/Zotero/dissertation.bib}
+
+% macro to remove 3-em dash for repeat bibliographic entries
+\makeatletter
+\AtEveryBibitem{\global\undef\bbx@lasthash}
+\makeatother
+%%%%%%%%%%%%%%% End Biblatex-Chicago %%%%%%%%%%%%%%%%%%%
+
+
 \input{common/layout}
 
 \input{common/macros}
+
