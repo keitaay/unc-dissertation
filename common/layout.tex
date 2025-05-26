@@ -1,26 +1,16 @@
 % Use proper margins.
-\geometry{letterpaper,left=1.25in,top=1in,right=1.25in,bottom=1in,nohead}
-
+\geometry{letterpaper,left=1in,top=1in,right=1in,bottom=1in,nohead}
 
 
 % double-space text
 \doublespacing
 
-% Center chapter titles
-% Place chapter title, number, and name on same line
-% Make chapter headings all uppercase, standard font size
-% Omit page numbers
-\titleformat{\chapter}[hang]{\normalfont\fillast\bfseries}{\MakeUppercase{\chaptertitlename} \thechapter: }{0em}{\MakeUppercase}[\thispagestyle{empty}]
-% Comment out above and uncomment below to block center chapter titles; useful with longer chapter titles
-% \titleformat{\chapter}[block]{\normalfont\fillast\bfseries}{\MakeUppercase{\chaptertitlename} \thechapter: }{0em}{\MakeUppercase}[\thispagestyle{empty}]
+% % Center chapter titles, omit page numbers.
+\titleformat{\chapter}[display]{\fillast\bfseries}{\Large\MakeUppercase{\chaptertitlename} \thechapter}{-11pt}{\huge\singlespacing}[\thispagestyle{empty}]
 
-% Make section headings normal font size, bold
-\titleformat*{\section}{\normalfont\bfseries}
-\titleformat*{\subsection}{\normalfont\bfseries}
-\titleformat*{\subsubsection}{\normalfont\bfseries}
-
-% Extend to 2in top margins for chapter headings
-\titlespacing{\chapter}{0in}{0.62in}{11pt}
+% % Extend to 2in top margins
+% % Leave 22pts = 2x font size after heading
+\titlespacing{\chapter}{0in}{0.62in}{22pt}
 
 % Indent paragraphs four spaces throughout the thesis/dissertation.
 \setlength{\parindent}{4ex}
@@ -29,14 +19,14 @@
 \titlespacing{\paragraph}{0in}{0.08in}{0.07in}
 
 % We want numbered subsubsections
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+% \setcounter{secnumdepth}{3}
+% \setcounter{tocdepth}{3}
 
 % We need to double-space between footnotes.
-\setlength{\footnotesep}{13pt}
+\setlength{\footnotesep}{\baselineskip}
 
-% Footnotes only one point smaller than text
-\renewcommand{\footnotesize}{\small}
+
+
 
 % We don't want crazy vertical spacing.
 \raggedbottom
@@ -47,3 +37,24 @@
 
 % Prevent awkward hyphenations.
 \hyphenation{Raj-kumar}
+
+% Fixing footnote formatting to be fully left-aligned
+\makeatletter
+\renewcommand\@makefntext[1]{%
+  \noindent\makebox[7pt][r]{\@makefnmark\ }#1}
+\makeatother
+
+% Making footnotes same size as rest of text
+\renewcommand{\footnotesize}{\normalsize} % Make footnotes the same size as main text
+
+% Ensuring super and sub scripts are only slightly smaller
+\DeclareMathSizes{12}{12}{10}{10} % For 12pt main text: size, normal, subscripts, superscripts
+
+% Single space footnotes longer than one line
+\makeatletter
+\renewcommand{\@makefntext}[1]{%
+  \setstretch{1.0}% single spacing
+  \parindent 1em%
+  \noindent\hbox to 1.8em{\hss\@makefnmark}#1%
+}
+\makeatother

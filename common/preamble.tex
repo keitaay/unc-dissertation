@@ -1,88 +1,135 @@
-\documentclass[11pt,letterpaper,twoside]{report}
+\documentclass[12pt,letterpaper,twoside]{report}
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
 
 % Layout
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{tocloft}
-\usepackage[hang,flushmargin]{footmisc}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{longtable}
+% \usepackage[hang, flushmargin]{footmisc} % keeping footnotes flush with margins, no indentation
 
-% Citation style
-\usepackage{harvard}
+%For margins
+\usepackage{enumitem}
+
+%%% BIBLIOGRAPHY
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[authordate,
+    backend=biber,
+    noibid,
+    natbib,
+    sorting=nyt,
+    sortcites,
+    annotation,
+    doi=false,
+    isbn=false,
+    url=false,
+    eprint=false, 
+    alldates=iso8601,
+    giveninits=false,
+maxcitenames=3,
+uniquename=false,
+uniquelist=false,
+    cmsdate=both,
+    date=year]{biblatex-chicago}
+%Clearing accessed date and url
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+     \clearfield{url}
+}
+\newcommand{\mycite}[2][]{
+  (\citeauthor*{#2}, \citeyear{#2}\ifx\relax#1\relax\else:#1\fi)}
+\setlength{\bibitemsep}{12pt} % Double-spacing between references
+\appto{\bibsetup}{\setstretch{1.0}} % Single-spacing within each reference
+\usepackage{microtype} % Improves justification
+
+
+% \renewbibmacro*{cite:labelyear+extrayear}{% Adding original date for selected publications
+%   \iffieldundef{origdate}
+%     {\printtext[bibhyperref]{\printfield{labelyear}\printfield{extrayear}}}
+%     {\printtext[bibhyperref]{\printfield{origdate}/\printfield{labelyear}\printfield{extrayear}}}}
+
+
+% Inserting epigraphs at top of motivation
+\usepackage{epigraph} % for the quotations
+%\newlength{epigraphwidth}
+\setlength{\epigraphwidth}{.9\textwidth}
+\setlength{\epigraphrule}{0pt}
 
 % Figures
 \usepackage{graphicx}
-\usepackage{grffile}
-\usepackage{subcaption}
 \usepackage{epsfig}
+\usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{listings}
-
-% Tables
-\usepackage{booktabs}
-\usepackage{dcolumn}
-\usepackage{multirow}
-\usepackage{hhline}
-\usepackage{stackengine}
-\usepackage{tablefootnote}
-
-% Algorithms
-\usepackage[boxed,longend]{algorithm2e}
+\usepackage{caption}
+\usepackage{float} % for arranging figures
+\usepackage{subcaption} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{placeins} % for FloatBarrier
+\usepackage{comment}
+\usepackage{rotating}
 
 % Math
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{ntheorem}
+\newtheorem{hyp}{Hypothesis} 
+\newtheorem{subhyp}{Hypothesis}
+   \renewcommand\thesubhyp{\thehyp\alph{subhyp}}
 
 % Typography
-\usepackage{times}
-\usepackage{microtype}
-\usepackage{textcomp}
+%\usepackage{times}
+% \usepackage{microtype}
+% \usepackage{textcomp}
 
 % Macro support
 \usepackage{xspace}
-\usepackage{color}
-\usepackage{ntheorem}
-
-% Diagrams
-\usepackage{pgf}
-\usepackage{tikz} % extensive form game trees
-\usetikzlibrary{calc} % calculating TikZ coordinates
-\usetikzlibrary{arrows.meta} % arrows for theory diagrams
-\usetikzlibrary{trees}
 
 % PDF links
 \usepackage[hidelinks]{hyperref} % backref=page
 
-%%%%% Syntax below needed if using Biblatex-Chicago %%%%%
-% Packages needed for biblatex support
-\usepackage[T1]{fontenc}
-\usepackage{babel}
-\usepackage[style=english]{csquotes}
 
-% Biblatex Chicago (17th edition)
-\usepackage[authordate, 
-numbermonth=false, 
-eprint=false, 
-isbn=false, 
-doi=false,
-url=false,
-maxcitenames=3,
-uniquename=false,
-uniquelist=false,
-natbib,
-backend=biber]{biblatex-chicago}
+% Formatting section headers
 
-% Puts quotes inside the quotation marks
-\DefineBibliographyExtras{english}{\uspunctuation}
+\titleformat*{\section}{\bfseries\fontsize{12}{14}\selectfont\singlespacing}
+    
+\titleformat{name=\chapter,numberless}[block]
+    {\normalfont\normalsize\filcenter\singlespacing}{}{0pt}{\normalsize}
+    \vspace*{2in}
 
-% .bib file
-\addbibresource{/Users/bgforester/Zotero/dissertation.bib}
+\titleformat*{\subsection}{\fontsize{12}{14}\selectfont\itshape\singlespacing}
 
-% macro to remove 3-em dash for repeat bibliographic entries
-\makeatletter
-\AtEveryBibitem{\global\undef\bbx@lasthash}
-\makeatother
-%%%%%%%%%%%%%%% End Biblatex-Chicago %%%%%%%%%%%%%%%%%%%
+
+
+%%% PATHS TO FIGURES, BIBLIO, ETC
+\graphicspath{{figures/}}
+\addbibresource{p1bib.bib} % bib for Paper 1
+\addbibresource{p2_bib.bib} % bib for Paper 2
+\addbibresource{bib_clean.bib} % bib for Paper 3
+\usepackage{cleveref}
+
+
+
+% CATE formatting
+\newcommand{\CATE}[2]{\enquote{#1 $\vert$ #2}}
+
+\newcommand{\floatnotes}[2][Notes: ]{%
+  \par\medskip%
+  \begingroup%
+  \begin{minipage}{0.9\linewidth}
+  \raggedright\footnotesize%
+  \emph{#1}#2\par
+  \end{minipage}\endgroup%
+}
+
+% FONT: GARAMOND
+\usepackage{ebgaramond}
 
 
 \input{common/layout}
