@@ -19,6 +19,7 @@ Changes made to Björn's original template include:
 
 Updates following dissertation approval in May 2025:
 - Updated premable files to clean up LaTeX code and included an array of comments clarifying portions of the code
-- Updated 'figures.tex' and 'tables.tex' to better incorporate long titles
-- Updated 'references.tex' to better confine long citations to margins
-- Updated 'main.tex' to allow for a conclusion and introduction to a three-paper dissertation
+- Updated `figures.tex` and 'tables.tex' to better incorporate long titles
+- Updated `references.tex` to better confine long citations to margins
+- Updated `main.tex` to allow for a conclusion and introduction to a three-paper dissertation
+- Modified file names to better correspond to a three-paper dissertation
