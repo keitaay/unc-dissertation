@@ -19,4 +19,4 @@ Updates following dissertation approval in May 2025:
 - Updated `preamble.tex` and `references.tex` to include syntax for biblatex-chicago users
 - Updated `macros.tex` to include option for restarting hypothesis counter at each chapter; useful if doing three-paper dissertation
 - Updated 'figures.tex' and 'tables.tex' to better incorporate long titles
-- Updated bibliography output to better confine long citations to margins 
+- Updated 'references.tex' to better confine long citations to margins 
