@@ -1,16 +1,32 @@
+% ---------- LIST OF FIGURES formatting ----------
 \renewcommand{\listfigurename}{LIST OF FIGURES}
 \phantomsection
 \addcontentsline{toc}{chapter}{LIST OF FIGURES}
 
+% -- title formatting --
 \setlength{\cftbeforeloftitleskip}{-11pt}
 \setlength{\cftafterloftitleskip}{22pt}
-\renewcommand{\cftloftitlefont}{\hfill\normalfont\bfseries}
+\renewcommand{\cftloftitlefont}{\hfill} % center title
 \renewcommand{\cftafterloftitle}{\hfill}
 
+% -- entry spacing --
 \setlength{\cftbeforefigskip}{10pt}
-\cftsetrmarg{1.0in}
 
+% -- layout for entries --
+\setlength{\cftfigindent}{0pt}          % left align first line
+\setlength{\cftfignumwidth}{2.8em}      % indent wrapped lines by label width
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
+
+% -- dot leader and page number spacing --
+\renewcommand{\cftdotsep}{1.5}
+\cftsetrmarg{1.3in}                     % wrap long lines before page # column
+
+% ---------- Create the List of Figures ----------
 \begin{singlespace}
-\listoffigures
+{%
+  \let\oldnumberline\numberline
+  \renewcommand{\numberline}{\figurename~\oldnumberline}
+  \listoffigures
+}
 \end{singlespace}
 \clearpage

@@ -1,25 +1,36 @@
-\renewcommand{\contentsname}{TABLE OF CONTENTS}
-\renewcommand{\cfttoctitlefont}{\hfill\normalfont\bfseries}
-\renewcommand{\cftaftertoctitle}{\hfill~}
-\renewcommand{\cftdotsep}{1.5}
-\cftsetrmarg{1.0in}
+% ----------  TOC formatting (tocloft)  ----------
+% -- title --
+\renewcommand{\contentsname}{TABLE OF CONTENTS\hfill}% trailing \hfill centres title
+\renewcommand{\cfttoctitlefont}{\hfill}% centre title
+\renewcommand{\cftaftertoctitle}{\hfill}
 
-\setlength{\cftbeforetoctitleskip}{61pt}
-\setlength{\cftaftertoctitleskip}{28pt}
+% -- where page numbers sit --
+%   1.6 in ≈ 25 pc ≈ 75 % of 6.5 in text width
+%   (Feel free to tweak if you change \textwidth.)
+\cftsetrmarg{1.6in}            % space reserved at right for dot leaders + page #
 
-% format chapter entries like other entries
+% -- dot leaders --
+\renewcommand{\cftdotsep}{1.5} % density of dots
+
+% -- chapter / section layout (copy down to lower levels if needed) --
+\setlength{\cftchapindent}{0pt}        % left margin of first line
+\setlength{\cftchapnumwidth}{2.8em}    % width reserved for “Chapter X”
+%   second line wraps to 0 pt + 2.8 em → aligns under the word after the number
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftchapfont}{\normalfont}
 \renewcommand{\cftchappagefont}{\normalfont}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
+% keep existing vertical spacing
+\setlength{\cftbeforetoctitleskip}{61pt}
+\setlength{\cftaftertoctitleskip}{28pt}
 \setlength{\cftbeforechapskip}{15pt}
 \setlength{\cftbeforesecskip}{10pt}
 \setlength{\cftbeforesubsecskip}{10pt}
 \setlength{\cftbeforesubsubsecskip}{10pt}
 
+% ----------  Produce the Table of Contents  ----------
 \begin{singlespace}
-\tableofcontents
+  \tableofcontents
 \end{singlespace}
-
-
 \clearpage
+
