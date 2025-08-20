@@ -1,37 +1,42 @@
+% !TeX root = main.tex
+% Set some preamble variables
 \input{common/preamble}
+\addbibresource{references.bib}
 
+% Define document-wide variables
+\def\docTitle{Title}
+\def\docAuthorFull{Your Full-Accxording-to-Literature Name}
+\def\docAuthorShort{Your F. Name}
+
+% Title page, table of contents etc.
 \begin{document}
+\input{frontmatter/_frontmatter}
+%\pagebreak
 
-% Title page, TOC, etc.
-\input{frontmatter/pages}
-\pagebreak
-
-% Insert chapters and SI individually
-\input{intro}
+% Include each chapter as individual files using the format
+% "\input{nameOfFile}", followed by a "\clearpage" command.
+% This ensures that each chapter starts on a new page.
+% If you have appendices, treat them just like you would
+% for any "regular" chapter in your document.
+\input{parts/intro}
 \clearpage
 
-\input{paper1}
+\input{parts/paper1}
 \clearpage
 
-\input{paper2}
+\input{parts/paper2}
 \clearpage
 
-\input{paper3}
+\input{parts/conclusion}
 \clearpage
 
-\input{conclusion}
+\input{parts/app_paper1}
 \clearpage
 
-\input{app_paper1}
+\input{parts/app_paper2}
 \clearpage
 
-\input{app_paper2}
-\clearpage
-
-\input{app_paper3}
-\clearpage
-
-% Insert references
+% Get references for entire document
 \input{common/references}
 
 \end{document}

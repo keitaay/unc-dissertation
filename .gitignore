@@ -1,3 +1,7 @@
+## Outputted results
+results/main.*
+!results/main.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

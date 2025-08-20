@@ -1,0 +1,29 @@
+% Set position and line margins for the table list title
+\renewcommand{\listtablename}{LIST OF TABLES}
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+
+% Format table list like other lists
+\setlength{\cftbeforelottitleskip}{-11pt}
+\setlength{\cftafterlottitleskip}{22pt}
+\renewcommand{\cftlottitlefont}{\hfill}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+% Set line spacings for each entry
+\setlength{\cftbeforetabskip}{10pt}
+
+% Left-align first line of entries, then
+% indent wrapped lines by label width
+\setlength{\cfttabindent}{0pt}
+\setlength{\cfttabnumwidth}{2.8em}
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
+
+% Render list of tables
+\begin{singlespace}
+%\listoftables
+{%
+  \let\oldnumberline\numberline
+  \renewcommand{\numberline}{\tablename~\oldnumberline}
+  \listoftables
+}
+\end{singlespace}

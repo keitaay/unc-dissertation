@@ -1,6 +1,7 @@
-\documentclass[12pt,letterpaper,twoside]{report}
-\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\documentclass[12pt,letterpaper,twoside,openany]{report}
 
+% Input encoding (not needed with XeLaTeX)
+\usepackage[utf8]{inputenc}
 
 % Layout
 \usepackage{geometry}
@@ -11,56 +12,10 @@
 \usepackage{float}
 \usepackage{lscape}
 \usepackage{longtable}
-% \usepackage[hang, flushmargin]{footmisc} % keeping footnotes flush with margins, no indentation
 
-%For margins
+% Margins
+%\usepackage[hang, flushmargin]{footmisc} % keeping footnotes flush with margins, no indentation
 \usepackage{enumitem}
-
-%%% BIBLIOGRAPHY
-\usepackage[american]{babel}
-\usepackage{csquotes}
-\usepackage[authordate,
-    backend=biber,
-    noibid,
-    natbib,
-    sorting=nyt,
-    sortcites,
-    annotation,
-    doi=false,
-    isbn=false,
-    url=false,
-    eprint=false, 
-    alldates=iso8601,
-    giveninits=false,
-maxcitenames=3,
-uniquename=false,
-uniquelist=false,
-    cmsdate=both,
-    date=year]{biblatex-chicago}
-%Clearing accessed date and url
-\AtEveryBibitem{
-    \clearfield{urlyear}
-    \clearfield{urlmonth}
-     \clearfield{url}
-}
-\newcommand{\mycite}[2][]{
-  (\citeauthor*{#2}, \citeyear{#2}\ifx\relax#1\relax\else:#1\fi)}
-\setlength{\bibitemsep}{12pt} % Double-spacing between references
-\appto{\bibsetup}{\setstretch{1.0}} % Single-spacing within each reference
-\usepackage{microtype} % Improves justification
-
-
-% \renewbibmacro*{cite:labelyear+extrayear}{% Adding original date for selected publications
-%   \iffieldundef{origdate}
-%     {\printtext[bibhyperref]{\printfield{labelyear}\printfield{extrayear}}}
-%     {\printtext[bibhyperref]{\printfield{origdate}/\printfield{labelyear}\printfield{extrayear}}}}
-
-
-% Inserting epigraphs at top of motivation
-\usepackage{epigraph} % for the quotations
-%\newlength{epigraphwidth}
-\setlength{\epigraphwidth}{.9\textwidth}
-\setlength{\epigraphrule}{0pt}
 
 % Figures
 \usepackage{graphicx}
@@ -70,7 +25,7 @@ uniquelist=false,
 \usepackage{listings}
 \usepackage{caption}
 \usepackage{float} % for arranging figures
-\usepackage{subcaption} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{subcaption} % allows 2+ captioned figures/tables in one float
 \usepackage{placeins} % for FloatBarrier
 \usepackage{comment}
 \usepackage{rotating}
@@ -81,58 +36,62 @@ uniquelist=false,
 \usepackage{ntheorem}
 \newtheorem{hyp}{Hypothesis} 
 \newtheorem{subhyp}{Hypothesis}
-   \renewcommand\thesubhyp{\thehyp\alph{subhyp}}
+\renewcommand\thesubhyp{\thehyp\alph{subhyp}}
 
 % Typography
-%\usepackage{times}
-% \usepackage{microtype}
-% \usepackage{textcomp}
+\usepackage{times}
 
 % Macro support
 \usepackage{xspace}
 
 % PDF links
-\usepackage[hidelinks]{hyperref} % backref=page
+\usepackage[hidelinks,
+  unicode=true]{hyperref} % backref=page
+\usepackage{bookmark}
 
-
-% Formatting section headers
-
+% Section header formatting
 \titleformat*{\section}{\bfseries\fontsize{12}{14}\selectfont\singlespacing}
-    
 \titleformat{name=\chapter,numberless}[block]
-    {\normalfont\normalsize\filcenter\singlespacing}{}{0pt}{\normalsize}
-    \vspace*{2in}
-
+{\normalfont\normalsize\filcenter\singlespacing}{}{0pt}{\normalsize}
 \titleformat*{\subsection}{\fontsize{12}{14}\selectfont\itshape\singlespacing}
 
+% Bibliography
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[authordate,
+  backend=biber,
+  noibid,
+  natbib,
+  alldates=iso,        % keep if you want ISO-style dates
+  eventtime=24h,       % explicitly satisfy dependent options
+  datezeros=true,
+  seconds=true,
+  origtime=24h,
+  labeltime=24h,
+  sorting=nyt,
+  sortcites,
+  annotation,
+  doi=false,
+  isbn=false,
+  url=false,
+  eprint=false, 
+  giveninits=false,
+  maxcitenames=3,
+  uniquename=false,
+  uniquelist=false,
+  cmsdate=both,
+  date=year]{biblatex-chicago}
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{url}
+} % Clear accessed date and URL
+\setlength{\bibitemsep}{12pt} % Double-spacing between references
+\appto{\bibsetup}{\setstretch{1.0}} % Single-spacing within each reference
+\usepackage{microtype} % Improves justification
 
-
-%%% PATHS TO FIGURES, BIBLIO, ETC
+% Call local resources
 \graphicspath{{figures/}}
-\addbibresource{p1bib.bib} % bib for Paper 1
-\addbibresource{p2_bib.bib} % bib for Paper 2
-\addbibresource{bib_clean.bib} % bib for Paper 3
-\usepackage{cleveref}
-
-
-
-% CATE formatting
-\newcommand{\CATE}[2]{\enquote{#1 $\vert$ #2}}
-
-\newcommand{\floatnotes}[2][Notes: ]{%
-  \par\medskip%
-  \begingroup%
-  \begin{minipage}{0.9\linewidth}
-  \raggedright\footnotesize%
-  \emph{#1}#2\par
-  \end{minipage}\endgroup%
-}
-
-% FONT: GARAMOND
-\usepackage{ebgaramond}
-
-
-\input{common/layout}
-
-\input{common/macros}
+\input{common/layout.tex}
+\input{common/macros.tex}
 

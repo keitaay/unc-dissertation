@@ -3,13 +3,12 @@
 
 {\def\chapter*#1{} % Suppress bibliography header
 \begin{singlespace}
-\addcontentsline{toc}{chapter}{REFERENCES}
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
 \begin{center}
-    {\large REFERENCES}
-    \vspace{17pt}
+\normalfont \textbf{BIBLIOGRAPHY}
+\vspace{17pt}
 \end{center}
-%contain references to margins
-\sloppy
-\printbibliography[heading=none] % Print bibliography without extra heading
 
+\printbibliography
 \end{singlespace}
+}

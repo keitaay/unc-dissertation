@@ -1,0 +1,32 @@
+% Set position and line margins for the ToC title
+
+% Set title; the trailing "hfill" center-aligns the title
+\renewcommand{\contentsname}{TABLE OF CONTENTS\hfill}
+\renewcommand{\cfttoctitlefont}{\hfill}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+% Configure page numbers. Note that "cftsetrmarg" sets the 
+% right margin. For example, "1.6in" is approximately 25 picas,
+% or 75% of the full text width in this document (6.5in).
+% This size will be used for the right margin of the page numbers.
+\renewcommand{\cftdotsep}{1.5} % Density of dot leaders
+\cftsetrmarg{1.0in}
+\setlength{\cftaftertoctitleskip}{28pt}
+\setlength{\cftchapindent}{0pt}        % left margin of first line
+\setlength{\cftchapnumwidth}{2.8em}    % width reserved for “Chapter X”
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+
+% Set line spacings for each entry
+\setlength{\cftbeforetoctitleskip}{61pt}
+\setlength{\cftaftertoctitleskip}{28pt}
+\setlength{\cftbeforechapskip}{15pt}
+\setlength{\cftbeforesecskip}{10pt}
+\setlength{\cftbeforesubsecskip}{10pt}
+\setlength{\cftbeforesubsubsecskip}{10pt}
+
+% Render table of contents
+\begin{singlespace}
+\tableofcontents
+\end{singlespace}
