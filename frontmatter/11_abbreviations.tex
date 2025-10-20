@@ -1,0 +1,31 @@
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+
+% Center-align section heading
+\begin{center}
+{\normalfont \textbf{LIST OF ABBREVIATIONS}}
+\end{center}
+
+% Define the list of abbreviations in alphabetical order
+% within the "tabbing" block. Use the custom functions 
+% immediately below this comment block to properly align 
+% each item. Enter the first item using this syntax:
+%
+% \Abi{ABBREVIATION}{What the abbreviation stands for}
+%
+% Every subsequent entry should use the same arguments,
+% but the command should be \Ab instead of \Abi
+\newcommand{\Ab}[2]{\noindent  #1 \> #2 \\}
+\newcommand{\Abi}[2]{\noindent #1 \hspace{1.5cm} \= #2 \\}
+\begin{tabbing}
+    % Enter your first item using \Abi
+    \Abi{ABD}{All But Dissertation}
+
+    % All remaining abbreviations must use \Ab
+    \Ab{I/O}{Input/Output}
+    \Ab{IPC}{Inter-Process Communication}
+    \Ab{IPI}{Inter-Processor Interrupt}
+    \Ab{WSS}{Working Set Size}
+    \Ab{AYO}{Add Your Own in alphabetic order\ldots}
+\end{tabbing}
+\clearpage

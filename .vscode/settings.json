@@ -1,0 +1,42 @@
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "bashBuild",
+      "command": "./build.bash",
+      "args": [],
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": [
+        "%DOCFILE%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "Build with Bash Script",
+      "tools": [
+        "bashBuild"
+      ]
+    },
+    {
+      "name": "pdflatex -> biber -> pdflatex x 2",
+      "tools": [
+        "pdflatex",
+        "biber",
+        "pdflatex",
+        "pdflatex"
+      ]
+    }
+  ],
+}

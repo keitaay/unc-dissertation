@@ -1,0 +1,57 @@
+% For a majority of the document, the table of contents-based
+% chapter titles will be automatically formatted so that
+% each chapter starts with a 2 in header, but all following
+% pages will have 1 in top margins.
+%
+% However, the first two pages of our document - i.e. your
+% title and copyright pages - are an exception. For those,
+% we'll manually configure the margins.
+\newgeometry{left=1.25in,top=2in,right=1.25in,bottom=1in,nohead}
+
+% All content before the main text must use Roman numberals.
+\pagenumbering{roman}
+
+% Title Page
+\input{frontmatter/01_titlepage}
+\clearpage
+
+% Copyright Page (optional; comment out if unnecessary)
+\input{frontmatter/02_copyright}
+\clearpage
+
+% The rest of this document can use "normal" appearance settings!
+\restoregeometry
+
+% Abstract
+\input{frontmatter/03_abstract}
+\clearpage
+
+% Dedication, acknowledgments, and prefaces
+% (All three are optional; unused parts can be commented out)
+\input{frontmatter/04_dedication}
+\clearpage
+\input{frontmatter/05_acknowledgement}
+\clearpage
+%\input{frontmatter/06_preface}
+%\clearpage
+
+% Table of Contents, with page references
+\input{frontmatter/07_contents}
+\clearpage
+
+% List of tables, figures, and illustrations, if applicable
+\input{frontmatter/08_tables}
+\clearpage
+\input{frontmatter/09_figures}
+\clearpage
+%\input{frontmatter/10_illustrations}
+%\clearpage
+
+% List of abbreviations and symbols, if applicable
+\input{frontmatter/11_abbreviations}
+\clearpage
+\input{frontmatter/12_symbols}
+\clearpage
+
+% After all front matter, we can return to using Arabic numerals.
+\pagenumbering{arabic}

@@ -1,0 +1,97 @@
+\documentclass[12pt,letterpaper,twoside,openany]{report}
+
+% Input encoding (not needed with XeLaTeX)
+\usepackage[utf8]{inputenc}
+
+% Layout
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{longtable}
+
+% Margins
+%\usepackage[hang, flushmargin]{footmisc} % keeping footnotes flush with margins, no indentation
+\usepackage{enumitem}
+
+% Figures
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{float} % for arranging figures
+\usepackage{subcaption} % allows 2+ captioned figures/tables in one float
+\usepackage{placeins} % for FloatBarrier
+\usepackage{comment}
+\usepackage{rotating}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ntheorem}
+\newtheorem{hyp}{Hypothesis} 
+\newtheorem{subhyp}{Hypothesis}
+\renewcommand\thesubhyp{\thehyp\alph{subhyp}}
+
+% Typography
+\usepackage{times}
+
+% Macro support
+\usepackage{xspace}
+
+% PDF links
+\usepackage[hidelinks,
+  unicode=true]{hyperref} % backref=page
+\usepackage{bookmark}
+
+% Section header formatting
+\titleformat*{\section}{\bfseries\fontsize{12}{14}\selectfont\singlespacing}
+\titleformat{name=\chapter,numberless}[block]
+{\normalfont\normalsize\filcenter\singlespacing}{}{0pt}{\normalsize}
+\titleformat*{\subsection}{\fontsize{12}{14}\selectfont\itshape\singlespacing}
+
+% Bibliography
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[authordate,
+  backend=biber,
+  noibid,
+  natbib,
+  alldates=iso,        % keep if you want ISO-style dates
+  eventtime=24h,       % explicitly satisfy dependent options
+  datezeros=true,
+  seconds=true,
+  origtime=24h,
+  labeltime=24h,
+  sorting=nyt,
+  sortcites,
+  annotation,
+  doi=false,
+  isbn=false,
+  url=false,
+  eprint=false, 
+  giveninits=false,
+  maxcitenames=3,
+  uniquename=false,
+  uniquelist=false,
+  cmsdate=both,
+  date=year]{biblatex-chicago}
+\AtEveryBibitem{
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{url}
+} % Clear accessed date and URL
+\setlength{\bibitemsep}{12pt} % Double-spacing between references
+\appto{\bibsetup}{\setstretch{1.0}} % Single-spacing within each reference
+\usepackage{microtype} % Improves justification
+
+% Call local resources
+\graphicspath{{figures/}}
+\input{common/layout.tex}
+\input{common/macros.tex}
+

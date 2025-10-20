@@ -1,0 +1,32 @@
+% Common abbreviations
+\newcommand{\eg}{{\it e.g.}\xspace}
+\newcommand{\ie}{{\it i.e.}\xspace}
+\newcommand{\etc}{{\it etc.}\xspace}
+\newcommand{\etal}{\emph{et~al}\mbox{.}\xspace}
+
+% References to other parts of the document
+\newcommand{\chref}[1]{Chapter~\ref{ch:#1}\xspace}
+\newcommand{\chrefs}[2]{Chapters~\ref{ch:#1} and~\ref{ch:#2}\xspace}
+\newcommand{\secref}[1]{Section~\ref{sec:#1}\xspace}
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}\xspace}
+\newcommand{\figrefi}[2]{Figure~\ref{fig:#1}(#2)\xspace}
+\newcommand{\tabref}[1]{Table~\ref{tab:#1}\xspace}
+\newcommand{\lemref}[1]{Lemma~\ref{lem:#1}\xspace}
+\newcommand{\thmref}[1]{Theorem~\ref{thm:#1}\xspace}
+\newcommand{\defref}[1]{Definition~\ref{def:#1}\xspace}
+\newcommand{\exref}[1]{Example~\ref{ex:#1}\xspace}
+\newcommand{\equref}[1]{Equation~(\ref{eq:#1})\xspace}
+\newcommand{\inequref}[1]{Inequality~(\ref{eq:#1})\xspace}
+\newcommand{\lstref}[1]{Listing~\ref{lst:#1}\xspace}
+\newcommand{\pref}[1]{page~\pageref{p:#1}\xspace}
+
+% Flush words right at end of paragraph, per:
+% http://tex.stackexchange.com/questions/16330/hfill-after-linebreak
+\newcommand\rightparend[1]{{%
+	\unskip\nobreak\hfil\penalty50
+	\hskip2em\hbox{}\nobreak\hfil\textbf{#1}%
+	\parfillskip=0pt \finalhyphendemerits=0 \par}
+}
+
+% Use for commenting
+\newcommand{\yncomment}[1]{{\textcolor{blue}{\textsc{\textbf{[#1 --YN]}}}}}
