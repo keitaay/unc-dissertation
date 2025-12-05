@@ -9,11 +9,16 @@ function clean_auxiliary_files() {
         "${name%.tex}.bbl"
         "${name%.tex}.bcf"
         "${name%.tex}.blg"
+        "${name%.tex}.dvi"
+        "${name%.tex}.fdb_latexmk"
+        "${name%.tex}.fls"
+        "${name%.tex}.blg"
         "${name%.tex}.log"
         "${name%.tex}.lof"
         "${name%.tex}.lot"
         "${name%.tex}.nav"
         "${name%.tex}.out"
+        "${name%.tex}.out.ps"
         "${name%.tex}.run.xml"
         "${name%.tex}.snm"
         "${name%.tex}.thm"
@@ -50,10 +55,15 @@ sleep 0.1
 # Do the first of three runs for "pdflatex"
 pdflatex --shell-escape "$NAME_IN" -interaction=nonstopmode -file-line-error | tee "$LOG_FILE"
 
-# Run Biber to generate the bibliography; terminate if something went wrong
+# Generate the bibliography; terminate if something went wrong
 biber "${NAME_IN%.tex}"
+#bibtex "${NAME_IN%.tex}"
 if [ ${PIPESTATUS[0]} -ne 0 ]; then
-    printf "\n\nBiber failed. See %s for details.\n\n" "$LOG_FILE"
+    printf "\n\Bibliography generation failed. See %s for details.\n\n" "$LOG_FILE"
+    exit 1
+fi
+if [ ! -f "${NAME_IN%.tex}.bbl" ]; then
+    echo "Error: .bbl file not found. BibTeX may have failed."
     exit 1
 fi
 
