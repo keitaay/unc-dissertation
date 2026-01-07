@@ -1,0 +1,65 @@
+% !TeX root = ../../../main.tex
+\section{Results}
+
+Table~\ref{tbl:demographics} summarizes the demographics of the 64 patients included in this study. All patients received standard immunosuppressive therapies regardless of study participation. No significant differences were observed between participants' age, sex, BMI, donor types, whether zero-hour biopsies were performed, and the number of indication biopsies except for whether a zero-hour biopsy was performed on a graft and whether it came from a living donor ($p$~=~0.34, Spearman's rank correlation coefficient $\rho$~=~0.27). For racial/ethnic groups, significant correlations were observed between whether participants were White and the number of indication biopsies performed ($p$~=~0.049, $\rho$~=~-0.25) and whether grafts came from a living donor ($p$~=~0.0018, $\rho$~=~0.39), whether participants were Black and whether donors were living ($p$~=~0.0023, $\rho$~=~-0.39), whether participants were Hispanic/Latinx and underwent zero-hour biopsies ($p$~=~0.043, $\rho$~=~0.26), and between the number of indication biopsies performed whether a participant was Asian ($p$~=~0.024, $\rho$~=~0.29). Regarding the reasons for study withdrawals, excluding demographic groups with 5 or fewer participants and study withdrawal reasons unrelated to pathology, noncompliance, or consent, the only significant difference observed was between the number of indication biopsies and whether a participant ended study participation due to a clinical diagnosis of graft rejection ($p$~=~0.0030, $\rho$~=~0.38). The singular death occurred in a patient who did not undergo any indication biopsies during their study participation, and was caused by an unrelated comorbidity.
+
+% Table of patient demographics
+\input{parts/transplant/source/table-demographics.tex}
+
+Fig.~\ref{fig:ptTime} depicts the timepoints at which VisR imaging was performed for each patient in the study, ordered by the duration between transplant and final imaging date. Imaging dates that are not associated with clinically indicated biopsies are marked as hollow circles, whereas those that are associated with biopsies are marked as filled diamonds. The median number of imaging dates per patient was 3 (interquartile range of 2--6), and the median duration between transplant and final imaging date was 486 days (interquartile range of 268--852 days). The number of imaging dates per patient was significantly correlated with whether participants were male ($p$~=~0.0070, $\rho$~=~0.34), whether the graft came from a living donor ($p$~=~0.050, $\rho$~=~0.25), whether a zero-hour biopsy was performed ($p$~=~0.0062, $\rho$~=~0.35), and the number of indication biopsies performed ($p$~=~0.046, $\rho$~=~0.26). The total duration between transplant and final imaging date was significantly correlated with whether participants were male ($p$~=~0.047, $\rho$~=~0.26) and whether a zero-hour biopsy was performed ($p$~=~0.012, $\rho$~=~0.32). No significant differences were found when the number of imaging dates per patient or the duration between transplant and final imaging dates were compared to participants' ages, races/ethnicities, or reasons for study withdrawal pertaining to pathology, noncompliance, or consent.
+
+% Timeline of each patient's participation duration + imaging dates
+%
+% Things that I may or may not want to add:
+% - second subfigure that shows the same timeline relative to the final biopsy
+% - indicate biopsy findings (e.g. i, IFTA, glomerulopathy)
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{parts/transplant/figs/ptDuration.eps}
+    \caption{Timepoints of VisR imaging for each patient in the study, ordered by duration between transplant and final imaging date. Hollow circles, red diamonds, and blue squares indicate relationships between imaging dates and biopsies as indicated in the legend. (a) denotes time since transplant, whereas (b) denotes time until final imaging.}
+    \label{fig:ptTime}
+\end{figure}
+
+67 biopsies were performed during the course of this study. Two out of 31 indication biopsies, each of which were for different patients, and 34 of 36 zero-hour biopsies were not associated with any pathological findings. Two zero-hour biopsies and the remaining 29 indication biopsies resulted in at least one pathological finding. A summary of findings, as well as justifications for biopsies performed, are given in Table~\ref{tbl:biopsy}. While the primary endpoint for this study was rejection, other pathologies such as toxicity effects from calcineurin inhibitors (CNI) such as tacrolimus, focal and segmental glomerulosclerosis (FSGS), IFTA, immunoglobulin A (IgA) nephropathy, polyomavirus nephropathy (PVN) including BK virus infections, and thrombotic microangiopathy (TMA) were also observed.
+
+A summary of Banff scores for each biopsy is provided in Table~\ref{tbl:banffScores}. Note that many biopsies exhibited multiple pathological findings, and thus the counts of individual findings do not sum to the total number of pathological biopsies. Some patients underwent multiple indication biopsies, and not all biopsies were associated with VisR image metrics due to timing mismatches between biopsy dates and imaging dates where appropriate ROIs could be drawn. No peritubular capillaritis (ptc) or mesangial matrix expansion (mm) greater than zero were observed in any biopsies performed in this study.
+
+% Table of biopsy justifications and findings
+\input{parts/transplant/source/table-biopsies.tex}
+
+% Table of Banff biopsy scores
+\input{parts/transplant/source/table-scores.tex}
+
+Fig.~\ref{fig:clinicalVisrExample} shows example images of a transplanted kidney acquired using VisR in both the 0 degree and 90 degree transducer orientations. B-mode images were used to guide the placement of ROIs in the outer and inner cortex and medulla, shown in white boxes, within the yellow boxes that denote the region near the ARF push focal depth where ROIs were allowed to be drawn. B-modes with overlays of ARFI PD and log(VoA) images were provided for the reviewer to toggle between when drawing ROIs. The resulting VisR RE and RV images are also shown. Note that, while this figure shows ROIs for the outer cortex, inner cortex, outer medulla, and inner medulla both in the 0 and 90 degree orientations, this is not always possible due to contextual limitations such as anatomical variations, imaging artifacts (e.g. clutter, shadowing), and breathing motion.
+
+% Example B-mode, ARFI PD, log(VoA), RE, and RV images
+% 
+% Key observations:
+% - Lower PD regions correspond to higher RE and RV regions, especially in 0deg
+% - 90deg images appear to have less contrast overall
+% - RE, RV images very similar to each other
+% - Even though kidney itself is visibe, drawing ROIs in appropriate regions
+%   is challenging without overlays of PD and log(VoA) images
+% - Ability to place ROIs at appropriate depths is important to ensure consistency across measurements
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[height=\dimexpr \textheight - 10\baselineskip\relax]{parts/transplant/figs/examples.eps}
+    \caption{Example images of B-mode images taken in the (a) 0 degree and (b) 90 degree transducer orientation. Yellow boxes denote the region near the ARF push focal depth where ROIs were allowed to be drawn, whereas white boxes denote the ROIs. B-modes with overlays of (c,d) ARFI PD, (e,f) log(VoA), (g,h) VisR RE and (i,j) VisR RV images taken in the 0 and 90 degree orientations, respectively, are also shown. For all images, dotted lines denote boundaries for the renal cortex (outer lines) and medulla (inner lines) based on B-mode, PD, and log(VoA) images. Example ROIs are shown, and labeled in B-mode images for the outer cortex (oC), inner cortex (iC), outer medulla (oM), and inner medulla (iM).}
+    \label{fig:clinicalVisrExample}
+\end{figure}
+
+Fig.~\ref{fig:clinicalVisrDoa} shows box plots of DoA calculated from PD, RE, and RV measurements in various anatomical regions of the renal parenchyma measured. DoA values from PD, RE, and RV are dichotomized based on associated biopsy findings of \emph{i} (interstitial inflammation) scores, IFTA (interstitial fibrosis/tubular atrophy) grading, and \emph{i-IFTA} (inflammation in areas of IFTA) scores using the thresholds shown in the legends of each subfigures. Only DoA values from ROIs where imaging dates could be matched with biopsy findings are shown. Some groupings of biopsy scores (e.g. across individual \emph{i} scores of 0, 1, 2, and 3) were not possible due to the limited number of indication biopsies with those scores. Fig.~\ref{fig:clinicalVisrRr} shows RR calculated from PD, RE, and RV measurements in select pairs of anatomical regions of the renal parenchyma using the same format.
+
+Table~\ref{tbl:clinicalRegressor} summarizes the Spearman's rank correlation coefficient and estimation error metrics of regression models that relate clinical variables to VisR-derived DoA and RR metrics. As mentioned previously, only variables that allowed for meaningful regression analyses (i.e. those based on continous scales or ordinal scales with more than two categories) were included. Likewise, Table~\ref{tbl:clinicalClassifier} summarizes the performance metrics of classification models predicting clinical variables from VisR-derived DoA and RR metrics. In both tables, metrics are reported for models trained using PD, RE, and RV metrics separately. Metrics marked with an asterisk (*) indicate the best performing model for each clinical variable.
+
+% Box plot of PD, RE, RV-based DoA strat by i, IFTA, i-IFTA scores, rejection
+\input{parts/transplant/source/fig-doa-all.tex}
+
+% Box plot of PD, RE, RV-based RR strat by i, IFTA, i-IFTA scores, rejection
+\input{parts/transplant/source/fig-rr-all.tex}
+
+% Table of regressor performance metrics for clinical variables
+\input{parts/transplant/source/table-regression.tex}
+
+% Table of classifier performance metrics for clinical variables
+\input{parts/transplant/source/table-classification.tex}

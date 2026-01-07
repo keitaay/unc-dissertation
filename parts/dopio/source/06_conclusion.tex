@@ -1,0 +1,11 @@
+% !TeX root = ../../../main.tex
+\section{Conclusion}
+\label{sec:conclusion}
+
+This work introduces DoPIo ultrasound as a novel method for estimating shear elastic modulus within the region of ARF excitation. Unlike conventional ARF-based techniques that rely on shear wave propagation, DoPIo leverages the shearing rate of scatterers by quantifying the time when displacement profiles from confocal tracking beams with differing lateral widths intersect. This time-intersect metric is mapped to shear modulus using an empirically derived model.
+
+Simulations demonstrated that DoPIo can accurately estimate shear modulus across a range of elastic materials, with the best performance achieved using an F/3.0 ARF excitation and simultaneous tracking with F/1.5 and F/5.0 beam configurations. \emph{In vitro} and \emph{ex vivo} experiments confirmed DoPIo's ability to delineate elastic inclusions and maintain consistent modulus estimates across varying ARF amplitudes given a sufficient displacement signal-to-noise ratio. Importantly, once a threshold displacement level was reached, DoPIo estimates were independent of ARF amplitude, supporting its potential as a quantitative on-axis, ARF-based, elasticity imaging method.
+
+Despite these strengths, DoPIo exhibited reduced accuracy and precision in stiffer materials, likely due to overlapping time-intersect distributions and limitations in the empirical model derived from simulations. In \emph{ex vivo} liver imaging, DoPIo underestimated modulus relative to clinical standards, potentially due to scatterer shearing dynamics being impacted by the viscoelastic nature of liver tissue.
+
+Future work will focus on refining the empirical model to better account for physical imaging conditions, improving time-intersect measurement accuracy in stiff materials through optimized beam sequencing and increased pulse repetition frequency, and extending DoPIo to viscoelasticity characterization. Additionally, machine learning approaches that leverage full displacement profiles rather than relying solely on time-intersect may enhance precision and generalizability across tissue types. These efforts aim to further establish DoPIo as an ARF amplitude-independent tool for quantitative elasticity imaging in complex tissue environments.

@@ -1,0 +1,42 @@
+% !TeX root = ../../../main.tex
+
+\begin{table}[tbp]
+    \centering
+    \caption{Model Definitions and Assessment Approaches for Regression and Classification Models Predicting Clinical Variables from VisR-Derived Metrics}
+    \begin{tabular}{llrll}
+        \toprule
+        \multirow{2}{*}{Parameter} & 
+        \multicolumn{2}{c}{Regressor} & 
+        \multicolumn{2}{c}{Classifier}\\
+         & Metric & Baseline & Model Type & Categories\\
+        \midrule
+        Serum Creatinine (mg/dl) &
+        RMSE & 0.447 &
+        Binary & $<$ 1.6, $\geq$ 1.6\\
+        UPCR (g/g) &
+        RMSE & 0.589 &
+        Binary & $<$ 0.862, $\geq$ 0.150\\
+        DSA Presence &
+        - & - &
+        Binary & Absent, Present\\
+        Indication Biopsy &
+        - & - &
+        Binary & No, Yes\\
+        \emph{i} Score &
+        - & - &
+        Binary & 0, 1--3\\
+        IFTA Grade &
+        Cross-Entropy & 1.39 &
+        Multinomial & 0, 1, 2, 3\\
+        \emph{i-IFTA} Score &
+        Cross-Entropy & 1.10 &
+        Multinomial & 0, 1, 2\\
+        Rejection &
+        - & - &
+        Binary & No, Yes\\
+        \bottomrule
+    \end{tabular}
+    \par\vspace{0.5em}
+    \noindent{}RMSE: root mean square error. Baseline metrics for RMSE are calculated as the root mean square of the difference between individual values and their medians. Baseline metrics for cross-entropy losses are based on naive models that randomly predict each category with equal probability. For example, if a clinical parameter has three categories, the baseline is $-ln \left( 1 / 3 \right) \approx 1.10$.
+    \label{tbl:clinicalVariables}
+\end{table}

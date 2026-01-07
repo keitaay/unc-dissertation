@@ -1,0 +1,120 @@
+% !TeX root = ../main.tex
+\section{Methods}
+\label{sec:methods}
+
+In the first subsection, the parameters for in silico experiments and the process of detecting $t_{\textnormal{int}}$ are defined. The next subsection describes how empirical models according to Eq.~\ref{eq:modelgeneric} are created, as well as how they are evaluated in various additional in silico phantoms. Finally, experimental implementations of DoPIo are demonstrated in a calibrated phantom, an \emph{ex vivo} porcine liver, and \emph{in vivo} in a surgically exteriorized porcine kidney. The contexts of these procedures are illustrated in Fig.~\ref{fig:flowchart}.
+
+\begin{figure}[tb]
+    \includegraphics[width=\linewidth]{source/fig/workflow.png}
+    \caption{
+        A flowchart of procedures for DoPIo imaging, in particular for (top row) developing an empirical model, then (bottom row) evaluating it on simulated and experimentally acquired displacement datasets. From left to right, an empirical model is created by simulating tracked displacement profiles for materials with known elasticities. FEM simulations are run on linearly elastic and isotropic materials for a variety of stiffnesses, focal depths, and aperture configurations. Each simulated displacement field is then ultrasonically tracked using two different focal configurations. For each focal configuration, echoes of displaced scatterers are measured after the ARFI excitation until full recovery, and displacement tracking is performed. The two resulting displacement profiles from the identical position in space are overlapped. Then, the times-intersect ($t_{\mathrm{int}}$) is calculated. Since the depth of displacement-tracking $z$ is known, $t_{\mathrm{int}}$ and $z$ can be empirically related with the shear elastic modulus of simulated tissue, $G$. In the bottom row, evaluation datasets can arise from (bottom row, white paired boxes) additional simulations, as well as experimental acquisitions based on (gray boxes) separate acquisitions of displacements using different beam widths as well as (black boxes) simultaneous acquisitions of both beam widths' displacements.
+        }
+    \label{fig:flowchart}
+\end{figure}
+
+\subsection{Ultrasonic Imaging Simulation}
+
+An ARFI push excitation was simulated using specifications of the Philips ATL L7-4 (Bothell, WA, USA), a linear array with a physical lens elevationally focused at 25.0 mm. Following the procedures introduced by Palmeri \emph{et al.}~\cite{palmeri_Experimental_2004,palmeri_Ultrasonic_2006} and using the linear ultrasound simulator Field-II~\cite{jensen_Calculation_1992,jensen_Field_1997}, an ARF push beam focused at a depth of 25.0 \si{\milli\meter} was simulated. Two beams were simulated for comparison: one representing a narrow (F/1.5) push beam, and another for a wider push beam (F/3.0). This intensity field was normalized around the focal depth, scaled at an $I_{\textnormal{SPPA}}$ of 5000 \si{\watt\per\square\centi\meter}, and converted into body forces in the axial direction (i.e. $z$, the direction of acoustic wave propagation) using Equation~\ref{eq:force}:
+
+\begin{equation}
+\vec{F_{z}} = \frac{2 \alpha \vec{I}}{c}
+\label{eq:force}
+\end{equation}
+
+A sound speed, $c$, of 1540 m/s was assumed, as well as an acoustic attenuation coefficient, $\alpha$, of 0.5 dB/cm/MHz with respect to the transmit frequency. Eq.~\ref{eq:force} was evaluated throughout a hexahedral grid of nodes that were uniformly spaced 0.100 mm apart to represent the ARF push as nodal body forces. This force was applied onto the mesh for 71.2 \si{\micro\second} (300 cycles) at 4.21 MHz, and the resulting displacement response was simulated using the finite element analysis tool LS-DYNA (ANSYS, Canonsburg, PA, USA). Elements were defined as linearly elastic materials with a density of 1000~\si{\kilo\gram\per\cubic\meter}, Poisson's ratio of 0.499, and Young's moduli based on the experiment described in the following subsections. The outer six elements of the mesh in all directions were replaced with perfectly matching layers of identical Young's moduli. All non-LS-DYNA operations were performed through MATLAB R2019a (MathWorks Inc., Natick, MA, USA).
+
+Scatterers of random reflectivity magnitudes were randomly placed throughout the mesh such that the average scatterer density was 25 scatterers per resolution cell for an F/1.5 beam. Pulse-echo sequences were applied in Field-II with the aforementioned transducer to simulate post-ARF displacement tracking according to Palmeri \emph{et al.}~\cite{palmeri_Ultrasonic_2006}. Table~\ref{tbl:fnum} lists the track focal configurations that were simulated.
+
+\begin{table*}[hbt]
+    \centering
+    \caption{Permutations of focal configurations across push aperture size, beam sequencing, and track F-number combinations (tFc)}
+    \begin{tabular}{lllll}
+     &
+      \multicolumn{2}{c}{Wide Track F/3.0} &
+      \multicolumn{2}{c}{Wide Track F/5.0} \\
+     &
+      \multicolumn{1}{c}{Sequential Acq.} &
+      \multicolumn{1}{c}{Simultaneous Acq.} &
+      \multicolumn{1}{c}{Sequential Acq.} &
+      \multicolumn{1}{c}{Simultaneous Acq.} \\ \hline
+    \begin{tabular}[c]{@{}l@{}}F/1.5\\ Push\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/1.5\\ Track Tx F/1.5, Rx F/1.5 vs\\ Track Tx F/3.0, Rx F/3.0\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/1.5\\ Track Tx F/3.0, Rx F/1.5 vs\\ Track Tx F/3.0, Rx F/3.0\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/1.5\\ Track Tx F/1.5, Rx F/1.5 vs\\ Track Tx F/5.0, Rx F/5.0\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/1.5\\ Track Tx F/5.0, Rx F/1.5 vs\\ Track Tx F/5.0, Rx F/5.0\end{tabular} \\ \hline
+    \begin{tabular}[c]{@{}l@{}}F/3.0\\ Push\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/3.0\\ Track Tx F/1.5, Rx F/1.5 vs\\ Track Tx F/3.0, Rx F/3.0\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/3.0\\ Track Tx F/3.0, Rx F/1.5 vs\\ Track Tx F/3.0, Rx F/3.0\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/3.0\\ Track Tx F/1.5, Rx F/1.5 vs\\ Track Tx F/5.0, Rx F/5.0\end{tabular} &
+      \begin{tabular}[c]{@{}l@{}}Push F/3.0\\ Track Tx F/5.0, Rx F/1.5 vs\\ Track Tx F/5.0, Rx F/5.0\end{tabular} \\ \hline
+    \end{tabular}
+    \label{tbl:fnum}
+\end{table*}
+
+Two categories of focal configurations were employed for displacement-tracking. We term the first "separate acquisition" since displacements were tracked two separate times to maintain a consistent F-number when track pulses are transmitted and received. In the other approach, "simultaneous acquisition", only one set of displacement-tracking pulses are emitted using the larger F-number; the resulting channel data is simultaneously beamformed to signals for each focal configuration. For each push focal configuration and track sequence category, displacements were tracked using two track F-number combinations (tFc): F/1.5 paired with F/3.0 or F/5.0.
+
+For each of the eight combinations listed in Table~\ref{tbl:fnum}, 6.25 MHz, two-cycle transmit pulses were focused at 25.0 mm, and dynamic receive focusing was implemented at fundamental frequency. Pulse-echo sequences were repetitively emitted at a 10 kHz PRF, and the resulting array of RF data was used to track tissue displacements. Displacements were tracked by normalized cross-correlation (NCC) using a 2-wavelength (500 \si{\micro\meter}) tracking kernel and a 0.3-wavelength (80 \si{\micro\meter}) search window~\cite{pinton_Rapid_2006}. For each ARFI push, displacements were tracked using the same beam position and orientation as the ARF excitation, and in an axial range spanning from the transducer surface to 40.00 mm in depth. A polynomial motion filter was applied to negate displacements measured immediately before the ARF push as well as the last 2.0 ms of displacement estimates (i.e. where all displacement profiles were observed to have undergone 2/3 recovery). Finally, each displacement profile for a given push and track focal configuration, scatterer realization, and axial depth was upsampled tenfold using piecewise-cubic interpolation~\cite{fritsch_Monotone_1980}. 
+
+\subsection{Developing the Empirical Model}
+
+To generate a library of $t_{\textnormal{int}}$ for materials of different shear moduli, ten LS-DYNA meshes were created. Elements in each mesh were homogeneously assigned one of 10 shear modulus values ranging from 1 kPa in 4 kPa increments up to 37 kPa. Following the simulated ARFI excitation previously described, displacement responses were interpolated onto 20 random realizations of scatterer distributions, representing independent samples of media with the same material property. Displacement profiles were simulated for each mesh.
+
+For each phantom, $t_{\textnormal{int}}$ were calculated for displacements tracked up to 10 mm above and below the focal depth, capturing positions that both include and go beyond the Rayleigh distance of our push and track beams. For each axial depth, times-intersect underwent one of two options for nonlinear transformations according to Eq.~\ref{eq:modelgeneric}. The first option was an inverse-square transformation, shown in Equation~\ref{eq:modelinvsq}, where the time-intersect is inverted and squared. This transformation represents a treatment of $t_{\textnormal{int}}$ that resembles shear wave-based techniques, where $G$ is proportional to the inverse square of the time duration of shear wave propagation.
+
+\begin{equation}
+G(t_{\textnormal{int}}, z) = A(z) t_{\textnormal{int}}^{-2} + B(z)
+\label{eq:modelinvsq}
+\end{equation}
+
+The other option, shown in Equation~\ref{eq:modellogactual}, generalizes the relationship in Eq.~\ref{eq:modelinvsq} so that a normalized $t_{\textnormal{int}}$ can be related to $G$ through an arbitrary power law. Here, $\ln\left(x\right)$ is the natural logarithm of $x$, and $t_{\textnormal{ARF}}$ is the duration of the ARF push.
+
+\begin{equation}
+\ln\left( G(t_{\textnormal{int}}, z) \right) = A(z) \ln\left( \frac{t_{\textnormal{int}} - t_{\textnormal{ARF}}}{t_{\textnormal{ARF}}} \right) + B(z) 
+\label{eq:modellogactual}
+\end{equation}
+
+\noindent{}It should be noted that Eq.~\ref{eq:modellogactual} still fits within the framework of Eq.~\ref{eq:modelgeneric}. Given that the ARF push duration is small such that interaction terms between it and the times-intersect are negligible, as well as that times-intersect always occurs after the end of ARF pushes, we can restate Eq.~\ref{eq:modellogactual} as:
+
+\begin{equation}
+G(t_{\textnormal{int}}, z) = C_{1}(z) {t_{\textnormal{int}}}^{A(z)} + C_{2}(z)
+\label{eq:modellog}
+\end{equation}
+
+\noindent{}where the constants $C_{1}$ and $C_{2}$ are defined as:
+
+\begin{IEEEeqnarray}{rCl}
+C_{1}(z) & = & \exp \left( B(z) - A(z) \ln \left( t_{\textnormal{ARF}} \right) \right)\nonumber\\
+C_{2}(z) & = & C_{1}(z) {t_{\textnormal{ARF}}}^{A(z)}\nonumber
+\end{IEEEeqnarray}
+
+\noindent{}Thus, Eq.~\ref{eq:modellogactual} introduces an additional degree of freedom in the exponent that $t_{\textnormal{int}}$ is raised to, allowing for a relationship between $t_{\textnormal{int}}$ and $G$ that is more flexible than Eq.~\ref{eq:modelinvsq}.
+
+For both models, total least squares linear regression~\cite{markovsky_Overview_2007} was performed between transformed times-intersect and shear moduli. This resulted in a map of polynomial coefficients across different axial positions that could be used to convert time-intersect into a shear modulus estimate for a given set of DoPIo beam parameters.
+
+Additional simulations of ARF displacements were performed using FEM simulations of tissues with different stiffnesses for validation. The performance of the model was first validated using additional LS-DYNA simulations of homogeneously elastic materials with shear moduli from 3 to 27 kPa in 4 kPa increments. The parameters that led to the smallest median error of shear elastic modulus estimates (defined in Eq.~\ref{eq:error}) at the focal depth were considered the best-performing process for DoPIo.
+
+\begin{equation}
+\textnormal{Median Error} = \left| \frac{\textnormal{median}\left( G_{\textnormal{est}} - G_{\textnormal{true}} \right)}{G_{\textnormal{true}}} \right| \times 100\%
+\label{eq:error}
+\end{equation}
+
+\subsection{Phantom Performance Evaluation}
+
+Once the optimal DoPIo apertures and beam sequences were identified \emph{in silico}, the selected model was evaluated using additional data from physical realizations of the hardware simulated in the previous sections.
+
+The accuracy and precision of shear elastic modulus estimates made with DoPIo were assessed in a CIRS Type 049 (CIRS, Norfolk, VA, USA) commercially marketed, calibrated elasticity imaging phantom. The four cylindrical inclusions in the phantom were imaged five times using a Verasonics Vantage 256 unit (Kirkland, WA, USA) on a motion isolation table (ThorLabs, Newton, NJ, USA). F/3.0 ARF pushes focused at 25.0 mm with amplitudes from 35 V to 60 V in 5 V increments were emitted. Displacement responses were tracked on-axis to the push beam using 10 kHz PRF, F/5.0 track transmit beams focused at 25.0 mm until 6.0 ms after the push. Each channel data acquisition was separately beamformed using receive F-numbers of 1.5 and 5.0. All beamformed RF lines were displacement-tracked via NCC using the identical settings as in simulation, then converted into shear modulus estimates.
+
+The same data acquisition and processing pipeline was repeated in a porcine liver-based phantom as in~\cite{hossain_Viscoelastic_2020}. Here, the liver of a pig sacrificed within 15 hours was acquired from a local butcher. A region of tissue away from fascia and large vasculature was identified, and a prism with 3.0 cm cross-sectional square sides was excised. A 10 mm diameter cylinder was cut using a disposable biopsy punch (Robbins Instruments, Houston, TX, USA). Based on \cite{madsen_Tissue_1978} and \cite{hall_Phantom_1997}, 600 ml of linearly elastic and acoustically attenuating material with an approximate Young's Modulus of 15 kPa and attenuation of 0.5 dB/cm/MHz was created. The excised liver was immersed into the solution such that the gelatin solution filled the punched hole and surrounded the liver. The composite phantom was allowed to solidify for 24 hours in a refrigerator.
+
+The resulting phantom was returned to room temperature, and then three images were acquired using the L7-4 array in an identical manner to that used to image the CIRS phantom. Since the true elasticity of the liver is unknown and the stiffness of the gelatin mixture is only an approximation, a comparison measurement of shear elasticity was taken using the Siemens Acuson Sequoia clinical scanner (Siemens Healthineers Ultrasound Division, Issaquah, WA, USA). An Acuson 10L4 linear array transducer was placed in the identical position as the L7-4 array, and three 2-D shear wave elasticity images were acquired using its standard clinical SWEI imaging mode. These clinical scanner-acquired shear elasticity estimates were compared against DoPIo modulus estimates acquired using various push powers, as well.
+
+% OMITTED FROM SEPTEMBER 2025 DRAFT
+%
+% \ subsection{In Vivo Feasibility Study}
+%
+%Finally, DoPIo images were acquired in porcine kidney in vivo through procedures approved by the Institutional Animal Care and Use Committee (IACUC) of the University of North Carolina at Chapel Hill. Three 3- to 6-month-old Yorkshire cross pigs were purchased from an approved vendor and maintained in a facility accredited by the Association for Assessment and Accreditation of Laboratory Animal Care International. Each pig was fed a standard diet and had access to water ad libitum prior to imaging.
+%
+%Each pig was fasted for 12 hours, then imaged over the course of a roughly five-hour procedure. Pigs underwent general anesthesia to allow for their kidneys to be surgically exposed. The pigs were first sedated with simultaneous intramuscular administrations of Telazol (4.4 mg/kg) and Xylazine (2.2 mg/kg). Subcutaneous atropine (0.04 mg/kg) was administered, and intubation was performed. Afterwards, inhaled isoflurane at 2-4\% was provided to maintain anesthesia for the duration of the imaging study. The anesthetized pigs were placed in a supine position on an operating table with heating blankets. A flank incision was made on each side of the abdomen to expose the kidney, and DoPIo imaging was performed. Afterwards, each pig was humanely euthanized with Euthasol after imaging while still under general anesthesia in line with protocols for a concurrent IACUC-approved study.
+%
+%For each kidney, an ATL L7-4 linear transducer array was placed on the inferior pole, with a 1 cm Aquaflex standoff gel pad (AliMed, Dedham, MA, USA) placed between the probe and the organ so that both the renal cortex and medulla could be visualized at a depth of 25 mm. The transducer was then translated so nephrons were expected to be predominantly aligned along the lateral axis of the B-mode at the selected depth (i.e. the impacts of elastic anisotropy were standardized). The transducer was then affixed in position using a stereotactic clamp, and imaging was performed using a largely identical procedure as those for the liver phantom study described in the previous subsection. Uniquely to this experiment, however, the Verasonics Vantage scanners only transmitted ARF excitations with 45 V and 55 V square waves.
+

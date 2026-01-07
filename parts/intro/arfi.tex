@@ -1,0 +1,190 @@
+% !TeX root = ../../main.tex
+
+\section{Acoustic Radiation Force-Based Elastography}
+
+\subsection{Relevant Ultrasound Physics}
+
+% Paragraph 1: tissue scatterers encode tissue/material motion
+%   - Ultrasound imaging relies on backscattered signals from tissue microstructure
+%   - Scatterers are small (subresolution) inhomogeneities in acoustic impedance
+%   - Scatterers are spatially randomly distributed but stationary
+%   - Therefore, temporal changes in scatterer positions reflect tissue motion
+
+Ultrasound elastography techniques leverage the ability of ultrasound imaging to detect tissue motion and infer mechanical properties from that motion~\cite{nenadic_Ultrasound_2019}. This is fundamentally possible because biomedical ultrasound imaging relies on tissue to reflect acoustic pulses beyond the range of human hearing (typically at a frequency on the order of 1--20 MHz). Ultrasound imaging involves the use of transducers, or materials that convert electrical energy into acoustic (mechanical) energy and vice versa, to both generate and receive these acoustic pulses. Transmitted acoustic pulses propagate through soft tissue, where the speed of sound is known to be on the order of 1540 m/s, and are partially reflected back to the transducer by small (subresolution) inhomogeneities in material properties~\cite{trahey_Properties_1988}. These inhomogeneities, known as scatterers, arise from spatial variations in acoustic impedance (the product of material density and speed of sound) due to differences in tissue composition and structure. Scatterers are spatially distributed in a random manner but stationary over time~\cite{trahey_Properties_1988}. Therefore, temporal changes in scatterer positions reflect motion that takes place in tissue. By analyzing the backscattered signals over time, ultrasound imaging can track tissue motion with high spatial and temporal resolution~\cite{kasai_RealTime_1985,loupas_Experimental_1995,ashikuzzaman_Displacement_2024}.
+
+% Paragraph 2: motion encodes material properties
+%   - Tissue motion can be induced extrinsic (surface level or at depth) or intrinsic (i.e. physiological motion)
+%   - Relationship between applied force (stress) and resulting motion (strain) reflects material properties
+%   - Stress-strain relationship most easily encoded as linearly elastic material property: Young's modulus
+%   - Change in apparent Young's modulus over time reflects viscoelastic properties
+%     - multiple models exist to describe viscoelasticity (e.g. Kelvin-Voigt, Maxwell)
+%   - Ultrasound elastography leverages this relationship to infer tissue mechanical properties from measured motion
+
+Tissue motion can be induced either extrinsically, through external forces applied at the surface or at depth within the tissue, or intrinsically, through physiological motion such as cardiac pulsation or respiratory movement. The relationship between the applied force (stress) and the resulting motion (strain) reflects the material properties of the tissue. In the simplest case, this can be considered a linear relationship where the proportionality constant is the stiffness - i.e. Young's modulus. The Young's modulus describes how much a material deforms in response to an applied force, with stiffer materials exhibiting less deformation. However, biological tissues often exhibit viscoelastic behavior, meaning that their mechanical response to an applied force depends not only on the magnitude of the stress but also on the duration over which it is applied. This time-dependent behavior can be characterized by changes in the apparent Young's modulus over time, providing insights into the viscoelastic properties of the tissue. Various models exist to describe viscoelasticity, including the Kelvin-Voigt and Maxwell models, which account for both elastic and viscous components of tissue behavior. Ultrasound elastography techniques leverage this relationship between stress and strain to infer tissue mechanical properties from measured motion, enabling noninvasive assessments of tissue stiffness and viscoelasticity.
+
+% Paragraphs 3: anatomy of an ultrasound elastography workflow
+%   - Step 1: apply force to tissue
+%     - Examples:
+%       - External compression (manual or mechanical)
+%       - Acoustic Radiation Force (ARF) push
+%       - Vibratory sources (e.g. shaker)
+%       - Passive (i.e. physiological motion)
+%       - Others (magnetic, optical etc.)
+%     - ARF is useful for deep, localized, controlled force application
+%     - ARF due to acoustic nonlinearity, momentum transfer from compressive wave
+%   - Step 2: track resulting tissue motion using ultrasound imaging
+%     - Multiple pulse emissions create an ensemble
+%     - Backscatter phase shifts reflect scatterer displacements
+%     - Motion tracking algorithms (Kasai, Loupas, NCC etc.) estimate displacements
+%     - Displacements are never perfect
+%       - Decorrelation = loss of correlation between echoes due to out-of-plane motion, deformation, noise
+%       - Cramer-Rao lower bound describes minimum variance of unbiased estimators
+%       - Deformation (displacement) gradient leads to underestimation of displacements
+%       - Experimental demonstration: Czernuszewicz et al.
+%   - Step 3: analyze motion data to estimate mechanical properties
+%     - can involve strain, particle velocity, etc.
+%     - may or may not involve beamforming + envelope-detection
+%     - multiple analysis techniques exist - including where to track
+%     - quickly transition into next subsection
+
+Ultrasound elastography workflows primarily involve three key steps. The first step is to apply a force to the tissue of interest. This can be achieved through various means, including external compression (either manual or mechanical)~\cite{garra_Elastography_2015,ophir_Elastography_1991}, Acoustic Radiation Force (ARF) pushes~\cite{garra_Elastography_2015,sarvazyan_Shear_1998,nightingale_feasibility_2001}, vibratory sources~\cite{lerner_SonoElasticity_1988,parker_Tissue_1990,sandrin_Transient_2003}, or passive methods that leverage physiological motion~\cite{gallot_Passive_2011,catheline_Tomography_2013,vappou_Pulse_2010}. ARF is particularly useful for deep, localized, and controlled force application, as it generates a focused acoustic pulse that induces localized tissue displacement through acoustic nonlinearity and momentum transfer from the compressive wave.
+
+The second step involves tracking the resulting tissue motion using ultrasound imaging. This is typically accomplished by emitting multiple ultrasound pulses to create an ensemble of backscattered signals. The phase shifts in these backscattered echoes reflect the displacements of scatterers within the tissue. Various motion tracking algorithms, such as Kasai~\cite{kasai_RealTime_1985}, Loupas~\cite{loupas_Experimental_1995}, and normalized cross-correlation (NCC)~\cite{pinton_Rapid_2006}, are employed to estimate these displacements. However, it is important to note that displacement estimates are never perfect. The most important factors that affect the accuracy of displacement estimates include decorrelation, which refers to the loss of correlation between echoes caused by out-of-plane motion, deformation, and noise. However, other factors such as the bandwidth and signal-to-noise ratio (SNR) of the ultrasound system also play a role~\cite{walker_fundamental_1995}. The Cramer-Rao lower bound describes the minimum variance of unbiased estimators, providing a theoretical limit on the accuracy of displacement estimates~\cite{mcaleavey_Estimates_2003,dhanaliwala_Assessing_2012}.
+
+Crucially, the idea of a "perfect" displacement estimate is only possible where there is a single point in space moving rigidly. In reality, tissue deforms over a continuous volume; tissue always deforms across a displacement gradient. Since ultrasonic tracking pulses (as with any other imaging modality) have a finite spatial resolution, the displacement estimate within a resolution cell volume (i.e. its point spread function, or PSF) is effectively an average of displacements across that cell~\cite{walker_fundamental_1995,mcaleavey_Estimates_2003,palmeri_Ultrasonic_2006}. Czernuszewicz \emph{et al.} experimentally demonstrated this phenomenon in a simple situation: when an ARF push is applied onto an acoustically scattering but optically transparent phantom with a glass bead at the focal point of the push, acoustic displacement estimates underestimated the true displacement of the bead due to the presence of a displacement gradient in the surrounding material~\cite{czernuszewicz_Experimental_2013}. This displacement gradient effect, crucially, is also materially dependent; since stiffer materials deform less and recover faster from the same applied force compared to softer materials, displacement estimation errors due to displacement gradients also encode information about underlying material properties.
+
+The final step of ultrasound elastography involves analyzing the motion data to estimate mechanical properties of the tissue. This analysis can involve various metrics such as strain rate, particle velocity, shear wave group and phase speeds, or even features inferred through machine learning approaches~\cite{gennisson_Rheology_2014,wiseman_parametric_2020,jin_SweiNet_2022,chen_ShearWave_2023} - each of which may be further modified with various beamforming approaches~\cite{song_CombPush_2013,ahmed_PlaneWave_2018}. Multiple analysis techniques exist, each with its own approach to processing the motion data and determining where to track displacements within the tissue. The choice of analysis technique can significantly impact the accuracy and reliability of the estimated mechanical properties, leading to a diverse array of ultrasound elastography methods that have been developed to suit different clinical applications and research needs.
+
+\subsection{On-Axis ARF-based Elastography}
+
+% Paragraph 1: introduce ARFI imaging
+%   - ARFI = Acoustic Radiation Force Impulse imaging
+%   - Uses short-duration ARF push to induce localized displacement
+%   - Tracks on-axis displacements at push location
+%   - Initial development by Nightingale et al. in early 2000s
+%   - Used clinically in liver fibrosis staging (e.g. Siemens Virtual Touch)
+
+ARF-based techniques of ultrasound elastography can be broadly categorized into on-axis and off-axis methods, depending on where tissue motion is tracked relative to the location of the ARF push. On-axis techniques focus on tracking displacements directly at the push location. The primary approach in this category is Acoustic Radiation Force Impulse (ARFI) imaging. ARFI imaging employs a short-duration ARF push to induce localized tissue displacement at a specific location, and then tracks the resulting on-axis displacements at that push location. This technique was initially developed by Nightingale \emph{et al.} in the early 2000s~\cite{nightingale_feasibility_2001,nightingale_Acoustic_2002}, and has since been adopted in clinical applications such as liver fibrosis staging~\cite{nierhoff_efficiency_2013,shiina_WFUMB_2015}, thyroid cancer classification~\cite{zhan_Acoustic_2015,zhang_Acoustic_2015}, and breast lesion characterization~\cite{balleyguier_Breast_2013}. Commercial implementations of ARFI imaging, such as Siemens' Virtual Touch technology, have made this technique widely accessible in clinical settings.
+
+% Paragraph 2: limitations of ARFI-based metrics
+%   - ARF push amplitude unknown
+%   - Peak displacement works qualitatively
+%   - Other metrics too SNR-sensitive (e.g. time to recovery), temporally constricting (time-to-peak) etc.
+%   - Viscosity confounds all metrics
+
+However, ARFI faces several limitations as a method for estimating tissue mechanical properties. One of the primary challenges is that the amplitude of the ARF push is typically unknown, precluding its use for quantitative elasticity estimation. As a result, ARFI-derived metrics, such as peak displacement, are often used qualitatively to differentiate between softer and stiffer tissues. While other ARFI-derived metrics such as the time to peak displacement or time to recovery have been proposed~\cite{sarvazyan_Shear_1998,nightingale_Acoustic_2011}, they are often highly sensitive to signal-to-noise ratio (SNR) or may occur over a time scale that is too short to be reliably measured, limiting their clinical utility. Additionally, the presence of tissue viscosity further complicates the interpretation of ARFI metrics, as viscous effects can alter the displacement response in ways that are not directly related to tissue stiffness. These limitations highlight the need for alternative approaches that can provide more robust and quantitative assessments of tissue mechanical properties.
+
+\subsection{Off-Axis Shear Wave-based Elastography}
+\label{sec:about_offaxis}
+
+% Paragraph 1: introduce shear wave elastography
+%   - Shear waves = transverse waves induced by ARF push
+%   - Shear wave speed related to shear modulus (and thus Young's modulus)
+%   - Multiple techniques exist:
+%     - SWEI (Shear Wave Elasticity Imaging)
+%     - SDUV (Shearwave Dispersion Ultrasound Vibrometry)
+%     - SSI (Supersonic Shear Imaging)
+%     - Others
+%   - Also used in wide variety of clinical applications
+%   - Shear wave speed can be used to infer tissue viscosity
+
+Shear wave-based techniques represent another major category of ARF-based ultrasound elastography methods, characterized by their focus on tracking tissue motion off-axis from the ARF push location. Shear waves are transverse waves that propagate laterally through tissue following an ARF push. Similar to the relationship between compressional wave speed and bulk modulus, shear wave speeds are governed by the shear modulus of the material. Therefore, measurements of shear wave speed can be used to infer tissue stiffness, typically represented by Young's modulus in isotropic and linearly elastic materials~\cite{sarvazyan_Shear_1998}. Several shear wave elastography techniques have been developed including Multi-Track-Location Shear Wave Elasticity Imaging (MTL-SWEI)~\cite{sarvazyan_Shear_1998,nightingale_Shearwave_2003}, Single-Track-Location Shear Wave Elasticity Imaging (STL-SWEI)~\cite{elegbe_Single_2013,hollender_Single_2015}, and Supersonic Shear Imaging (SSI)~\cite{bercoff_Supersonic_2004}. These methods have been widely applied in various clinical contexts, such as liver fibrosis assessment~\cite{frulio_Evaluation_2013,nenadic_Ultrasound_2019}, breast lesion characterization~\cite{balleyguier_Breast_2013}, and musculoskeletal evaluations~\cite{ryu_Current_2017}.
+
+Shear wave speed measurements can also provide insights into tissue viscosity. Techniques such as Shearwave Dispersion Ultrasonic Vibrometry (SDUV)~\cite{chen_Shearwave_2009} or group shear wave speed measurement~\cite{kim_Prediction_2024,rouze_Characterization_2018,yuan_Ultrasound_2024} to analyze shear wave dispersion, or the frequency-dependent variation in shear wave speed, to estimate viscoelastic properties. This analysis enables the characterization of both elastic and viscous components of tissue behavior using the same data acquisition pipeline, offering a more comprehensive understanding of tissue mechanics.
+
+% Paragraph 2: limitations of shear wave-based metrics
+%   - Must detect shear waves off-axis; spatial averaging is inherent
+%   - Shear wave speed confounded by:
+%     - Heterogeneity
+%     - Anisotropy
+%     - Geometric complexity (wave guiding, reflections, dispersion etc.)
+%   - Particularly problematic in kidneys due to:
+%     - Heterogeneity (in multiple scales)
+%     - Anisotropy (when acquisition poorly controlled in beam sequencing and in acquisition protocol)
+
+However, shear wave-based techniques also face significant challenges that can confound their ability to accurately estimate tissue mechanical properties. Since shear waves must be detected by measuring displacements across multiple tracking positions relative to the push location, the material property estimates derived from shear wave speed inherently involve an assumption that the tissue is homogeneous over the sampling region. This spatial averaging can lead to inaccuracies in heterogeneous tissues, as well as in situations where elastic anisotropy, imaging artifacts such as clutter or reverberation, and geometric complexity such as wave guiding effects, reflections, and dispersion may take place. These confounding factors are particularly problematic in organs like the kidney, which exhibit significant heterogeneity at multiple scales (e.g., cortex vs. medulla) and anisotropy. Shear wave speed measurements have also been shown to be sensitive to imaging parameters, ARF push amplitudes, and acquisition protocols, further complicating their clinical application~\cite{palmeri_Radiological_2021,elmeliegy_Correlationbased_2023}.
+
+Shear wave-based techniques in the kidney have also been demonstrated to be an imperfect tool for assessing renal pathology, highlighting the variability and inconsistency in reported shear wave speed or elastic (shear or Young's moduli) values across different studies. Notably, many studies have reported conflicting methods for reporting results. This includes inconsistencies between reporting shear wave speeds versus derived elastic moduli (which assumes linear, isotropic elasticity)~\cite{ce_Ultrasound_2023,ng_Shear_2024,urban_Novel_2021}, how patients are positioned during imaging~\cite{ce_Ultrasound_2023}, what system is used to perform imaging~\cite{ng_Shear_2024}, whether measurements are made using image-based regions of interest (ROI) or pointwise samples~\cite{sandhya_Role_2025}, how image quality and artifact rejection are handled~\cite{ce_Ultrasound_2023,barr_Can_2020}, and what biomarkers are used for comparison~\cite{alnazer_Recent_2021,cao_Shear_2023}. Renal perfusion is also known to affect shear wave speed measurements, though the directionality of this effect and the proper approach to comparing perfusion metrics remains unclear~\cite{alnazer_Recent_2021,filipov_Investigating_2024,leong_Comparison_2019,lim_Shear_2021,ozkan_Interobserver_2013,urban_Novel_2021}. These inconsistencies complicate the interpretation and comparison of results across studies, hindering the establishment of standardized protocols and reference values for renal shear wave elastography.
+
+Furthermore, the approach of measuring shear wave speeds in the kidney has been inconsistent in the literature to the point that their utility as a biomarker is questionable. Significant variations exist in where previous works placed ROIs in terms of kidney orientation (along vs. across the long axis of the kidney), gross anatomical position (superior pole, inferior pole, or median), and depth (whether multiple measurements are taken at matching depths) have varied widely~\cite{barr_Can_2020,ce_Ultrasound_2023,ng_Shear_2024,urban_Novel_2021}. Additionally, there is no consensus on how to define the ROI within the kidney structure itself; some works focus on the cortex alone, while others distinguish between the inner and outer cortex, and still others lump together the cortex and medulla into a universal label of renal parenchyma~\cite{ce_Ultrasound_2023}. Because of the aforementioned need for shear waves to develop and propagate over a scale of millimeters to centimeters, it is reasonable to expect that shear wave speed measurements would differ based on anatomical location (e.g. inconsistent averaging across the corticomedullary junction) and orientation (e.g. erroneous averaging of shear wave speeds taken along different material orientations). Therefore, the inability to standardize anatomical locations and orientations is particularly problematic for shear wave-based techniques in the kidney.~\footnote{
+    Magnetic resonance imaging (MRI)-based elastography (MRE) has also been applied to assess renal allograft pathologies~\cite{lee_MR_2012,kirpalani_Magnetic_2017} but also suffers from reproducibility issues. This may be due to the use of the entire renal cortex (or even the whole parenchyma) for ROIs (e.g. example ROIs in \cite{kennedy_Magnetic_2020}, \cite{chauveau_Magnetic_2022}, and \cite{shatil_Magnetic_2022}). Since this challenge regarding heterogeneity and anisotropy is shared with ultrasound shear wave elastography, MRE is not detailed further in this dissertation.
+}
+
+Together, these limitations suggest that while shear wave-based elastography techniques have shown promise in assessing tissue mechanical properties, their application in the kidney is fraught with challenges that must be carefully considered. The inherent assumptions of homogeneity and isotropy, coupled with the complex anatomy and physiology of the kidney, necessitate the development of alternative approaches that can provide more reliable and robust assessments of renal tissue mechanics - especially one where the influence of heterogeneity and anisotropy can be explicitly accounted for.
+
+\subsection{Viscoelastic Response (VisR) Elastography}
+
+% Paragraph 1: introduce VisR elastography
+% - VisR = Viscoelastic Response elastography
+% - Uses dual ARF pushes to induce displacements
+% - Tracks on-axis displacements at push location
+% - Analyzes displacement profile over time to estimate viscoelastic parameters
+% - Like ARFI, on-axis
+% - Like shear wave, parameterizes viscoelastic properties (through MSD model)
+%   - maybe also allude to state space, QVisR, other approaches from Joey and Lucas?
+% - VisR metrics qualitative as biomarkers (they characterize displacement profiles, but do not necessarily quantify information about underlying tissue)
+
+In response to the limitations of both ARFI and shear wave-based techniques, Viscoelastic Response (VisR) elastography~\cite{selzo_Viscoelastic_2013} was developed as an on-axis ARF-based method that aims to provide semi-quantitative assessments of tissue viscoelastic properties. VisR elastography employs two ARF excitations in short succession to induce localized tissue displacements at the push location, similar to ARFI imaging. However, instead of relying solely on the peak displacement, VisR characterizes viscoelastic properties of the underlying material by parameterizing the entire displacement profile over time. By fitting the measured displacement data to a mechanical model such as the one-dimensional mass-spring-damper (MSD) model~\cite{selzo_Quantitative_2016}, VisR can extract parameters related to both elasticity and viscosity of the tissue~\cite{hossain_Viscoelastic_2020}.
+
+% Paragraph 2: VisR as a biomarker
+% - Define VisR relative elasticity (RE) / relative viscosity (RV)
+%   - RE/RV are related to true material properties divided by unknown ARF push magnitude
+%   - thus, RE/RV are semi-quantitative biomarkers
+% - If A can be assumed constant, ratios of RE/RV can be treated as quantitative
+%   - RR = regional ratio (heterogeneity)
+%   - DoA = degree of anisotropy (anisotropy)
+
+VisR fit parameters can be used to derive semi-quantitative biomarkers that have been found to correlate with tissue mechanical properties. Two key metrics derived from VisR are the relative elasticity (RE) and relative viscosity (RV), which represent the underlying shear elastic and viscous moduli normalized by the unknown ARF push magnitude. Since the ARF push magnitude is not directly measured, RE and RV cannot be treated as absolute quantitative measures of tissue properties, leading the metrics to be \emph{semi}-quantitative in nature.
+
+However, if the ARF push magnitude can be assumed to be constant across different measurements, ratios of RE and RV can be treated as quantitative indicators of tissue heterogeneity and anisotropy. For instance, the regional ratio (RR) can be used to assess heterogeneity by comparing RE or RV values across different regions of interest. Since the ARF push magnitude is canceled out in the ratio, RR provides a quantitative measure of relative stiffness or viscosity between spatial regions. Likewise, the degree of anisotropy (DoA) can be calculated by comparing RE or RV values obtained from different imaging orientations to determine the extent of directional dependence in tissue mechanical properties.\footnote{
+    Note that RR and DoA are not metrics that are exclusive to VisR elastography. Similar ratio-based metrics can also be derived from other techniques such as shear wave speed measurements from MTL-SWEI or SDUV, as well as other on-axis techniques such as ARFI peak displacement. However, VisR's on-axis tracking and viscoelastic parameterization provide a unique approach to obtaining these metrics.
+} 
+
+% Paragraph 3: prior work on VisR elastography
+% - Initial development by Mallory, Chris, Murad, and Gabriela/Anna
+% - Multiple ex vivo and in vivo studies
+%   - muscle (GRMD in dogs, DMD in children)
+%   - breast cancer
+%   - kidney
+% - Previous renal studies were:
+%   - In vivo, exteriorized
+%   - In vivo, humans - but for small sample size
+%     - differentiated various renal pathologies but small sample size
+
+VisR elastography was initially developed by Selzo and Gallippi~\cite{selzo_Viscoelastic_2013} using a Voigt material model to characterize viscoelastic response. Subsequent studies have expanded upon this work, applying VisR elastography in various ex vivo and in vivo contexts. Notably, VisR has been utilized to assess muscle pathology in both Golden Retriever Muscular Dystrophy (GRMD) in dogs~\cite{moore_Computational_2018} and Duchenne Muscular Dystrophy (DMD) in children~\cite{moore_Vivo_2018}, demonstrating its potential for evaluating muscular disorders. Additionally, VisR has been demonstrated to differentiate between benign and malignant breast lesions \emph{in vivo} in humans, highlighting its utility in oncological applications~\cite{phillips_VisR_2025}. Furthermore, VisR has been shown to be robust to changes in renal perfusion in an \emph{in vivo} porcine model of renal ischemic reperfusion injury~\cite{hossain_Viscoelastic_2018}, a finding that was also noted in humans using SWEI~\cite{gao_Ultrasound_2020} and in a preclinical implementation of SDUV~\cite{amador_Shearwave_2011}.
+
+% - Paragraph 4: what's not done yet
+%   - longitudinal study
+%   - histological correlation over larger sample size
+%   - explicit comparison to Banff scores
+%   - investigating VisR-like approaches that relax assumptions about displacement profile parameterization (our first hint at DoPIo)
+
+Previous works have also explored the application of VisR in kidneys, with studies conducted in exteriorized porcine kidneys \emph{in vivo}~\cite{hossain_Viscoelastic_2018} as well as in a small cohort of human renal transplant patients~\cite{hossain_Evaluating_2018}. In the former study, VisR, MTL-SWEI, and SDUV imaging were performed in a porcine model of ischemic reperfusion injury. This study demonstrated that DoA were significantly different between injured and contralateral kidneys using VisR RE metrics in the cortex and medulla, as well as in the medulla using VisR RV-based DoA. This was comparable to how DoA derived from shear elasticity estimates using SDUV were also significantly different between injured and contralateral kidneys in both cortex and medulla, as well as MTL-SWEI shear wave speed-based DoA in the medulla. This result also corresponds to DoA changes made using ARFI peak displacements both in the cortex and medulla, which has also been shown to reflect elastic anisotropy in TI materials~\cite{hossain_Acoustic_2017,hossain_Quantitative_2022}.
+
+For the study on human renal transplant patients conducted by Hossain \emph{et al.}~\cite{hossain_Evaluating_2018}, VisR elastography was performed \emph{in vivo} on a small cohort of 19 patients who underwent clinically indicated biopsies as well as 25 volunteers who received renal allografts but did not undergo any biopsies. The biopsies were found to have various renal pathologies including acute rejection (nonspecific between AMR and TCMR), chronic allograft nephropathy, BK virus nephropathy, and glomerulonephritis. In this study, RE-based RR between the pelvis and parenchyma were found to be significantly different between non-biopsied controls and patients with moderate vascular disease, as well as with patients with mild interstitial scarring. RV-based RR between the pelvis and parenchyma were also significantly different between non-biopsied controls and patients with moderate vascular disease. This suggests that metrics derived from VisR RE and RV parameters may serve as potential biomarkers for distinguishing pathologies in the renal parenchyma that are relevant to graft dysfunction. It should be noted, however, that DoA using RE or RR were not reported in this work, and the patient sample sizes were relatively small. Furthermore, this study did not consider longitudinal monitoring of renal allografts over time or differentiate the renal cortex from the medulla in the parenchyma. In terms of clinical correlations, biopsy results were only categorized based on the clinical diagnosis rather than Banff scores. As such, while this study provided initial evidence regarding VisR's potential biological relevance in assessing renal allograft health, the utility of VisR for longitudinally monitoring renal allograft health is yet to be investigated.
+
+\subsection{Challenges of Existing Ultrasonic Elastography Approaches}
+
+% Paragraph 1: reiterate what existing elastography techniques offer
+% - ARFI is on-axis but qualitative
+% - Shear wave-based approaches are off-axis, confounded in kidney
+% - VisR is on-axis AND semi-quantitative, but with limitations
+
+In summary, existing ultrasonic elastography techniques each offer distinct advantages and limitations such that no single method has yet emerged as the definitive approach for assessing renal allograft health. ARFI imaging provides on-axis measurements but is limited to qualitative assessments due to the unknown ARF push amplitude. Shear wave-based approaches, while capable of providing quantitative estimates of tissue stiffness and viscosity, are inherently off-axis and subject to confounding factors such as heterogeneity, anisotropy, and geometric complexity, which are particularly pronounced in the kidney. VisR elastography combines the benefits of on-axis tracking with semi-quantitative assessments of viscoelastic properties, but it still faces challenges related to the assumptions made in displacement profile parameterization and the need for further validation in clinical contexts.
+
+% Paragraph 2: good clinical implementation of elastography must:
+% - Allow for fast, repeatable imaging
+% - Be robust to depth variability - and, thus, presumably ARF amplitude-independent
+% - Ideally, be quantitative
+
+For a clinical implementation of ultrasonic elastography to be effective in monitoring renal allograft health, it must meet several key criteria. First, the technique should allow for fast and repeatable imaging to facilitate routine assessments without imposing significant time burdens on patients or clinicians. Second, it must be robust to variability in imaging depth, which often affects ARF amplitude and, consequently, the accuracy of mechanical property estimates. Therefore, methods that can provide reliable measurements independent of ARF push amplitude are particularly desirable. Finally, while semi-quantitative metrics can offer valuable insights, an ideal elastography approach would strive for quantitative assessments of tissue mechanical properties to enhance diagnostic accuracy and enable more precise monitoring of graft health over time.
+
+In the context of VisR, these demands are particularly relevant for two of its limitations. First, one must reasonably assume that the ARF push magnitude remains constant across measurements used for RR and DoA. Second, elasticity- and viscosity-related MSD parameters are independent from each other. The first challenge is particularly relevant for creating two-dimensional images of VisR metrics, as ARF push amplitudes can vary significantly with imaging depth. However, even if VisR were to be performed pointwise (e.g. using single-location measurements similar to Siemens' Virtual Touch tool), the second challenge remains; RE and RV are known to be coupled such that an empirical, FEM-based elasticity compensation must be employed to truly correlate those metrics to shear elastic and viscous moduli~\cite{hossain_Viscoelastic_2020}. These challenges complicate the use of VisR as a quantitative tool for assessing tissue mechanical properties and motivate two avenues of investigation. The first path calls for pushing the ability to use VisR metrics with or without elasticity and depth compensation as challenging semi-quantitative biomarkers for renal allograft health. The other approach calls for an alternative analysis technique that parameterizes ARF-induced displacement profiles and provides quantitative information about underlying tissue mechanical properties. 
+
+% Paragraph 3: we propose:
+% - Implementing VisR elastography in renal transplant patients to assess clinical utility
+% - Exploring alternative analysis techniques to extract more quantitative information from VisR data
+% - Comparing VisR and alternative technique to existing clinical standards for renal graft assessment
+% - We introduce DoPIo, described in Chapter 3, as one such alternative technique
+
+To address these challenges, this dissertation proposes two complementary avenues of investigation. The first involves implementing VisR elastography in a cohort of renal transplant patients to assess its clinical utility as a semi-quantitative biomarker for graft health. This includes evaluating the reproducibility of VisR metrics over time and their correlation with clinical outcomes and biopsy results. The second avenue explores an alternative analysis technique that can extract more quantitative information from ARF-induced displacement profiles such that the limitations associated with VisR's current parameterization may be overcome. Double-Profile Intersection (DoPIo) elastography~\cite{yokoyama_Doubleprofile_2019,yokoyama_DoubleProfile_2025}, described in Chapter~\ref{chap:dopio}, has been developed explicitly to fulfill this purpose. This dissertation explores both approaches, then evaluates their effectiveness both tools for their abilities to distinguish structural changes in renal parenchyma associated with inflammation and fibrosis.

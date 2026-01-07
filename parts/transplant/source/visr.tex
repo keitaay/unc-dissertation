@@ -1,0 +1,62 @@
+% !TeX root = ../../../main.tex
+\section{Viscoelastic Response (VisR) Ultrasound}
+
+n VisR, two successive ARFI excitations are applied in a manner that may be modeled as two rectangular pulses separated by a short time interval, $t_{\textrm{sep}}$, as shown in Eq.~\eqref{eq:msdForcing}. Here, $\overrightarrow{F_{z}}(t)$ is the time-varying ARF-induced body force in the axial direction (i.e. $\overrightarrow{z}$) in units of newtons per cubic meter, $\overrightarrow{A_{z}}$ is a unitless scaling factor that represents the amplitude of the ARF-induced body force applied in the $z$ direction, and $\Pi\left( t_{\textrm{start}}, t_{\textrm{dur}} \right)$ is the rectangular function, a fuction of time equal to 1 between $t_{\textrm{start}}$ and $t_{\textrm{start}} + t_{\textrm{dur}}$ and equal to 0 otherwise. 
+
+\begin{equation}
+    \overrightarrow{F_{z}}(t) = \overrightarrow{A_{z}} \Pi\left( 0, t_{\textrm{ARF}} \right) + \overrightarrow{A_{z}} \Pi\left( t_{\textrm{sep}}, t_{\textrm{ARF}}\right)
+    \label{eq:msdForcing}
+\end{equation}
+
+VisR measures tissue displacements induced by these ARF excitations using conventional ultrasonic tracking beams, then fits model of a Kelvin-Voigt model with an additional inertial term in series to the measured displacements. This model, abbreviated herein as the mass-spring-damper (MSD) model, is described by the second-order nonhomogeneous differential equation in Eq.~\ref{eq:msdDiffeq}. In this model, $m$ denotes system inertia as per \cite{selzo_Quantitative_2016}, $\eta$ is the dynamic viscosity expressed in units of pascal-seconds, $\mu$ is the shear elastic modulus that may be scaled to units of kilopascals, and $z(t)$ is the time-varying axial tissue displacement as captured by an ultrasonic tracking beam with some cross-sectional area, expressed in units of meters per square meter.
+
+\begin{equation}
+    \overrightarrow{F_{z}}(t) = m \frac{\partial^{2} z(t) }{\partial t^{2}} + \eta \frac{\partial z(t)}{\partial t} + \mu z(t)
+    \label{eq:msdDiffeq}
+\end{equation}
+
+This differential equation may be solved for $z(t)$ using the double ARF excitation in Eq.~\eqref{eq:msdForcing} in the Laplace domain by making the following substitutions:
+
+\begin{equation}
+    \omega = \sqrt{ \frac{\mu}{m} }
+    \label{eq:msdOmega}
+\end{equation}
+\begin{equation}
+    \tau = \frac{\eta}{\mu}
+    \label{eq:msdTau}
+\end{equation}
+\begin{equation}
+    S = \frac{A}{\mu}
+    \label{eq:msdSens}
+\end{equation}
+
+\noindent{}Here, $\omega$ is the natural frequency of the system in radians per second, $\tau$ is the relaxation time constant of the displacement response in seconds, and $S$ is a static sensitivity term that relates $A$ to the resulting displacement. Once an iterative optimizer is used to solve for $z(t)$ that approximates the measured displacement response, Eq.~\ref{eq:msdTau} and \ref{eq:msdSens} can be used to calculate correlates of $\mu$ and $\eta$~\cite{hossain_Viscoelastic_2020} as shown in Eq.~\ref{eqRe} and \ref{eqRv}.
+
+\begin{equation}
+    {RE} = \frac{\mu}{A} = \frac{1}{S}
+    \label{eqRe}
+\end{equation}
+\begin{equation}
+    {RV} = \frac{\eta}{A} = \frac{\tau}{S}
+    \label{eqRv}
+\end{equation}
+
+\noindent{}Here, RE and RV denote "relative elasticity" and "relative viscosity", respectively. RE and RV rely on the same ARF amplitude, $A$, which is impractical to measure due to its dependence on tissue acoustic properties and imaging system parameters. Therefore, RE and RV are considered relative measurements, acting as semi-quantitative surrogates for $\mu$ and $\eta$. This distinction is important, as it precludes the direct comparison of RE and RV values across imaging sessions, patients, or other situations where $A$ cannot be assumed to be constant.
+
+However, in cases where one may reasonably assert that $A$ is comparable across measurements, ratios of RE and RV may be used so that $A$ is canceled out ando changes in tissue elasticity and viscosity across multiple features may be inferred. Two approaches to taking these ratio-based metrics, both of which have also been demonstrated for ARFI peak displacement (PD)~\cite{hossain_Viscoelastic_2018,hossain_Quantitative_2022} are particularly useful in the assessment of renal allograft health. The first approach involves the comparison of PD, RE, and RV values across different angular orientations of the transducer with respect to the renal parenchyma's predominant fiber direction. Supposing that the renal parenchyma is a transversely isotropic (TI) material where the axis of symmetry is defined by the predominant direction of renal tubules and vessels, one may expect that VisR measurements taken with the transducer aligned parallel to this axis (0 degree orientation) would differ from those taken with the transducer aligned perpendicular to this axis (90 degree orientation). In this situation, the degree of anisotropy (DoA), can be calculated through Eq.~\ref{eqDoA}.
+
+\begin{equation}
+    \ln \left( {DoA} \right) = \ln \left( \frac{x_{0^{\circ}}}{_{90^{\circ}}} \right)
+    \label{eqDoA}
+\end{equation}
+
+\noindent{}Here, $x$ is the elastography metric of interest (i.e. PD, RE, or RV). Note the natural logarithm, $\ln\left(x\right)$, is applied to symmetrize the metric around zero (i.e. isotropy) such that positive values indicate higher values in the 0 degree orientation while negative values indicate higher values in the 90 degree orientation by the same magnitude. Through this approach, one may characterize the elastic or viscous anisotropy of renal tissue without knowing the absolute value of $\mu$, $\eta$, or $A$~\cite{hossain_Viscoelastic_2020}.
+
+\noindent Similarly, the regional ratio (RR), defined in Eq.~\eqref{eqRr}, can express the relative difference of PD, RE, or RV of some structure $i$ from another structure $j$. Similar to DoA, the natural logarithm is applied to symmetrize the metric around zero, where zero indicates equal values between the two regions.
+
+\begin{equation}
+    \ln \left( {RR}_{\textup{i/j}} \right) = \ln \left( \frac{x_{\textup{i}}}{x_{\textup{j}}} \right)
+    \label{eqRr}
+\end{equation}
+
+It should be noted that RR and DoA are unitless and not specific to VisR; ARFI PD, SWEI and SDUV may also be used to calculate these metrics~\cite{hossain_Mechanical_2019}. However, RR and DoA calculated using PD, RE, and RV have the distinct advantage of being on-axis measurements that do not rely on the tracking of propagating shear waves.

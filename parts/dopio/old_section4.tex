@@ -1,0 +1,137 @@
+% !TeX root = ../main.tex
+\section{Results}
+\label{sec:results}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{source/fig/tint-focus.eps}
+    \caption{Distribution of times-intersect detected from two displacement profiles made using simulated ARFI mechanical responses for materials of various elasticities. Box plots depict the median, interquartile range, 95\% confidence interval, and outliers for displacements measured in 20 different scatterer realizations at the focal depth. Colors indicate different focal configurations employed for push and track beam. (a) depicts times-intersect from simulations of separate tracking (i.e. using separate fields of scatterers and separate transmissions to form displacement profiles) whereas (b) depicts times-intersect following simultaneous displacement tracking using two focal configurations (i.e. using one simulated field of scatterers, one train of tracking pulses, and two ensembles of A-lines beamformed using the identical underlying data to estimate displacements). For both figures, lighter boxes in the left figure denote times-intersect where the wider track beam’s receive focal configuration is F/3.0, whereas darker boxes denote those with F/5.0; green boxes denote simulations with F/1.5 pushes whereas purple boxes use F/3.0.}
+    \label{fig:tintDistrib}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{source/fig/tint-focus-separability-modified.eps}
+    \caption{Comparison of $p$-values from a Kruskal-Wallis test with Bonferroni post-hoc corrections (lower triangle) and Hedge's $g$ effect sizes (upper triangle) for comparisons of times-intersect distributions depicted in Fig.~\ref{fig:tintDistrib} for each beam sequence. Each row and column considers these statistics for distinguishing between simulated $t_{\textnormal{int}}$ distributions from materials with two different shear elasticities. Subfigures denote times-intersect from different push and track focal configurations.}
+    \label{fig:tintStat}
+\end{figure}
+
+\begin{figure}[htbp]
+    \includegraphics[width=\linewidth]{source/fig/modelfit-focus.eps}
+    \caption{Example linear fits for times-intersect from simulated materials from various elasticities. Line fits are shown for (a) $t_{\textnormal{int}}$ based on Eq.~\ref{eq:modelinvsq}, and (b) those from Eq.~\ref{eq:modellog}. Individual red points denote individual $t_{\textnormal{int}}$. The opacity of the points denote their distances from the median time-intersect for each elasticity, as well as weights for line-fitting.}
+    \label{fig:Gfit}
+\end{figure}
+
+\begin{table}[htbp]
+    \caption{$R^2$ of DoPIo line fits for Various Beam Sequences at 25 mm}
+    \centering
+    \begin{tabular}{lllrr}
+    $t_{\mathrm{int}}$ Transform & Push F/\# & tFc & Sep. Track & Simult. Track \\ \hline
+    \multirow{4}{*}{Inverse Sq.} & \multirow{2}{*}{1.5} & 1.5 v. 3.0 & 0.525 & 0.777 \\ \cline{3-5} 
+     &  & 1.5 v. 5.0 & 0.557  & 0.830 \\ \cline{2-5} 
+     & \multirow{2}{*}{3.0} & 1.5 v. 3.0 & 0.660 & 0.699 \\ \cline{3-5} 
+     &  & 1.5 v. 5.0 & 0.836 & 0.803 \\ \hline
+    \multirow{4}{*}{Logarithmic} & \multirow{2}{*}{1.5} & 1.5 v. 3.0 & 0.843 & 0.940 \\ \cline{3-5} 
+     &  & 1.5 v. 5.0 & 0.854 & 0.951 \\ \cline{2-5} 
+     & \multirow{2}{*}{3.0} & 1.5 v. 3.0 & 0.882 & 0.923 \\ \cline{3-5} 
+     &  & 1.5 v. 5.0 & 0.943 & 0.954 \\ \hline
+    \end{tabular}
+    \label{tbl:modelr2}
+\end{table}
+
+\begin{table}[htbp]
+    \caption{Median $G$ Errors for Various Beam Sequences at 25 mm Using Logarithmic Transform-Based Model}
+    \centering
+    \begin{tabular}{llcc}
+    Push F/\#            & tFc        & Sep. Track                                                                  & Simult. Track                                                               \\ \hline
+    \multirow{2}{*}{1.5} & 1.5 v. 3.0 & \begin{tabular}[c]{@{}l@{}}0.03 ± 3.63 kPa\\ 0.51 ± 24.19 \%\end{tabular}   & \begin{tabular}[c]{@{}l@{}}0.03 ± 2.39 kPa\\ 0.41 ± 16.51 \%\end{tabular}   \\ \cline{2-4} 
+                        & 1.5 v. 5.0 & \begin{tabular}[c]{@{}l@{}}-0.13 ± 3.31 kPa\\ -2.13 ± 20.12 \%\end{tabular} & \begin{tabular}[c]{@{}l@{}}-0.06 ± 2.11 kPa\\ -0.94 ± 13.74 \%\end{tabular} \\ \hline
+    \multirow{2}{*}{3.0} & 1.5 v. 3.0 & \begin{tabular}[c]{@{}l@{}}-0.13 ± 3.11 kPa\\ -2.01 ± 20.71 \%\end{tabular} & \begin{tabular}[c]{@{}l@{}}-0.05 ± 3.09 kPa\\ -1.27 ± 19.33 \%\end{tabular} \\ \cline{2-4} 
+                        & 1.5 v. 5.0 & \begin{tabular}[c]{@{}l@{}}-0.06 ± 2.53 kPa\\ -1.00 ± 17.03 \%\end{tabular} & \begin{tabular}[c]{@{}l@{}}-0.02 ± 1.98 kPa\\ -0.50 ± 13.02 \%\end{tabular} \\ \hline
+    \end{tabular}
+    \label{tbl:medianG}
+\end{table}
+
+\begin{figure}[htbp]
+    \includegraphics[width=\linewidth]{source/fig/modulus-focus.eps}
+    \caption{Distribution of estimated shear elastic moduli derived from empirically derived model based on times-intersect depicted in Fig.~\ref{fig:tintDistrib}. Measurements were taken at the focal depth, and colors indicate differences in the pushing and tracking beam configurations. Box plots depict the median, interquartile range, 95\% confidence interval, and outliers. Orange lines denote the true elasticity of each depicted material. Modulus estimates depicted in this figure are limited to those using the logarithmic transform-based model.}
+    \label{fig:Gdistrib}
+\end{figure}
+
+% OMITTED FROM SEPTEMBER 2025 DRAFT:
+%
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=\linewidth]{source/fig/depth.eps}
+%     \caption{Representative example of (a) time-intersect and (b) shear modulus estimate distributions over axial depth for simulated bulk materials of select shear elastic moduli. Lines denote median values while color ranges denote interquartile ranges; dotted lines in (b) denote the true shear elasticity defined in the FEM simulation. For both subfigures, brighter colors indicate parameters from stiffer simulated materials. Note that this figure only depicts axial distributions of DoPIo parameters for one beam sequence and model type; information about the distributions and their spatial patterns are aggregated across all test materials for each beam sequence and model type in Table~\ref{tbl:rmseDepth}.}
+%     \label{fig:depth}
+% \end{figure}
+%
+% \begin{table}[htbp]
+% \centering
+% \caption{Root-Mean-Square Error of DoPIo Shear Modulus Estimates using Various Beam Sequences at Various Depths}
+% \fontsize{6}{7.2}\selectfont
+% \begin{tabular}{llllccc}
+%  &  &  &  & \multicolumn{3}{l}{RMSE of Shear Elasticity} \\
+% $t_{\mathrm{int}}$ Transform & Push F/\# & tFc & Sequence & \multicolumn{1}{l}{Above} & \multicolumn{1}{l}{Focus} & \multicolumn{1}{l}{Below} \\ \hline
+%  &  &  & \cellcolor[HTML]{C2F1C8}Separate & \cellcolor[HTML]{C2F1C8}1.3 & \cellcolor[HTML]{C2F1C8}4.3 & \cellcolor[HTML]{C2F1C8}2.8 \\
+%  &  & \multirow{-2}{*}{1.5 v. 3.0} & \cellcolor[HTML]{84E291}Simult. & \cellcolor[HTML]{84E291}1.9 & \cellcolor[HTML]{84E291}2.9 & \cellcolor[HTML]{84E291}2.0 \\ \cline{3-7} 
+%  &  &  & \cellcolor[HTML]{C2F1C8}Separate & \cellcolor[HTML]{C2F1C8}0.7 & \cellcolor[HTML]{C2F1C8}2.9 & \cellcolor[HTML]{C2F1C8}3.7 \\
+%  & \multirow{-4}{*}{1.5} & \multirow{-2}{*}{1.5 v. 5.0} & \cellcolor[HTML]{84E291}Simult. & \cellcolor[HTML]{84E291}0.9 & \cellcolor[HTML]{84E291}2.2 & \cellcolor[HTML]{84E291}1.2 \\ \cline{2-7} 
+%  &  &  & \cellcolor[HTML]{C2F1C8}Separate & \cellcolor[HTML]{C2F1C8}1.8 & \cellcolor[HTML]{C2F1C8}2.9 & \cellcolor[HTML]{C2F1C8}3.2 \\
+%  &  & \multirow{-2}{*}{1.5 v. 3.0} & \cellcolor[HTML]{84E291}Simult. & \cellcolor[HTML]{84E291}2.0 & \cellcolor[HTML]{84E291}3.6 & \cellcolor[HTML]{84E291}3.8 \\ \cline{3-7} 
+%  &  &  & \cellcolor[HTML]{C2F1C8}Separate & \cellcolor[HTML]{C2F1C8}1.2 & \cellcolor[HTML]{C2F1C8}1.3 & \cellcolor[HTML]{C2F1C8}3.7 \\
+% \multirow{-8}{*}{Inv. Sq.} & \multirow{-4}{*}{3.0} & \multirow{-2}{*}{1.5 v. 5.0} & \cellcolor[HTML]{84E291}Simult. & \cellcolor[HTML]{84E291}1.1 & \cellcolor[HTML]{84E291}0.9 & \cellcolor[HTML]{84E291}1.9 \\ \hline
+%  &  &  & \cellcolor[HTML]{F2CFEE}Separate & \cellcolor[HTML]{F2CFEE}1.5 & \cellcolor[HTML]{F2CFEE}2.3 & \cellcolor[HTML]{F2CFEE}1.7 \\
+%  &  & \multirow{-2}{*}{1.5 v. 3.0} & \cellcolor[HTML]{E59EDD}Simult. & \cellcolor[HTML]{E59EDD}1.5 & \cellcolor[HTML]{E59EDD}2.3 & \cellcolor[HTML]{E59EDD}1.7 \\ \cline{3-7} 
+%  &  &  & \cellcolor[HTML]{F2CFEE}Separate & \cellcolor[HTML]{F2CFEE}1.0 & \cellcolor[HTML]{F2CFEE}2.3 & \cellcolor[HTML]{F2CFEE}3.8 \\
+%  & \multirow{-4}{*}{1.5} & \multirow{-2}{*}{1.5 v. 5.0} & \cellcolor[HTML]{E59EDD}Simult. & \cellcolor[HTML]{E59EDD}0.9 & \cellcolor[HTML]{E59EDD}1.7 & \cellcolor[HTML]{E59EDD}1.2 \\ \cline{2-7} 
+%  &  &  & \cellcolor[HTML]{F2CFEE}Separate & \cellcolor[HTML]{F2CFEE}1.3 & \cellcolor[HTML]{F2CFEE}2.4 & \cellcolor[HTML]{F2CFEE}2.5 \\
+%  &  & \multirow{-2}{*}{1.5 v. 3.0} & \cellcolor[HTML]{E59EDD}Simult. & \cellcolor[HTML]{E59EDD}1.8 & \cellcolor[HTML]{E59EDD}3.2 & \cellcolor[HTML]{E59EDD}3.3 \\ \cline{3-7} 
+%  &  &  & \cellcolor[HTML]{F2CFEE}Separate & \cellcolor[HTML]{F2CFEE}0.7 & \cellcolor[HTML]{F2CFEE}1.5 & \cellcolor[HTML]{F2CFEE}2.8 \\
+% \multirow{-8}{*}{Logarithmic} & \multirow{-4}{*}{3.0} & \multirow{-2}{*}{1.5 v. 5.0} & \cellcolor[HTML]{E59EDD}Simult. & \cellcolor[HTML]{E59EDD}1.1 & \cellcolor[HTML]{E59EDD}1.1 & \cellcolor[HTML]{E59EDD}2.3 \\ \hline
+% \end{tabular}
+% \label{tbl:rmseDepth}
+% \end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{source/fig/modulus-cirs-images.eps}
+    \caption{Representative images of DoPIo in a calibrated phantom. (a)-(c) show $t_{\textnormal{int}}$ for imaging planes with inclusions of varying elasticities and the same background; (d)-(f) show corresponding modulus estimates. (a) and (d) show a Type 1 inclusion (2.2 kPa versus 8.7 kPa background) while the remaining rows show the Type 2 (5.1 kPa) and 3 (16.3 kPa) inclusions. The Type 4 inclusion is omitted for brevity.}
+    \label{fig:cirsImage}
+\end{figure}
+
+\begin{figure*}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{source/fig/modulus-cirs-plot.eps}
+    \caption{(a)-(f): DoPIo elastic modulus estimates for the same phantom and imaging plane with varied ARF push amplitudes. (g): distributions of modulus estimates for various materials and push powers. (a)-(f) depict a Type 2 inclusion using push amplitudes of 35 V to 60 V in the same phantom as Fig.~\ref{fig:cirsImage} using the same color scale. (g) shows distributions of estimated stiffness from (a)-(f) plus all other available materials.  "Ground truth" indicates Young's modulus values reported by the manufacturer divided by three (i.e. shear elastic modulus assuming incompressibility and isotropy). Lines indicate distribution pairs where the Kruskal-Wallis test with Bonferroni post-hoc analysis rejected the null hypothesis for $p < 0.05$ (i.e. stiffness estimates that are significantly different for the same material but different push powers).}
+    \label{fig:cirsBoxplot}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{source/fig/modulus-liver.eps}
+    \caption{(a) B-mode, plus DoPIo (b) $t_{\textnormal{int}}$ and (c) shear modulus estimate images, of an \emph{ex vivo} porcine liver with a gelatin inclusion. The boundary of the inclusion was outlined using B-mode and is highlighted in white dotted lines. In subfigure (a), the region where where times-intersect and modulus estimate images are created is shown using the solid yellow box. Axis labels are spatial coordinates in millimeters. Note that the B-mode contained out-of-plane vasculature (marked with $\ast$). (d) Box plot of DoPIo shear elastic modulus estimations in a liver phantom with a stiffer gelatin inclusion. Note that the orange box is the shear elasticity estimate using a clinical scanner systen, and gray lines indicate significantly different pairs of boxes based on a Kruskal-Wallis test with Bonferroni post-hoc analyses with a $p < 0.05$ threshold.}
+    \label{fig:liver}
+\end{figure*}
+
+% OMITTED FROM SEPTEMBER 2025 DRAFT
+% \ begin{figure}[htbp]
+%    \includegraphics[width=\linewidth]{source/fig/20240904_R_0deg_45V_acq02_overlaid.eps}
+%    \caption{(a) B-mode and DoPIo (b) times-intersect and (c) shear modulus estimate images of the inferior pole of a porcine kidney, imaged \emph{in vivo}. The boundary of the renal cortex and renal medulla, the outer and inner functional structures, are labeled in (a) and also superimposed in (b) and (c). In subfigure (a), the region where where times-intersect and modulus estimate images are created is shown using the solid yellow box. Axis labels are spatial coordinates of the image in millimeters.}
+%    \label{fig:kidney}
+%\end{figure}
+
+Fig.~\ref{fig:tintDistrib} shows a distribution of times-intersect measured from different shear elastic moduli for an ARF excitation and tracking pulse focused at 25.00 mm. Fig.~\ref{fig:tintStat} shows the ability to distinguish between each distribution of times-intersect in Fig.~\ref{fig:tintDistrib} in terms of normalized differences between distributions (i.e. effect sizes) as well as the significance of those differences (i.e. hypothesis tests).
+
+Fig.~\ref{fig:Gfit} illustrates examples of times-intersect from \emph{in silico} phantoms of various elasticities plotted against the true stiffness of their source simulations, as well as the linear fit that resulted from a total least squares fit to the data. Representative examples are shown both for the inverse-square transformation described in Eq.~\ref{eq:modelinvsq} as well as the logarithmic transformation from Eq.~\ref{eq:modellog}. The goodness-of-fit coefficient ($R^2$) for the line fits in these figures, as well as for the other beam sequences in Table~\ref{tbl:fnum}, are listed in Table~\ref{tbl:modelr2}. Fig.~\ref{fig:Gdistrib} shows shear modulus estimates for homogeneous materials simulated \emph{in silico} with the times-intersect depicted in Fig.~\ref{fig:tintDistrib}. The median and median absolute deviation of shear modulus estimate errors, as well as percent median errors per Eq.~\ref{eq:error}, are shown in Table~\ref{tbl:medianG}. Note that the data displayed in Fig.~\ref{fig:Gdistrib} and Table~\ref{tbl:medianG} are limited to modulus estimates created using the logarithmic transform-based model for brevity. 
+
+% OMITTED FROM SEPTEMBER 2025 DRAFT - note the first sentence is appended to the end of the previous paragraph:
+%
+% Fig.~\ref{fig:Gdistrib} shows shear modulus estimates for homogeneous materials simulated \emph{in silico} with the times-intersect depicted in Fig.~\ref{fig:tintDistrib}. Note that the data displayed is limited to modulus estimates created using the logarithmic transform-based model for brevity. Using the same focal depths for ARF push and track transmit pulses, Fig.~\ref{fig:depth} depicts how times-intersect and shear modulus estimates are distributed over depths. Stratifying this range of depths into areas above the focus (15 mm to 21 mm), near the focus (22 mm to 28 mm), and below the focus (29 mm to 35 mm), Table~\ref{tbl:rmseDepth} denotes RMSE values for elasticity errors across depth for all beam sequence types and times-intersect transformation functions.
+
+Fig.~\ref{fig:cirsImage} depicts DoPIo images for times-intersect and estimated shear modulus in features of various stiffnesses within a commercially manufactured, calibrated elasticity phantom. Boxplots of modulus estimates, including variations thereof based on ARF excitation amplitudes, are shown in Fig.~\ref{fig:cirsBoxplot}. Fig.~\ref{fig:liver} compares DoPIo times-intersect and estimated shear moduli for a stiff, cylindrical gelatin-graphite mixture embedded within an \emph{ex vivo} block of porcine liver. The distribution of DoPIo-derived stiffness estimates, as well as comparison metrics from SWEI measurements using a clinical ultrasound scanner system, are also depicted. 
+
+% OMITTED FROM SEPTEMBER 2025 DRAFT - was in own paragraph with liver figure, separate from phantom results
+%
+% Finally, Fig.~\ref{fig:kidney} shows a feasibility demonstration of \emph{in vivo} DoPIo imaging, specifically in an exteriorized porcine kidney. The image shows the cortex and the medulla, the outer and inner layers of the functional portions of the anisotropic organ.

@@ -1,0 +1,114 @@
+% !TeX root = ../../main.tex
+
+\section{Future Directions}
+
+Future works that extend the findings of this dissertation may take several directions, many of which focus on the limitations outlined in Section~\ref{sec:limitations}. These directions fall in three categories: (1) technical optimization of VisR and DoPIo, (2) clinical validation to establish what they can and cannot answer, and (3) practical implementations to facilitate real-world translation.
+
+\subsection{Optimizing VisR and DoPIo}
+
+% Improve VisR robustness, identify more useful parameter
+%
+% - improve sensitivity to ARF distribution changes
+% - RE/RV parameterization, depth and omega compensation (see QVisR)
+% - QVisR, alternative focal configurations for VisR (e.g. multi-push,
+%   systematically evaluating relevance of duration between pushes),
+%   and how that may improve direct biomarker validation while
+%   making DoA/RR reliance optional
+%
+% - example achievements that address these limits:
+%   - robustness of VisR to ARF amplitude changes
+%   - robustness of VisR metrics to near-field aberrator presence
+
+First, future works may focus on optimizing the performance and robustness of VisR and DoPIo. For VisR, this may involve improving its sensitivity to changes in ARF distribution, as well as developing compensation methods for depth-dependent variations in ARF amplitude and frequency content. Alternative ARF focal configurations such as multi-push sequences, as well as alternative parameterizations of displacement profiles, may also be explored to enhance VisR's ability to directly estimate viscoelastic parameters while reducing reliance on displacement amplitude ratios~\cite{richardson_StateSpace_2023}. Recent developments in quantitative VisR (QVisR)~\cite{richardson_Quantitative_2024} may provide a promising avenue for achieving these goals, as it seeks to directly estimate elastic and viscous moduli from VisR displacement data using system identification techniques. This would weaken VisR's current dependence on RR and DoA for inter-patient and temporal comparisons, thereby facilitating clinical use. The achievements of these efforts may be assessed based on the robustness of VisR metrics to variations in ARF amplitude and the presence of near-field aberrators.
+
+% Enhance approaches to acquire and process data through DoPIo
+%
+% - assess how viscosity confounds and/or be co-predicted by DoPIo
+% - alternative ARF focal configurations for DoPIo (e.g. multi-push
+%   so that it can be done alongside VisR)
+%   - bring up attempt at Bessel beam DoPIo - will write manually
+% - alternative tracking schemes
+%   - higher temporal resolution tracking
+%   - plane wave (could combine with SWEI for multimodal imaging)
+% - reiterate on better empirical models (i.e. Sabiq's deep DoPIo)
+% - improved performance in anisotropic media (hint at GIAnI?)
+%
+% - example achievements that address these limits:
+%   - full characterization of viscosity effects on DoPIo
+%   - improved DoPIo performance in anisotropic media OR
+%     acquisition protocol that allows vector DoPIo
+%   - consistency of DoPIo using harmonic/coded tracking
+
+For DoPIo, future works may focus on enhancing data acquisition and processing methods. This includes assessing the influence of viscosity on DoPIo measurements and exploring alternative ARF focal configurations, such as multi-push sequences that could be integrated with VisR acquisitions. Additionally, alternative tracking schemes, such as higher temporal resolution tracking or plane wave imaging, may be investigated to improve DoPIo's performance and potentially enable multimodal imaging with shear wave elastography (SWEI). Further refinement of empirical models through deep learning-assisted techniques may also enhance DoPIo's accuracy and robustness or assist in generalizing the technique beyond the current empirical model-based approach that is not extensible beyond specific simulation conditions. DoPIo, or perhaps a DoPIo-inspired technique that takes advantage of coaxial PSF configurations, may also be extended to explicitly account for anisotropic tissue properties - whether it is through alternative stiffness-estimating models or through the exploitation of beam steering in a vector Doppler-like fashion~\cite{andrade_Simultaneous_2025}. The success of these efforts may be evaluated based on a comprehensive understanding of viscosity effects on DoPIo, improved performance in anisotropic media, and consistency of measurements using advanced tracking methods.
+
+% Address physics constraints and and failure modes shared by both modes
+%
+% - off-axis displacement contributions
+% - attenuation, acoustic heterogeneity?
+% - the other three ARF modes
+
+Finally, future works may also seek to address physics constraints and failure modes that are shared by both VisR and DoPIo. This includes investigating the contributions of off-axis displacements, as well as the effects of attenuation and acoustic heterogeneity on measurement accuracy. Additionally, the impact of ARF induced through modes other than energy conversion from elastic nonlinearities (i.e. what Sarvazyan \emph{et al.} denoted as the "B-ARF", "C-ARF", and "D-ARF" mechanisms in~\cite{sarvazyan_Acoustic_2021}) may also be explored to fully understand their influence on VisR and DoPIo measurements. Addressing these shared challenges will contribute to the overall robustness and reliability of both techniques in clinical applications.
+
+\subsection{Clinical Validation}
+
+Although VisR and DoPIo have demonstrated a degree of potential as noninvasive tools for assessing renal allograft health, their utility in a clinical environment must be established through clinical trials that are larger in scale than what was described in Chapter~\ref{chap:visr}. The questions that must be answered to establish their clinical utility may be categorized into two tiers based on their importance.
+
+% Answer the following questions:
+%
+% Tier 1: essential for claiming VisR/DoPIo's usefulness for graft surveillance
+%
+% - Can VisR/DoPIo truly be a longitudinal monitoring tool for renal allografts
+%   health, treatment responses etc.?
+%       => criteria: time-to-detection, effect sizes over time
+%   - MUST HAVE CONSISTENT IMAGING TIMEPOINTS WRT BIOPSIES, OUTCOMES!
+%
+% - Can VisR/DoPIo discriminate pathologies that actually matter?
+%       => criteria: AUC > 0.7 or significant -2LLR
+%   - rejection phenotypes (TCMR, AMR)
+%   - risk-altering findings (IFTA, MVI, TMA)
+%   - subclinical pathologies?
+%   - note that definitions change constantly; must stay up to date with
+%     Banff criteria (and pathologists' opinions thereof)
+%
+% - How do VisR vs DoPIo correlate to Banff scores (esp. severe lesions)?
+%       => criteria: regression models with significant coefficients
+
+The first tier establishes the essential questions that must be answered to claim VisR and DoPIo as useful tools for renal allograft surveillance. This includes determining whether they can serve as reliable longitudinal monitoring tools for renal allograft health and treatment responses, with consistent imaging timepoints relative to biopsies and clinical outcomes. Additionally, DoPIo and VisR's ability to noninvasively discriminate clinically relevant pathologies in humans \emph{in vivo} must be evaluated. These include \emph{de novo} AMR and TCMR, but also other risk-altering findings such as IFTA, microvascular injury (MVI)~\cite{bohmig_Microvascular_2025,callemeyn_Allorecognition_2022,sablik_Microvascular_2025}, thrombotic microangiopathy~\cite{arnold_Thrombotic_2017,afrouzian_Thrombotic_2023,genest_Renal_2023}, and recurring immunological events~\cite{helantera_Revisiting_2022,ho_Effectiveness_2022,kanbay_metaanalysis_2025}, and even earlier findings of "subclinical" or "suspicious" findings~\cite{loupy_Subclinical_2015,mehta_Longterm_2022}. The correlation of VisR and DoPIo measurements with Banff scores, particularly for severe lesions, must also be evaluated through regression models with significant coefficients where correlation coefficients are higher than the 0.7 average for the "best" models in Chapter~\ref{chap:visr}. Efforts to do this should be mindful of the evolving nature of Banff criteria's definition of lesion scores and diagnostic categories~\cite{callemeyn_Revisiting_2021} to ensure that the findings remain clinically relevant over time.
+
+% Tier 2: back up VisR/DoPIo's value competitiveness, as opposed to its
+% baseline clinical utility (which we should be able to take for granted)
+%
+% - Does VisR and DoPIo's distinction of outer/inner cortex/medulla actually
+%   improve clinical utility? or alternatively, does SWEI, SDUV etc.
+%   demonstrably lose clinical utility by averaging over these regions?
+%       => criteria: head-to-head AUC, -2LLR comparisons
+%
+% - What conditions are true confounding factors for VisR and DoPIo?
+%       => criteria: multivariate regression models with significant
+%          coefficients for covariates
+%   - blood pressure
+%   - perfusion status (Doppler ultrasound?)
+%   - hydration status
+%   - depth
+%   - reason for transplantation
+%
+% - Does direct interrogation of non-diffuse nature of pathologies
+%   aid in disease characterization?
+%   - criteria unclear; treat as a reach goal beyond above essentials
+%   - likely useful for standardizing measurements across patients,
+%     creating a more reproducible measurement protocol for
+%     all elastography techniques in renal allografts
+
+The second tier of questions serves to back up VisR and DoPIo's value beyond their innate utility by comparing their competitiveness to existing techniques. This includes evaluating whether VisR and DoPIo's inherent advantage in spatial resolution (and, thus, the practicality of consistently distinguishing the outer cortex, inner cortex, outer medulla, and inner medulla) actually translates to improved clinical utility compared to techniques and reporting techniques that average measurements over these regions (e.g. SWEI, SDUV). Head-to-head comparisons of AUC and likelihood ratios may be used to assess this. Additionally, potential confounding factors for VisR and DoPIo measurements must be identified through multivariate regression models with significant coefficients for covariates such as blood pressure, perfusion status (potentially assessed through Doppler ultrasound), hydration status, imaging depth, and reason for transplantation. Finally, the utility of directly interrogating the non-diffuse nature of renal allograft pathologies in disease characterization may also be explored as a reach goal beyond the essential questions outlined above. This may aid in standardizing measurements across patients and creating more reproducible measurement protocols for all elastography techniques in renal allografts.
+
+\subsection{Practical Implementations}
+
+As the utility of VisR and DoPIo becomes better established through clinical validation studies, future work must also focus on establishing their clinical and market feasibilities. Specifically, the hardware and software requirements that would define a minimum viable implementation of DoPIo, as well as the identification of regulatory pathways and clinically relevant workflows for their adoption, are critical considerations for real-world translation.
+
+A larger-scale implementation of VisR and DoPIo must consider the feasibility of implementing the techniques in clinical ultrasound systems. Both techniques currently rely on the ability to emit multiple ARF excitations in short succession and to tightly control beamforming parameters for push, track transmit, and track receive beams. While the barrier for applying this level of control has been significantly lowered by the advent of programmable ultrasound research platforms, many clinical ultrasound systems still do not provide this level of programmability - especially if investigators are not a part of a select few research groups with collaboration agreements with ultrasound manufacturers such that custom sequences and data postprocessing pipelines may be implemented. Of course, the system must be capable of emitting ARF pushes and tracking displacements at high temporal resolutions in the first place. This is a nontrivial requirement; this disqualifies many point-of-care ultrasound systems that are becoming increasingly popular in clinical settings (e.g. Butterfly iQ, EchoNous Cosmos) as well as many systems that do not contain ARFI-capable power sources. Even for systems that do have ARFI capabilities, transducer limitations (e.g. those with fixed beamforming parameters, limited channel counts, or multiplexed transmit/receive architectures) may preclude the ability to implement VisR and DoPIo sequences as described in this dissertation. 
+
+It is critical to consider the means to which VisR and DoPIo, as ARF-based techniques, could be seen as relatively low-risk from a safety perspective. In the United States, where the Food and Drug Administration (FDA)'s Center for Devices and Radiological Health (CDRH) regulates diagnostic ultrasound devices~\cite{wreh_Premarket_2023}, the safety of ultrasound systems are governed based on the thermal index (TI) and mechanical index (MI)~\cite{fda_Marketing_2019}. Based on previous hydrophone measurements and IRB submissions, both VisR and DoPIo sequences can be designed to operate well within FDA regulatory limits for TI and MI. Considering that several commercial ultrasound systems (e.g. Siemens Acuson S3000, Canon Aplio i-series, Supersonic Imagine Aixplorer) already implement ARFI-based elastography techniques such as point shear wave elastography (pSWE) and aARFI imaging, it is conceivable that VisR and DoPIo could be implemented on these systems with minimal modifications to existing beam sequences such that they may be cleared by the FDA for clinical use through the 510(k) premarket notification process~\cite{wreh_Premarket_2023}. Recent regulatory developments surrounding AI/ML-based software as a medical device (SaMD)~\cite{fda_Software_2017,fda_Artificial_2025} may also provide an alternative pathway for clinical translation, especially since one may envision DoPIo's empirical models to be an AI/ML-based algorithm that applies novel postprocessing to ultrasonic data acquired using an already-cleared technique (i.e. ARFI). Given this, pursuing FDA clearance for VisR and DoPIo in the near future appears to be a realistic goal, practical challenges surrounding implementation and regulatory affairs notwithstanding.
+
+It should be noted, however, that regulatory approval does not guarantee clincal adoption. The Current Procedural Terminology (CPT) code, the ontology developed by the American Medical Association for use by the United States' Center for Medicare and Medicaid Services (CMS) as a standard definition of medical procedures and services, already includes "elastography of the parenchyma of solid organs" (CPT code 76942) as a billable service~\cite{ama_Current_2024,volpert_Nurses_2022}. Theoretically, this sets a baseline expectation for a sonographer or radiologist to bill a hypothetical VisR or DoPIo imaging study to a payor (i.e. medical insurance)~\cite{ali_Clinical_2025}. However, the existence of this CPT code does not guarantee that a payor would actually approve such a reimbursement claim. Since coverage determinations are determined on a per-payor basis based on what is made available to patients by healthcare providers~\cite{roginiel_Evidence_2018}, the ability to have clinical VisR and DoPIo imaging studies paid for will depend on their clinical utility as perceived by payors and providers (and distinctly, not the patient).
+
+In short, the current viability of VisR and DoPIo as clinically adopted techniques for renal allograft assessment will ultimately depend on the strength of evidence supporting their clinical utility, which future works must seek to establish.

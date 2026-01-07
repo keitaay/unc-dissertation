@@ -1,0 +1,42 @@
+% !TeX root = ../main.tex
+\section{Double-Profile Intersection Elastography}
+\label{sec:theory}
+
+To understand DoPIo imaging, it is critical to appreciate two seemingly-separate concepts: the ideas that (1) the motion of subresolution scatterers due to an ARF excitation are spatially averaged across motion-tracking pulses, and that (2) scatterers' displacement responses relate to the shear elastic modulus of underlying media. The combination of these aspects of elastography, illustrated in Figure~\ref{fig:mechanism}, informs the DoPIo technique. 
+
+\subsection{Displacement Estimates are Averaged Across PSFs}
+
+When an ARF push is emitted in acoustically attenuating and linearly elastic tissue, tissue undergoes shearing motion that propagates up to several millimeters away from the region of excitation (RoE). These displacements can be detected by periodically transmitting short ultrasonic pulses and measuring phase changes in scattered acoustic signals. However, ARF excitations are not perfectly focused point loads; they are volumetric force distributions created through an aperture of finite size~\cite{walker_fundamental_1995,mcaleavey_Estimates_2003}. Thus, even if a focused ARF push excites a volume of mechanically homogeneous tissue, every scatterer within that volume will shear at different times and positions.
+
+This shearing phenomenon is also relevant in understanding how ARF-induced displacements are tracked. Since track beams also use apertures with finite dimensions, estimates of induced displacements can be interpreted as a weighted average of scatterer displacements within the point spread function (PSF) of the tracking beam. Experimentally demonstrated by Czernuszewicz \emph{et al.}~\cite{czernuszewicz_Experimental_2013}, this phenomenon manifests itself most simply as an underestimation of the peak displacement of scatterers within a track beam PSF. However, this effect is present across all timepoints; for any point in time, two different track beam PSFs give two different spatially averaged estimates of displacement for the same underlying displacement response. For example, when a focused acoustic beam is emitted from a linear transducer array, the lateral resolution cell size $x_{\textnormal{res}}$ is approximately:
+
+\begin{equation}
+x_{\textnormal{res}} \approx \frac{\lambda z}{D} = \lambda F_{\textnormal{lat}}
+\label{eq:rescell}
+\end{equation}
+
+\noindent{}where $\lambda$ is the wavelength of acoustic signals transmitted from an aperture of width $D$ to some focal distance $z$. The ratio of $z$ over $D$ can be combined into the lateral F-number of the active aperture $F_{\textnormal{lat}}$. If the same scatterer motion is tracked using two tracking beams that have the same $\lambda$ and $z$ but different $D$ (and, thus, different $F_{\textnormal{lat}}$), then $x_{\textnormal{res}}$ would be different for the two beams - and, thus, the same spatial distribution of scatterers would lead to different displacement estimates.
+
+\subsection{Shear Elasticity Defines Scatterers' Shearing Rates}
+
+The motion of scatterers displaced by an ARF excitation, presumed to undergo purely elastic recovery in media where density is relatively constant, is governed by the shear modulus of the underlying medium. This relationship is most commonly exploited in shear wave-based techniques, where an ARF induces shearing motion that propagates away from the RoE at material-dependent speeds~
+\cite{sarvazyan_Shear_1998, ostrovsky_NonDissipative_2006,sarvazyan_Acoustic_2021}. The speed of this wave, which travels orthogonally to that of the ARF-inducing compressive wave, is measured by timing how long a shear wave takes to propagate across a given distance.
+
+However, scatterer shearing is not exclusive to positions far away from the RoE. Even within the RoE, where shear waves are not fully formed, scatterers still shear; scatterers displace in an ARF-inducing pulse's direction of propagation, and that axial shearing motion propagates orthogonally to the push beam. Although this propagation of scatterer shearing near the RoE does not strictly involve shear waves, scatterers still move in a materially dependent manner. For example, in softer materials, scatterer shearing propagates more slowly than in stiffer materials, as governed by the shear elastic modulus of the medium. 
+
+\subsection{DoPIo Connects Elasticity-Dependent Scatterer Shear Rates and PSF-Based Spatial Averaging}
+
+Putting together the phenomena described in the previous subsections, two observations arise that are key to understanding DoPIo. First, when ARF-induced displacements are tracked ultrasonically, the detected estimates of displacement are spatially weighted averages of a volumetric field of displaced scatterers across a region dictated by a tracking beam's PSF. Second, the magnitude and temporal changes in these displacement estimates are governed by the elasticity of the underlying material.
+
+In DoPIo, two track beams with the same orientation and focal depth but different F-numbers are used to observe the same scatterer shearing motion of ARF-displaced scatterers. Since the displacement estimates from both beams encode the same underlying tissue motion, we can suppose that information about the rate of propagation of shearing motion (and, therefore, information about the shear elastic modulus of displaced tissue) is encoded across displacement profiles made using the two different apertures. The time-intersect is a particularly interesting case: both track beams have the same average estimated displacement at that moment after the ARF excitation. The time duration between the end of the ARF push and $t_{\textnormal{int}}$ depends on the rate at which the average scatterer undergoes displacement recovery as well as the time taken for scatterer shearing motion to propagate across a tracking beam's PSF. Using an empirically derived relationship, DoPIo $t_{\textnormal{int}}$ can be related to shear elastic modulus.
+
+The transition from ARF-induced initial displacements into propagating shear displacement fields is generally difficult to express analytically. Therefore, we propose Equation~\ref{eq:modelgeneric} as an empirically derived model to relate a measured $t_{\textnormal{int}}$ to shear elastic modulus estimate $G$:
+
+\begin{equation}
+G(t_{\textnormal{int}}, z) = A(z) f(t_{\textnormal{int}}) + B(z)
+\label{eq:modelgeneric}
+\end{equation}
+
+\noindent{}Here, $z$ is the depth where displacements are tracked, and $f(t_{\textnormal{int}})$ is some function that governs how times-intersect is nonlinearly transformed. Using in silico-simulated examples of materials with known elasticities, times-intersect and shear modulus can be related using a linear fit parameterized by coefficients $A$ and $B$. Therefore, the relationship between $t_{\textnormal{int}}$ and $G$ is complicated as the propagation of scatterer shearing is coupled with the initial displacement response of tissue to an ARF excitation.
+
+The DoPIo approach of correlating shear elastic modulus to times-intersect has been implemented for displacements tracked away from the RoE~\cite{yokoyama_Doubleprofile_2019} as well as those measured on-axis to it~\cite{yokoyama_Blind_2020,yokoyama_Assessing_2021}. This work introduces more detailed insights for developing the empirical model, identifies optimal push and track beam configurations, and assesses performance \emph{in silico}, \emph{in vitro}, and \emph{ex vivo}.

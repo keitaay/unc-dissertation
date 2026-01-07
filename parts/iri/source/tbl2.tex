@@ -1,0 +1,181 @@
+% !TeX root = ../../../main.tex
+
+\begin{landscape}
+    \singlespacing
+    \centering
+    \fontsize{8.5}{10}\selectfont
+    \begin{longtable}{
+        p{0.50in} 
+        p{0.80in} | 
+        p{0.70in} p{0.75in} | 
+        p{0.70in} p{0.75in} | 
+        p{0.70in} p{0.75in} | 
+        p{0.70in} p{0.75in}}
+        \caption{Performance of binary classification of renal IRI types using VisR versus DoPIo-derived metrics}\\
+        \label{tbl:auc}\\
+        \toprule
+        \textbf{} &
+        \textbf{} &
+        \multicolumn{2}{c|}{\textbf{Any Injuries}} &
+        \multicolumn{2}{c|}{\textbf{Acute Injuries}} &
+        \multicolumn{2}{c|}{\textbf{Chronic Injuries}} &
+        \multicolumn{2}{c}{\textbf{Combined Injuries}} \\
+        \textbf{Modality} &
+        \textbf{Analysis} &
+        \textbf{AUC} &
+        \textbf{ROIs Used} &
+        \textbf{AUC} &
+        \textbf{ROIs Used} &
+        \textbf{AUC} &
+        \textbf{ROIs Used} &
+        \textbf{AUC} &
+        \textbf{ROIs Used} \\ 
+        \midrule
+        \endfirsthead
+        \endhead
+        \endlastfoot
+        VisR &
+        RE only &
+        0.62 ± 0.10 &
+        oC &
+        0.69 ± 0.14 &
+        oM &
+        \textbf{*0.69 ± 0.13} &
+        \textbf{oC} &
+        0.54 ± 0.17 &
+        oM \\
+        DoPIo &
+        Modulus (G) only &
+        \textbf{*0.83 ± 0.05} &
+        \textbf{iM} &
+        0.68 ± 0.04 &
+        iM &
+        0.56 ± 0.06 &
+        oM &
+        \textbf{*0.85 ± 0.03} &
+        \textbf{oM} \\ \hline
+        VisR &
+        RR only &
+        0.61 ± 0.09 &
+        oC iC oM iM &
+        0.71 ± 0.06 &
+        oC iC iM &
+        0.65 ± 0.11 &
+        iC oM &
+        0.67 ± 0.16 &
+        iC oM \\
+        DoPIo &
+        RR only &
+        \textbf{*0.66 ± 0.05} &
+        \textbf{oC oM} &
+        0.70 ± 0.07 &
+        iC iM &
+        0.57 ± 0.07 &
+        oM iM &
+        0.65 ± 0.08 &
+        oM iM \\ \hline
+        VisR &
+        DoA only &
+        0.64 ± 0.07 &
+        iM &
+        0.46 ± 0.10 &
+        oC oM &
+        0.56 ± 0.14 &
+        iM &
+        0.52 ± 0.16 &
+        iM \\
+        DoPIo &
+        DoA only &
+        0.67 ± 0.06 &
+        oM &
+        \textbf{*0.59 ± 0.09} &
+        \textbf{oM} &
+        0.60 ± 0.08 &
+        oM &
+        0.65 ± 0.06 &
+        iC \\ \hline
+        VisR &
+        RE + RR &
+        0.58 ± 0.12 &
+        oC iC oM iM &
+        0.73 ± 0.13 &
+        iC oM iM &
+        \textbf{*0.69 ± 0.13} &
+        \textbf{oC iC iM} &
+        0.59 ± 0.22 &
+        iC oM iM \\
+        DoPIo &
+        G + RR &
+        \textbf{*0.80 ± 0.08} &
+        \textbf{oC iC iM} &
+        0.55 ± 0.11 &
+        iC oM iM &
+        0.59 ± 0.08 &
+        oC iC oM &
+        \textbf{*0.83 ± 0.03} &
+        \textbf{oC iC oM} \\ \hline
+        VisR &
+        RE + DoA &
+        0.63 ± 0.13 &
+        oC iC iM &
+        0.73 ± 0.13 &
+        iC oM &
+        \textbf{*0.69 ± 0.13} &
+        \textbf{oC iC} &
+        0.59 ± 0.22 &
+        oM iM \\
+        DoPIo &
+        G + DoA &
+        \textbf{*0.80 ± 0.08} &
+        \textbf{oC iC iM} &
+        0.55 ± 0.11 &
+        iC oM iM &
+        0.59 ± 0.08 &
+        oC oM &
+        0.76 ± 0.05 &
+        oC oM iM \\ \hline
+        VisR &
+        RR + DoA &
+        0.51 ± 0.13 &
+        iC oM iM &
+        0.69 ± 0.17 &
+        oC iC oM iM &
+        0.59 ± 0.12 &
+        oC oM iM &
+        0.55 ± 0.23 &
+        oC iC oM iM \\
+        DoPIo &
+        RR + DoA &
+        0.61 ± 0.07 &
+        oC iC oM iM &
+        0.66 ± 0.07 &
+        oC iC oM iM &
+        0.58 ± 0.08 &
+        oC iC oM iM &
+        0.63 ± 0.09 &
+        oC iC oM iM \\ \hline
+        VisR &
+        RE + RR + DoA &
+        0.62 ± 0.14 &
+        oC iC iM &
+        0.70 ± 0.13 &
+        oC iC oM iM &
+        0.69 ± 0.13 &
+        oC iC iM &
+        0.57 ± 0.22 &
+        iC oM iM \\
+        DoPIo &
+        G + RR + DoA &
+        \textbf{*0.82 ± 0.05} &
+        \textbf{iC oM iM} &
+        0.64 ± 0.06 &
+        iC oM iM &
+        0.56 ± 0.08 &
+        oC iC oM iM &
+        \textbf{*0.80 ± 0.08} &
+        \textbf{oC iC oM iM} \\ 
+        \bottomrule
+    \end{longtable}
+    \par\vspace{0.5em}
+    \noindent{}AUC is reported as median ± median absolute deviation (MAD); asterisks denote the higher median where AUC distributions were significantly different between the best VisR- versus DoPIo-based classifiers. Inputs that gave the best performance for each injury type and input type are indicated below the performance metrics, with "i" indicating an "inner" part of a renal structure, "o" for outer, "C" for cortex, and "M" for medulla.
+\end{landscape}

@@ -1,0 +1,875 @@
+% !TeX root = ../../../main.tex
+
+\begin{landscape}
+    \singlespacing
+    \centering
+    \fontsize{7.75}{7.75}\selectfont
+    \begin{longtable}{
+        p{0.9in} 
+        ll w{r}{0.8in} w{r}{0.8in} w{r}{0.8in}
+        ll w{r}{0.8in} w{r}{0.8in} w{r}{0.8in}
+    }
+        \caption{ROC Metrics for Classification Models Predicting Clinical Variables from VisR-Derived Metrics}\\
+        \label{tbl:clinicalClassifier}\\
+        \toprule
+        \multirow{2}{=}{Response Variable} & 
+        \multicolumn{5}{c}{DoA} & 
+        \multicolumn{5}{c}{RR} \\
+        \cmidrule(r){2-6}\cmidrule(r){7-11}
+         & Input & Metric & PD & RE & RV &  % secondary heading for DoA
+        Input & Metric & PD & RE & RV \\ % secondary heading for RR
+        \midrule
+        \endfirsthead
+        \endhead
+        \endlastfoot
+        %
+        % Serum Creatinine vs VisR metrics
+        %
+        \multirow{12}{=}{Serum Creatinine} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.46 $\pm$ 0.05 & 0.48 $\pm$ 0.04 & 0.48 $\pm$ 0.03& 
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.51 $\pm$ 0.07 & 0.48 $\pm$ 0.08 & 0.52 $\pm$ 0.08 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.62 $\pm$ 0.36 & 0.56 $\pm$ 0.31 & 0.56 $\pm$ 0.32 & 
+         & Spec. & 
+        % Specificity for RR
+        0.51 $\pm$ 0.28 & 0.53 $\pm$ 0.36 & 0.54 $\pm$ 0.33 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.46 $\pm$ 0.36 & 0.56 $\pm$ 0.31 & 0.56 $\pm$ 0.31 & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.62 $\pm$ 0.29 & 0.60 $\pm$ 0.35 & 0.62 $\pm$ 0.29 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.48 $\pm$ 0.05 & 0.50 $\pm$ 0.06 & 0.50 $\pm$ 0.06 &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.48 $\pm$ 0.11 & 0.47 $\pm$ 0.08 & 0.47 $\pm$ 0.07 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.70 $\pm$ 0.35 & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.26 & 0.68 $\pm$ 0.27 & 
+         & Spec. & 
+        % Specificity for RR
+        0.73 $\pm$ 0.29 & 0.54 $\pm$ 0.35 & 0.57 $\pm$ 0.34 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.40 $\pm$ 0.34 & 0.43 $\pm$ 0.27 & 0.44 $\pm$ 0.27 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.41 $\pm$ 0.33 & 0.56 $\pm$ 0.36 & 0.52 $\pm$ 0.36 \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.49 $\pm$ 0.07 & 0.47 $\pm$ 0.07 & 0.49 $\pm$ 0.07 &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.51 $\pm$ 0.08 & 0.52 $\pm$ 0.07 & 0.52 $\pm$ 0.06 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.61 $\pm$ 0.33 & 0.50 $\pm$ 0.37 & 0.46 $\pm$ 0.31 & 
+         & Spec. & 
+        % Specificity for RR
+        0.45 $\pm$ 0.31 & 0.53 $\pm$ 0.30 & 0.56 $\pm$ 0.30 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.55 $\pm$ 0.33 & 0.61 $\pm$ 0.35 & 0.67 $\pm$ 0.33 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.69 $\pm$ 0.26 & 0.61 $\pm$ 0.27 & 0.58 $\pm$ 0.26 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.51 $\pm$ 0.04 & 0.51 $\pm$ 0.09 & 0.52 $\pm$ 0.09 &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        \textsuperscript{\textdagger{}}0.55 $\pm$ 0.05 & 0.51 $\pm$ 0.08 & 0.51 $\pm$ 0.08 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.61 $\pm$ 0.28 & 0.69 $\pm$ 0.22 & 0.63 $\pm$ 0.30 & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.64 $\pm$ 0.17 & 0.55 $\pm$ 0.26 & 0.53 $\pm$ 0.24 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.57 $\pm$ 0.26 & 0.47 $\pm$ 0.26 & 0.54 $\pm$ 0.29 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.52 $\pm$ 0.16 & 0.59 $\pm$ 0.28 & \textsuperscript{\textdagger{}}0.61 $\pm$ 0.26 \\
+        \midrule
+        %
+        % UPCR vs VisR metrics
+        %
+        \multirow{12}{=}{UPCR} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.47 $\pm$ 0.07 & 0.48 $\pm$ 0.08 & 0.48 $\pm$ 0.08 &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.50 $\pm$ 0.05 & 0.48 $\pm$ 0.04 & 0.48 $\pm$ 0.04 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.61 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.64 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.65 $\pm$ 0.32 & 
+         & Spec. & 
+        % Specificity for RR
+        0.53 $\pm$ 0.30 & 0.62 $\pm$ 0.32 & 0.60 $\pm$ 0.31 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.49 $\pm$ 0.32 & 0.47 $\pm$ 0.35 & 0.47 $\pm$ 0.34 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.58 $\pm$ 0.29 & 0.48 $\pm$ 0.32 & 0.50 $\pm$ 0.32 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        \textsuperscript{\textdagger{}}0.54 $\pm$ 0.07 & \textsuperscript{\textdagger{}}0.55 $\pm$ 0.07 & \textsuperscript{\textdagger{}}0.55 $\pm$ 0.07 &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.52 $\pm$ 0.07 & 0.50 $\pm$ 0.07 & 0.50 $\pm$ 0.07 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.60 $\pm$ 0.23 & 0.53 $\pm$ 0.25 & 0.49 $\pm$ 0.25 & 
+         & Spec. & 
+        % Specificity for RR
+        0.61 $\pm$ 0.29 & 0.52 $\pm$ 0.31 & 0.49 $\pm$ 0.31 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.58 $\pm$ 0.25 & 0.65 $\pm$ 0.25 & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.23 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.56 $\pm$ 0.28 & \textsuperscript{\textdagger{}}0.61 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.63 $\pm$ 0.33 \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.52 $\pm$ 0.06 & 0.54 $\pm$ 0.09 & 0.53 $\pm$ 0.10 &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.54 $\pm$ 0.08 & 0.51 $\pm$ 0.07 & 0.51 $\pm$ 0.07 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.73 $\pm$ 0.21 & 0.72 $\pm$ 0.22 & \textsuperscript{\textdagger{}}0.64 $\pm$ 0.25 & 
+         & Spec. & 
+        % Specificity for RR
+        0.56 $\pm$ 0.25 & 0.71 $\pm$ 0.23 & 0.70 $\pm$ 0.22 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.42 $\pm$ 0.24 & 0.45 $\pm$ 0.28 & 0.53 $\pm$ 0.27 & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.62 $\pm$ 0.21 & 0.43 $\pm$ 0.28 & 0.45 $\pm$ 0.28 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.49 $\pm$ 0.05 & 0.52 $\pm$ 0.06 & \textsuperscript{\textdagger{}}0.53 $\pm$ 0.05 &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.52 $\pm$ 0.05 & 0.50 $\pm$ 0.05 & 0.49 $\pm$ 0.05 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.64 $\pm$ 0.25 & 0.56 $\pm$ 0.26 & 0.46 $\pm$ 0.26 & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.60 $\pm$ 0.23 & 0.57 $\pm$ 0.30 & 0.55 $\pm$ 0.31 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.50 $\pm$ 0.23 & 0.62 $\pm$ 0.28 & 0.75 $\pm$ 0.25 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.54 $\pm$ 0.24 & 0.53 $\pm$ 0.30 & 0.56 $\pm$ 0.30 \\
+        \midrule
+        %
+        % DSA presence vs VisR metrics
+        %
+        \multirow{12}{=}{DSA Presence} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.48 $\pm$ 0.13 & 0.51 $\pm$ 0.11 & 0.50 $\pm$ 0.11 &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.47 $\pm$ 0.07 & 0.49 $\pm$ 0.07 & 0.49 $\pm$ 0.07 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.63 $\pm$ 0.34 & 0.57 $\pm$ 0.27 & \textsuperscript{\textdagger{}}0.65 $\pm$ 0.27 & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.69 $\pm$ 0.33 & 0.48 $\pm$ 0.23 & 0.54 $\pm$ 0.26 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.52 $\pm$ 0.37 & \textsuperscript{\textdagger{}}0.62 $\pm$ 0.29 & 0.53 $\pm$ 0.33 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.44 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.66 $\pm$ 0.21 & 0.60 $\pm$ 0.26 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.51 $\pm$ 0.09 & 0.45 $\pm$ 0.09 & 0.45 $\pm$ 0.09 &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.51 $\pm$ 0.11 & 0.49 $\pm$ 0.08 & 0.49 $\pm$ 0.08 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.61 $\pm$ 0.24 & 0.63 $\pm$ 0.37 & 0.62 $\pm$ 0.37 & 
+         & Spec. & 
+        % Specificity for RR
+        0.83 $\pm$ 0.15 & 0.59 $\pm$ 0.36 & 0.62 $\pm$ 0.34 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.56 $\pm$ 0.31 & 0.49 $\pm$ 0.39 & 0.51 $\pm$ 0.40 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.37 $\pm$ 0.23 & 0.59 $\pm$ 0.31 & 0.57 $\pm$ 0.31 \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.44 $\pm$ 0.09 & 0.45 $\pm$ 0.12 & 0.44 $\pm$ 0.12 &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.51 $\pm$ 0.06 & 0.54 $\pm$ 0.12 & 0.55 $\pm$ 0.11 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.73 $\pm$ 0.27 & 0.48 $\pm$ 0.34 & 0.46 $\pm$ 0.34 & 
+         & Spec. & 
+        % Specificity for RR
+        0.61 $\pm$ 0.21 & 0.49 $\pm$ 0.32 & 0.52 $\pm$ 0.29 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.39 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.67 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.34 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.60 $\pm$ 0.24 & \textsuperscript{\textdagger{}}0.73 $\pm$ 0.27 & \textsuperscript{\textdagger{}}0.69 $\pm$ 0.25 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.57 $\pm$ 0.12 ($k$ = 8) & 0.48 $\pm$ 0.17 ($k$ = 8) & 0.48 $\pm$ 0.16 ($k$ = 8) &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.54 $\pm$ 0.13 & 0.49 $\pm$ 0.05 & 0.49 $\pm$ 0.05 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.73 $\pm$ 0.18 ($k$ = 8) & 0.68 $\pm$ 0.32 ($k$ = 8) & 0.66 $\pm$ 0.30 ($k$ = 8) & 
+         & Spec. & 
+        % Specificity for RR
+        0.74 $\pm$ 0.24 & 0.49 $\pm$ 0.27 & 0.47 $\pm$ 0.25 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.54 $\pm$ 0.23 ($k$ = 8) & 0.53 $\pm$ 0.39 ($k$ = 8) & 0.55 $\pm$ 0.38 ($k$ = 8) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.47 $\pm$ 0.25 & 0.65 $\pm$ 0.26 & 0.66 $\pm$ 0.24 \\
+        \midrule
+        %
+        % Indication biopsy vs VisR metrics
+        %
+        \multirow{12}{=}{Performing Indication Biopsy} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        \textsuperscript{\textdagger{}}0.54 $\pm$ 0.04 & 0.53 $\pm$ 0.10 & 0.53 $\pm$ 0.10 &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.51 $\pm$ 0.07 & 0.51 $\pm$ 0.05 & 0.50 $\pm$ 0.05 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.57 $\pm$ 0.27 & 0.81 $\pm$ 0.20 & 0.78 $\pm$ 0.18 & 
+         & Spec. & 
+        % Specificity for RR
+        0.53 $\pm$ 0.29 & \textsuperscript{\textdagger{}}0.66 $\pm$ 0.26 & 0.61 $\pm$ 0.32 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.60 $\pm$ 0.27 & 0.35 $\pm$ 0.26 & 0.39 $\pm$ 0.23 & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.61 $\pm$ 0.32 & 0.46 $\pm$ 0.26 & 0.50 $\pm$ 0.31 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.51 $\pm$ 0.09 & 0.49 $\pm$ 0.10 & 0.50 $\pm$ 0.10 &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.52 $\pm$ 0.06 & 0.52 $\pm$ 0.05 & 0.52 $\pm$ 0.05 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.69 $\pm$ 0.25 & 0.60 $\pm$ 0.32 & 0.52 $\pm$ 0.30 & 
+         & Spec. & 
+        % Specificity for RR
+        0.61 $\pm$ 0.27 & 0.51 $\pm$ 0.27 & 0.42 $\pm$ 0.26 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.43 $\pm$ 0.27 & 0.51 $\pm$ 0.33 & 0.59 $\pm$ 0.31 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.56 $\pm$ 0.29 & \textsuperscript{\textdagger{}}0.64 $\pm$ 0.25 & \textsuperscript{\textdagger{}}0.73 $\pm$ 0.24 \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.47 $\pm$ 0.09 & 0.53 $\pm$ 0.08 & 0.53 $\pm$ 0.08 &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.51 $\pm$ 0.05 & 0.49 $\pm$ 0.06 & 0.49 $\pm$ 0.06 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.51 $\pm$ 0.35 & 0.65 $\pm$ 0.27 & 0.53 $\pm$ 0.31 & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.66 $\pm$ 0.27 & \textsuperscript{\textdagger{}}0.71 $\pm$ 0.28 & 0.73 $\pm$ 0.32 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.59 $\pm$ 0.36 & 0.50 $\pm$ 0.30 & \textsuperscript{\textdagger{}}0.64 $\pm$ 0.29 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.47 $\pm$ 0.26 & 0.40 $\pm$ 0.31 & 0.37 $\pm$ 0.35 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.53 $\pm$ 0.06 & 0.50 $\pm$ 0.04 & 0.50 $\pm$ 0.04 &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.49 $\pm$ 0.07 & 0.51 $\pm$ 0.06 & 0.51 $\pm$ 0.06 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.56 $\pm$ 0.23 & 0.71 $\pm$ 0.18 & 0.62 $\pm$ 0.26 & 
+         & Spec. & 
+        % Specificity for RR
+        0.64 $\pm$ 0.27 & 0.59 $\pm$ 0.29 & 0.59 $\pm$ 0.25 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.62 $\pm$ 0.24 & 0.43 $\pm$ 0.21 & 0.52 $\pm$ 0.26 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.47 $\pm$ 0.31 & 0.55 $\pm$ 0.32 & 0.56 $\pm$ 0.26 \\
+        \midrule
+        %
+        % Banff i score vs VisR metrics
+        %
+        \multirow{12}{=}{\textit{i} Score} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.60 $\pm$ 0.20 ($k$ = 9) & 0.57 $\pm$ 0.25 ($k$ = 9) & 0.57 $\pm$ 0.25 ($k$ = 9) &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.45 $\pm$ 0.13 & 0.52 $\pm$ 0.13 & 0.52 $\pm$ 0.13 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.73 $\pm$ 0.18 ($k$ = 9) & \textsuperscript{\textdagger{}}0.82 $\pm$ 0.18 ($k$ = 9) & \textsuperscript{\textdagger{}}0.82 $\pm$ 0.18 ($k$ = 9) & 
+         & Spec. & 
+        % Specificity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.74 $\pm$ 0.36} & 0.67 $\pm$ 0.30 & \textsuperscript{\textdagger{}}0.71 $\pm$ 0.31 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textsuperscript{\textdagger{}}0.65 $\pm$ 0.40 ($k$ = 9) & \textsuperscript{\textdagger{}}0.53 $\pm$ 0.44 ($k$ = 9) & \textsuperscript{\textdagger{}}0.51 $\pm$ 0.46 ($k$ = 9) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.47 $\pm$ 0.32 & 0.59 $\pm$ 0.27 & 0.55 $\pm$ 0.25 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.51 $\pm$ 0.11 ($k$ = 9) & 0.42 $\pm$ 0.16 ($k$ = 9) & 0.42 $\pm$ 0.16 ($k$ = 9) &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        \textsuperscript{\textdagger{}}0.61 $\pm$ 0.18 & 0.49 $\pm$ 0.14 & 0.45 $\pm$ 0.14 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.82 $\pm$ 0.20 ($k$ = 9) & \textsuperscript{\textdagger{}}0.73 $\pm$ 0.32 ($k$ = 9) & \textsuperscript{\textdagger{}}0.73 $\pm$ 0.32 ($k$ = 9) & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.74 $\pm$ 0.24 & 0.59 $\pm$ 0.28 & 0.55 $\pm$ 0.30 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.46 $\pm$ 0.21 ($k$ = 9) & 0.43 $\pm$ 0.45 ($k$ = 9) & 0.43 $\pm$ 0.45 ($k$ = 9) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.65 $\pm$ 0.35 & 0.67 $\pm$ 0.27 & 0.68 $\pm$ 0.29 \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        \textsuperscript{\textdagger{}}0.59 $\pm$ 0.12 & 0.47 $\pm$ 0.15 & 0.46 $\pm$ 0.14 &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.48 $\pm$ 0.20 & 0.52 $\pm$ 0.11 & 0.52 $\pm$ 0.11 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.81 $\pm$ 0.20 & 0.67 $\pm$ 0.27 & 0.65 $\pm$ 0.30 & 
+         & Spec. & 
+        % Specificity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.86 $\pm$ 0.22} & \textsuperscript{\textdagger{}}0.76 $\pm$ 0.22 & 0.71 $\pm$ 0.22 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.58 $\pm$ 0.26 & 0.55 $\pm$ 0.31 & 0.55 $\pm$ 0.31 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.40 $\pm$ 0.36 & 0.53 $\pm$ 0.29 & 0.58 $\pm$ 0.31 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.54 $\pm$ 0.14 ($k$ = 9) & 0.49 $\pm$ 0.17 ($k$ = 9) & 0.53 $\pm$ 0.18 ($k$ = 9) &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.52 $\pm$ 0.14 & 0.44 $\pm$ 0.12 & 0.45 $\pm$ 0.12 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.64 $\pm$ 0.32 ($k$ = 9) & \textsuperscript{\textdagger{}}0.79 $\pm$ 0.25 ($k$ = 9) & \textsuperscript{\textdagger{}}0.81 $\pm$ 0.23 ($k$ = 9) & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.69 $\pm$ 0.34 & 0.67 $\pm$ 0.31 & \textsuperscript{\textdagger{}}0.61 $\pm$ 0.27 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textsuperscript{\textdagger{}}0.70 $\pm$ 0.29 ($k$ = 9) & 0.51 $\pm$ 0.38 ($k$ = 9) & 0.54 $\pm$ 0.34 ($k$ = 9) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.57 $\pm$ 0.34 & 0.51 $\pm$ 0.30 & 0.58 $\pm$ 0.22 \\
+        \midrule
+        %
+        % Banff IFTA1 vs VisR metrics
+        %
+        \multirow{12}{=}{IFTA Grades (IFTA1)} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.52 $\pm$ 0.14 & 0.59 $\pm$ 0.16 & 0.59 $\pm$ 0.15 &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.44 $\pm$ 0.12 & 0.51 $\pm$ 0.12 & 0.52 $\pm$ 0.11 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.65 $\pm$ 0.30 & 0.65 $\pm$ 0.28 & 0.67 $\pm$ 0.23 & 
+         & Spec. & 
+        % Specificity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.80 $\pm$ 0.33} & 0.73 $\pm$ 0.27 & 0.71 $\pm$ 0.29 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.63 $\pm$ 0.29 & \textsuperscript{\textdagger{}}0.74 $\pm$ 0.26 & \textsuperscript{\textdagger{}}0.71 $\pm$ 0.24 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.39 $\pm$ 0.33 & 0.56 $\pm$ 0.31 & \textsuperscript{\textdagger{}}0.60 $\pm$ 0.32 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.52 $\pm$ 0.14 & \textsuperscript{\textdagger{}}0.59 $\pm$ 0.11 & \textsuperscript{\textdagger{}}0.60 $\pm$ 0.11 &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.45 $\pm$ 0.16 & 0.43 $\pm$ 0.14 & 0.39 $\pm$ 0.22 \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.60 $\pm$ 0.28 & 0.66 $\pm$ 0.29 & 0.69 $\pm$ 0.30 &
+         & Spec. & 
+        % Specificity for RR
+        0.64 $\pm$ 0.26 & \textsuperscript{\textdagger{}}0.59 $\pm$ 0.38 & \textsuperscript{\textdagger{}}0.59 $\pm$ 0.37 \\
+         & & Sens. &
+        % Sensitivity for DoA
+        \textsuperscript{\textdagger{}}0.68 $\pm$ 0.37 & \textsuperscript{\textdagger{}}0.67 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.65 $\pm$ 0.33 & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.61 $\pm$ 0.33 & \textsuperscript{\textdagger{}}0.62 $\pm$ 0.43 & \textsuperscript{\textdagger{}}0.60 $\pm$ 0.43 \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.52 $\pm$ 0.15 & \textbf{*\textsuperscript{\textdagger{}}0.67 $\pm$ 0.07} & \textbf{*\textsuperscript{\textdagger{}}0.68 $\pm$ 0.06} &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.51 $\pm$ 0.12 & 0.47 $\pm$ 0.12 & 0.49 $\pm$ 0.06 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.53 $\pm$ 0.26 & 0.78 $\pm$ 0.19 & 0.76 $\pm$ 0.18 & 
+         & Spec. & 
+        % Specificity for RR
+        0.52 $\pm$ 0.25 & 0.60 $\pm$ 0.34 & \textsuperscript{\textdagger{}}0.57 $\pm$ 0.33 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.79 $\pm$ 0.29} & 0.72 $\pm$ 0.22 & 0.74 $\pm$ 0.19 & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.77 $\pm$ 0.34} & \textsuperscript{\textdagger{}}0.61 $\pm$ 0.37 & \textsuperscript{\textdagger{}}0.70 $\pm$ 0.34 \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.41 $\pm$ 0.16 & 0.58 $\pm$ 0.20 & 0.50 $\pm$ 0.20 &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.54 $\pm$ 0.09 & \textsuperscript{\textdagger{}}0.63 $\pm$ 0.19 & \textsuperscript{\textdagger{}}0.63 $\pm$ 0.19 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.75 $\pm$ 0.31 & \textsuperscript{\textdagger{}}0.81 $\pm$ 0.24 & \textsuperscript{\textdagger{}}0.79 $\pm$ 0.34 & 
+         & Spec. & 
+        % Specificity for RR
+        0.61 $\pm$ 0.29 & \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.23} & \textbf{*\textsuperscript{\textdagger{}}0.76 $\pm$ 0.23} \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.45 $\pm$ 0.32 & 0.53 $\pm$ 0.34 & 0.50 $\pm$ 0.33 & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.69 $\pm$ 0.30 & 0.62 $\pm$ 0.27 & 0.65 $\pm$ 0.24 \\
+        \midrule
+        %
+        % Banff IFTA2 vs VisR metrics
+        %
+        \multirow{12}{=}{IFTA Grades (IFTA2)} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.56 $\pm$ 0.13 ($k$ = 8) & \textsuperscript{\textdagger{}}0.64 $\pm$ 0.19 ($k$ = 8) & \textsuperscript{\textdagger{}}0.62 $\pm$ 0.18 ($k$ = 8) &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.47 $\pm$ 0.33 ($k$ = 9) & 0.38 $\pm$ 0.24 ($k$ = 9) & 0.49 $\pm$ 0.25 ($k$ = 9) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.49 $\pm$ 0.25 ($k$ = 8) & 0.51 $\pm$ 0.22 ($k$ = 8) & 0.51 $\pm$ 0.22 ($k$ = 8) & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.59 $\pm$ 0.44 ($k$ = 9) & 0.39 $\pm$ 0.30 ($k$ = 9) & 0.47 $\pm$ 0.22 ($k$ = 9) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.89 $\pm$ 0.24 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 8)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.36 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.86 $\pm$ 0.33 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.89 $\pm$ 0.18 ($k$ = 9)} \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.49 $\pm$ 0.29 ($k$ = 8) & 0.45 $\pm$ 0.20 ($k$ = 8) & 0.46 $\pm$ 0.22 ($k$ = 8) &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.54 $\pm$ 0.37 ($k$ = 9) & 0.56 $\pm$ 0.30 ($k$ = 9) & 0.53 $\pm$ 0.36 ($k$ = 9) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.51 $\pm$ 0.39 ($k$ = 8) & 0.61 $\pm$ 0.37 ($k$ = 8) & 0.46 $\pm$ 0.35 ($k$ = 8) & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.67 $\pm$ 0.37 ($k$ = 9) & \textsuperscript{\textdagger{}}0.65 $\pm$ 0.39 ($k$ = 9) & \textsuperscript{\textdagger{}}0.79 $\pm$ 0.34 ($k$ = 9) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.83 $\pm$ 0.36 ($k$ = 8)} & \textsuperscript{\textdagger{}}0.65 $\pm$ 0.36 ($k$ = 8) & \textbf{*\textsuperscript{\textdagger{}}0.84 $\pm$ 0.25 ($k$ = 8)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.81 $\pm$ 0.35 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.79 $\pm$ 0.33 ($k$ = 9)} & \textsuperscript{\textdagger{}}0.61 $\pm$ 0.49 ($k$ = 9) \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.40 $\pm$ 0.32 ($k$ = 9) & 0.44 $\pm$ 0.19 ($k$ = 9) & 0.55 $\pm$ 0.23 ($k$ = 9) &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.41 $\pm$ 0.26 ($k$ = 9) & 0.47 $\pm$ 0.26 ($k$ = 9) & 0.54 $\pm$ 0.28 ($k$ = 9) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.79 $\pm$ 0.28 ($k$ = 9) & 0.44 $\pm$ 0.26 ($k$ = 9) & 0.62 $\pm$ 0.29 ($k$ = 9) & 
+         & Spec. & 
+        % Specificity for RR
+        0.56 $\pm$ 0.37 ($k$ = 9) & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.34 ($k$ = 9) & 0.62 $\pm$ 0.35 ($k$ = 9) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textsuperscript{\textdagger{}}0.50 $\pm$ 0.44 ($k$ = 9) & \textbf{*\textsuperscript{\textdagger{}}0.89 $\pm$ 0.33 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.83 $\pm$ 0.35 ($k$ = 9)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.77 $\pm$ 0.34 ($k$ = 9) & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.37 ($k$ = 9) & \textsuperscript{\textdagger{}}0.79 $\pm$ 0.28 ($k$ = 9) \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.70 $\pm$ 0.13 ($k$ = 9)} & 0.41 $\pm$ 0.24 ($k$ = 9) & 0.55 $\pm$ 0.21 ($k$ = 9) &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.69 $\pm$ 0.14 ($k$ = 9)} & 0.53 $\pm$ 0.25 ($k$ = 9) & 0.58 $\pm$ 0.24 ($k$ = 9) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.74 $\pm$ 0.15 ($k$ = 9) & 0.52 $\pm$ 0.31 ($k$ = 9) & 0.65 $\pm$ 0.23 ($k$ = 9) & 
+         & Spec. & 
+        % Specificity for RR
+        0.83 $\pm$ 0.16 ($k$ = 9) & 0.61 $\pm$ 0.31 ($k$ = 9) & 0.58 $\pm$ 0.35 ($k$ = 9) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.87 $\pm$ 0.26 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.83 $\pm$ 0.35 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.83 $\pm$ 0.35 ($k$ = 9)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.67 $\pm$ 0.17 ($k$ = 9) & \textsuperscript{\textdagger{}}0.72 $\pm$ 0.40 ($k$ = 9) & \textsuperscript{\textdagger{}}0.80 $\pm$ 0.30 ($k$ = 9) \\
+        \midrule
+        %
+        % Banff IFTA3 vs VisR metrics
+        %
+        \multirow{12}{=}{IFTA Grades (IFTA3)} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.57 $\pm$ 0.32 ($k$ = 8) & 0.59 $\pm$ 0.19 ($k$ = 8) & 0.59 $\pm$ 0.19 ($k$ = 8) &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.39 $\pm$ 0.19 ($k$ = 6) & 0.54 $\pm$ 0.23 ($k$ = 6) & 0.42 $\pm$ 0.20 ($k$ = 6) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.56 $\pm$ 0.32 ($k$ = 8) & 0.53 $\pm$ 0.19 ($k$ = 8) & 0.53 $\pm$ 0.19 ($k$ = 8) & 
+         & Spec. & 
+        % Specificity for RR
+        0.63 $\pm$ 0.34 ($k$ = 6) & 0.51 $\pm$ 0.20 ($k$ = 6) & 0.39 $\pm$ 0.16 ($k$ = 6) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.96 $\pm$ 0.12 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 8)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.68 $\pm$ 0.36 ($k$ = 6) & \textbf{*\textsuperscript{\textdagger{}}0.96 $\pm$ 0.10 ($k$ = 6)} & \textbf{*\textsuperscript{\textdagger{}}0.96 $\pm$ 0.10 ($k$ = 6)} \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.63 $\pm$ 0.36 ($k$ = 8) & 0.55 $\pm$ 0.23 ($k$ = 8) & 0.54 $\pm$ 0.24 ($k$ = 8) &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.48 $\pm$ 0.19 ($k$ = 8) & \textsuperscript{\textdagger{}}0.67 $\pm$ 0.29 ($k$ = 8) & \textsuperscript{\textdagger{}}0.67 $\pm$ 0.29 ($k$ = 8) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.74 $\pm$ 0.27 ($k$ = 8) & 0.54 $\pm$ 0.24 ($k$ = 8) & 0.47 $\pm$ 0.26 ($k$ = 8) & 
+         & Spec. & 
+        % Specificity for RR
+        0.53 $\pm$ 0.30 ($k$ = 8) & 0.64 $\pm$ 0.27 ($k$ = 8) & 0.64 $\pm$ 0.27 ($k$ = 8) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.88 $\pm$ 0.35 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}0.94 $\pm$ 0.18 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 8)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.90 $\pm$ 0.20 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 8)} \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.64 $\pm$ 0.35 ($k$ = 7) & 0.63 $\pm$ 0.28 ($k$ = 7) & 0.48 $\pm$ 0.27 ($k$ = 7) &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.39 $\pm$ 0.23 ($k$ = 6) & 0.57 $\pm$ 0.31 ($k$ = 6) & 0.64 $\pm$ 0.28 ($k$ = 6) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.76 $\pm$ 0.27 ($k$ = 7) & 0.61 $\pm$ 0.27 ($k$ = 7) & 0.46 $\pm$ 0.25 ($k$ = 7) & 
+         & Spec. & 
+        % Specificity for RR
+        0.34 $\pm$ 0.29 ($k$ = 6) & 0.45 $\pm$ 0.31 ($k$ = 6) & 0.51 $\pm$ 0.27 ($k$ = 6) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.86 $\pm$ 0.38 ($k$ = 7)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 7)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 7)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.94 $\pm$ 0.14 ($k$ = 6)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 6)} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00 ($k$ = 6)} \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.58 $\pm$ 0.14 ($k$ = 6) & 0.53 $\pm$ 0.16 ($k$ = 6) & 0.54 $\pm$ 0.15 ($k$ = 6) &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.72 $\pm$ 0.24 ($k$ = 8) & 0.41 $\pm$ 0.24 ($k$ = 8) & 0.59 $\pm$ 0.23 ($k$ = 8) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.65 $\pm$ 0.22 ($k$ = 6) & 0.56 $\pm$ 0.16 ($k$ = 6) & 0.56 $\pm$ 0.22 ($k$ = 6) & 
+         & Spec. & 
+        % Specificity for RR
+        0.76 $\pm$ 0.18 ($k$ = 8) & 0.48 $\pm$ 0.29 ($k$ = 8) & 0.53 $\pm$ 0.27 ($k$ = 8) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.92 $\pm$ 0.20 ($k$ = 6)} & \textbf{*\textsuperscript{\textdagger{}}0.92 $\pm$ 0.20 ($k$ = 6)} & \textbf{*\textsuperscript{\textdagger{}}0.92 $\pm$ 0.20 ($k$ = 6)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.88 $\pm$ 0.35 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}0.83 $\pm$ 0.36 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}0.96 $\pm$ 0.12 ($k$ = 8)} \\
+        \midrule
+        %
+        % Banff i-IFTA1 vs VisR metrics
+        %
+        \multirow{12}{=}{\emph{i-IFTA} Scores (\emph{i-IFTA}1)} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.42 $\pm$ 0.30 & 0.57 $\pm$ 0.27 & \textsuperscript{\textdagger{}}0.67 $\pm$ 0.23 &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        \textsuperscript{\textdagger{}}0.64 $\pm$ 0.27 ($k$ = 9) & 0.61 $\pm$ 0.27 ($k$ = 9) & 0.39 $\pm$ 0.30 ($k$ = 9) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.47 $\pm$ 0.31 & 0.47 $\pm$ 0.28 & 0.57 $\pm$ 0.28 & 
+         & Spec. & 
+        % Specificity for RR
+        0.60 $\pm$ 0.31 ($k$ = 9) & 0.68 $\pm$ 0.33 ($k$ = 9) & \textsuperscript{\textdagger{}}0.55 $\pm$ 0.43 ($k$ = 9) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.88 $\pm$ 0.32} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00} & \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.92 $\pm$ 0.18 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.86 $\pm$ 0.22 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.36 ($k$ = 9)} \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.51 $\pm$ 0.25 & 0.47 $\pm$ 0.37 & 0.36 $\pm$ 0.35 &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.75 $\pm$ 0.18 ($k$ = 8) & 0.56 $\pm$ 0.22 ($k$ = 8) & 0.50 $\pm$ 0.24 ($k$ = 8) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.49 $\pm$ 0.25 & \textsuperscript{\textdagger{}}0.61 $\pm$ 0.40 & \textsuperscript{\textdagger{}}0.60 $\pm$ 0.39 & 
+         & Spec. & 
+        % Specificity for RR
+        0.73 $\pm$ 0.26 ($k$ = 8) & 0.54 $\pm$ 0.23 ($k$ = 8) & 0.49 $\pm$ 0.25 ($k$ = 8) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.98 $\pm$ 0.06} & \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.42} & \textbf{*\textsuperscript{\textdagger{}}0.68 $\pm$ 0.47} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.94 $\pm$ 0.18 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}0.94 $\pm$ 0.18 ($k$ = 8)} & \textbf{*\textsuperscript{\textdagger{}}0.94 $\pm$ 0.18 ($k$ = 8)} \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.45 $\pm$ 0.21 & 0.43 $\pm$ 0.26 & 0.45 $\pm$ 0.26 &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        \textsuperscript{\textdagger{}}0.59 $\pm$ 0.12 ($k$ = 8) & 0.56 $\pm$ 0.18 ($k$ = 8) & 0.59 $\pm$ 0.19 ($k$ = 8) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.41 $\pm$ 0.22 & 0.62 $\pm$ 0.33 & 0.63 $\pm$ 0.30 & 
+         & Spec. & 
+        % Specificity for RR
+        0.54 $\pm$ 0.17 ($k$ = 8) & 0.76 $\pm$ 0.27 ($k$ = 8) & 0.72 $\pm$ 0.25 ($k$ = 8) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}1.00 $\pm$ 0.00} & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.36 & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.36 & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.98 $\pm$ 0.06 ($k$ = 8)} & \textsuperscript{\textdagger{}}0.71 $\pm$ 0.32 ($k$ = 8) & \textbf{*\textsuperscript{\textdagger{}}0.77 $\pm$ 0.32 ($k$ = 8)} \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.43 $\pm$ 0.20 ($k$ = 9) & 0.49 $\pm$ 0.29 ($k$ = 9) & 0.40 $\pm$ 0.27 ($k$ = 9) &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.55 $\pm$ 0.22 & 0.43 $\pm$ 0.27 & 0.38 $\pm$ 0.22 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.53 $\pm$ 0.31 ($k$ = 9) & 0.66 $\pm$ 0.30 ($k$ = 9) & 0.71 $\pm$ 0.27 ($k$ = 9) & 
+         & Spec. & 
+        % Specificity for RR
+        0.53 $\pm$ 0.24 & 0.68 $\pm$ 0.36 & 0.61 $\pm$ 0.36 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.81 $\pm$ 0.38 ($k$ = 9)} & \textsuperscript{\textdagger{}}0.74 $\pm$ 0.35 ($k$ = 9) & \textsuperscript{\textdagger{}}0.59 $\pm$ 0.43 ($k$ = 9) & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.95 $\pm$ 0.16} & \textsuperscript{\textdagger{}}0.62 $\pm$ 0.40 & \textsuperscript{\textdagger{}}0.65 $\pm$ 0.42 \\
+        \midrule
+        %
+        % Banff i-IFTA2 vs VisR metrics
+        %
+        \multirow{12}{=}{\emph{i-IFTA} Scores (\emph{i-IFTA}2)} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.46 $\pm$ 0.27 & \textsuperscript{\textdagger{}}0.61 $\pm$ 0.24 & \textsuperscript{\textdagger{}}0.62 $\pm$ 0.24 &
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        \textsuperscript{\textdagger{}}0.61 $\pm$ 0.21 & 0.56 $\pm$ 0.23 & 0.51 $\pm$ 0.23 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.56 $\pm$ 0.33 & 0.63 $\pm$ 0.25 & 0.63 $\pm$ 0.24 & 
+         & Spec. & 
+        % Specificity for RR
+        0.72 $\pm$ 0.23 & 0.64 $\pm$ 0.26 & \textsuperscript{\textdagger{}}0.63 $\pm$ 0.34 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.82 $\pm$ 0.37} & \textbf{*\textsuperscript{\textdagger{}}0.88 $\pm$ 0.32} & \textbf{*\textsuperscript{\textdagger{}}0.88 $\pm$ 0.32} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.76 $\pm$ 0.22 & \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.28} & \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.37} \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.45 $\pm$ 0.28 & 0.39 $\pm$ 0.25 & 0.36 $\pm$ 0.23 &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.59 $\pm$ 0.31 & 0.47 $\pm$ 0.29 & 0.55 $\pm$ 0.32 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.60 $\pm$ 0.35 & 0.36 $\pm$ 0.29 & 0.37 $\pm$ 0.27 & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.71 $\pm$ 0.36 & \textsuperscript{\textdagger{}}0.56 $\pm$ 0.34 & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.36 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.34} & \textbf{*\textsuperscript{\textdagger{}}0.90 $\pm$ 0.32} & \textbf{*\textsuperscript{\textdagger{}}0.87 $\pm$ 0.32} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textbf{*\textsuperscript{\textdagger{}}0.80 $\pm$ 0.33} & \textbf{*\textsuperscript{\textdagger{}}0.82 $\pm$ 0.32} & \textbf{*\textsuperscript{\textdagger{}}0.79 $\pm$ 0.35} \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.54 $\pm$ 0.34 ($k$ = 9) & 0.35 $\pm$ 0.16 ($k$ = 9) & 0.46 $\pm$ 0.23 ($k$ = 9) &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.50 $\pm$ 0.26 & 0.50 $\pm$ 0.26 & 0.42 $\pm$ 0.28 \\ 
+         & & Spec. &
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.87 $\pm$ 0.18 ($k$ = 9) & 0.43 $\pm$ 0.31 ($k$ = 9) & 0.56 $\pm$ 0.36 ($k$ = 9) & 
+         & Spec. & 
+        % Specificity for RR
+        \textsuperscript{\textdagger{}}0.71 $\pm$ 0.37 & 0.61 $\pm$ 0.30 & 0.53 $\pm$ 0.35 \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textsuperscript{\textdagger{}}0.57 $\pm$ 0.41 ($k$ = 9) & \textbf{*\textsuperscript{\textdagger{}}0.80 $\pm$ 0.35 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.76 $\pm$ 0.38 ($k$ = 9)} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.65 $\pm$ 0.31 & \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.33} & \textbf{*\textsuperscript{\textdagger{}}0.78 $\pm$ 0.33} \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.41 $\pm$ 0.31 & 0.51 $\pm$ 0.18 & 0.47 $\pm$ 0.20 &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.62 $\pm$ 0.27 ($k$ = 9) & \textsuperscript{\textdagger{}}0.64 $\pm$ 0.23 ($k$ = 9) & 0.61 $\pm$ 0.25 ($k$ = 9) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.69 $\pm$ 0.35 & 0.45 $\pm$ 0.21 & 0.39 $\pm$ 0.22 & 
+         & Spec. & 
+        % Specificity for RR
+        0.71 $\pm$ 0.30 ($k$ = 9) & 0.56 $\pm$ 0.28 ($k$ = 9) & 0.63 $\pm$ 0.24 ($k$ = 9) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textbf{*\textsuperscript{\textdagger{}}0.60 $\pm$ 0.52} & \textbf{*\textsuperscript{\textdagger{}}0.95 $\pm$ 0.12} & \textbf{*\textsuperscript{\textdagger{}}0.98 $\pm$ 0.06} & 
+         & Sens. & 
+        % Sensitivity for RR
+        \textsuperscript{\textdagger{}}0.74 $\pm$ 0.35 ($k$ = 9) & \textbf{*\textsuperscript{\textdagger{}}0.95 $\pm$ 0.10 ($k$ = 9)} & \textbf{*\textsuperscript{\textdagger{}}0.83 $\pm$ 0.33 ($k$ = 9)} \\
+        \midrule
+        %
+        % Rejection vs VisR metrics
+        %
+        \multirow{12}{=}{Rejection} & 
+        \multirow{3}{*}{oC} & AUC & 
+        % AUC for DoA
+        0.44 $\pm$ 0.15 ($k$ = 7) & 0.37 $\pm$ 0.12 ($k$ = 7) & 0.39 $\pm$ 0.14 ($k$ = 7) & 
+        \multirow{3}{*}{oC/iC} & AUC & 
+        % AUC for RR
+        0.52 $\pm$ 0.13 ($k$ = 8) & 0.46 $\pm$ 0.22 ($k$ = 8) & 0.44 $\pm$ 0.21 ($k$ = 8) \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.42 $\pm$ 0.33 ($k$ = 7) & \textsuperscript{\textdagger{}}0.66 $\pm$ 0.37 ($k$ = 7) & \textsuperscript{\textdagger{}}0.68 $\pm$ 0.38 ($k$ = 7) & 
+         & Spec. & 
+        % Specificity for RR
+        0.51 $\pm$ 0.25 ($k$ = 8) & 0.85 $\pm$ 0.14 ($k$ = 8) & 0.77 $\pm$ 0.23 ($k$ = 8) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textsuperscript{\textdagger{}}0.74 $\pm$ 0.36 ($k$ = 7) & 0.45 $\pm$ 0.40 ($k$ = 7) & 0.45 $\pm$ 0.40 ($k$ = 7) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.71 $\pm$ 0.21 ($k$ = 8) & 0.37 $\pm$ 0.26 ($k$ = 8) & 0.44 $\pm$ 0.34 ($k$ = 8) \\
+        \cmidrule{2-11} & \multirow{3}{*}{iC} & AUC & 
+        % AUC for DoA
+        0.44 $\pm$ 0.11 ($k$ = 7) & 0.46 $\pm$ 0.13 ($k$ = 7) & 0.45 $\pm$ 0.13 ($k$ = 7) &
+        \multirow{3}{*}{oC/oM} & AUC & 
+        % AUC for RR
+        0.54 $\pm$ 0.19 ($k$ = 9) & 0.51 $\pm$ 0.11 ($k$ = 9) & 0.53 $\pm$ 0.12 ($k$ = 9) \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        \textsuperscript{\textdagger{}}0.57 $\pm$ 0.42 ($k$ = 7) & 0.67 $\pm$ 0.30 ($k$ = 7) & 0.67 $\pm$ 0.30 ($k$ = 7) & 
+         & Spec. & 
+        % Specificity for RR
+        0.60 $\pm$ 0.26 ($k$ = 9) & 0.64 $\pm$ 0.29 ($k$ = 9) & 0.69 $\pm$ 0.29 ($k$ = 9) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        \textsuperscript{\textdagger{}}0.66 $\pm$ 0.38 ($k$ = 7) & 0.54 $\pm$ 0.33 ($k$ = 7) & 0.54 $\pm$ 0.33 ($k$ = 7) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.73 $\pm$ 0.28 ($k$ = 9) & 0.60 $\pm$ 0.26 ($k$ = 9) & 0.60 $\pm$ 0.26 ($k$ = 9) \\
+        \cmidrule{2-11} & \multirow{3}{*}{oM} & AUC & 
+        % AUC for DoA
+        0.55 $\pm$ 0.11 ($k$ = 7) & 0.49 $\pm$ 0.17 ($k$ = 7) & 0.49 $\pm$ 0.17 ($k$ = 7) &
+        \multirow{3}{*}{iC/oM} & AUC & 
+        % AUC for RR
+        0.50 $\pm$ 0.09 ($k$ = 7) & 0.45 $\pm$ 0.15 ($k$ = 7) & 0.41 $\pm$ 0.13 ($k$ = 7) \\ 
+         & & Spec. &
+        % Specificity for DoA
+        0.69 $\pm$ 0.29 ($k$ = 7) & \textsuperscript{\textdagger{}}0.77 $\pm$ 0.32 ($k$ = 7) & \textsuperscript{\textdagger{}}0.88 $\pm$ 0.15 ($k$ = 7) & 
+         & Spec. & 
+        % Specificity for RR
+        0.73 $\pm$ 0.27 ($k$ = 7) & 0.67 $\pm$ 0.31 ($k$ = 7) & \textsuperscript{\textdagger{}}0.73 $\pm$ 0.33 ($k$ = 7) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.65 $\pm$ 0.25 ($k$ = 7) & 0.49 $\pm$ 0.34 ($k$ = 7) & 0.37 $\pm$ 0.26 ($k$ = 7) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.51 $\pm$ 0.25 ($k$ = 7) & 0.55 $\pm$ 0.39 ($k$ = 7) & 0.45 $\pm$ 0.41 ($k$ = 7) \\
+        \cmidrule{2-11} & \multirow{3}{*}{iM} & AUC & 
+        % AUC for DoA
+        0.57 $\pm$ 0.21 ($k$ = 5) & 0.57 $\pm$ 0.18 ($k$ = 5) & 0.57 $\pm$ 0.19 ($k$ = 5) &
+        \multirow{3}{*}{oM/iM} & AUC & 
+        % AUC for RR
+        0.50 $\pm$ 0.12 ($k$ = 8) & 0.54 $\pm$ 0.10 ($k$ = 8) & 0.53 $\pm$ 0.11 ($k$ = 8) \\ 
+         & & Spec. & 
+        % Specificity for DoA
+        0.54 $\pm$ 0.38 ($k$ = 5) & 0.66 $\pm$ 0.21 ($k$ = 5) & 0.73 $\pm$ 0.25 ($k$ = 5) & 
+         & Spec. & 
+        % Specificity for RR
+        0.61 $\pm$ 0.34 ($k$ = 8) & 0.80 $\pm$ 0.18 ($k$ = 8) & 0.79 $\pm$ 0.15 ($k$ = 8) \\ 
+         & & Sens. &
+        % Sensitivity for DoA
+        0.83 $\pm$ 0.18 ($k$ = 5) & 0.68 $\pm$ 0.35 ($k$ = 5) & 0.60 $\pm$ 0.37 ($k$ = 5) & 
+         & Sens. & 
+        % Sensitivity for RR
+        0.60 $\pm$ 0.25 ($k$ = 8) & 0.51 $\pm$ 0.24 ($k$ = 8) & 0.49 $\pm$ 0.23 ($k$ = 8) \\
+        \bottomrule
+    \end{longtable}
+    \par\vspace{0.5em}
+    \noindent{}oC: outer cortex, iC: inner cortex, oM: outer medulla, iM: inner medulla; AUC: area under the ROC, Spec./Sens.: specificity and sensitivity at Youden's index. Values denote mean and standard deviation of $k$-fold cross-validation, where $k = 10$ unless denoted otherwise. \textdagger{}: Metrics that significantly outperform random chance based on a one-sided \emph{t}-test with a threshold of 0.50 for AUC, specificity, and sensitivity. *: Metrics with statistically significant improvements that also have an effect size of at least 1.0 based on Cohen's \emph{d} effect size measure.
+\end{landscape}

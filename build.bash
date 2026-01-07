@@ -35,11 +35,11 @@ function clean_auxiliary_files() {
 
 # Allow optional entry of main file name; default to "main.tex"
 NAME_IN=${1:-main.tex}
-NAME_OUT="./results/${NAME_IN%.tex}.pdf"
+NAME_OUT="./${NAME_IN%.tex}.pdf"
 printf "\n\nCompiling LaTeX document:\n$NAME_IN\n\n"
 
-# Create results/logs and capture logs
-LOG_DIR="./results/logs"
+# Create logs directory to store auxiliary files
+LOG_DIR="./logs"
 mkdir -p "$LOG_DIR"
 LOG_FILE="${LOG_DIR}/${NAME_IN%.tex}.log"
 
