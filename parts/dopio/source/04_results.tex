@@ -23,7 +23,6 @@ Table~\ref{tbl:modelr2} lists the coefficients of determination ($R^2$) for the 
 \begin{table}[htbp]
     \caption{Coefficients of Determination ($R^2$) between True Elastic Modulus and $t_{\mathrm{int}}$ Transforms Assessed at the Focal Depth (25 mm) for Separate versus Simultaneous Tracking across Various Beam Sequences \emph{In Silico}}
     \centering
-    \resizebox{0.5\textwidth}{!}{
     \begin{tabular}{lllrr}
     $t_{\mathrm{int}}$ Transform & Push F/\# & tFc & Sep. Track & Simult. Track \\ \hline
     \multirow{4}{*}{\shortstack[l]{Inverse Sq.\\(Eq. 2)}} & \multirow{2}{*}{1.5} & 1.5 and 3.0 & 0.525 & 0.777 \\ \cline{3-5} 
@@ -35,7 +34,6 @@ Table~\ref{tbl:modelr2} lists the coefficients of determination ($R^2$) for the 
      & \multirow{2}{*}{3.0} & 1.5 and 3.0 & 0.882 & 0.923 \\ \cline{3-5} 
      &  & 1.5 and 5.0 & 0.943 & 0.954 \\ \hline
     \end{tabular}
-    }
     \label{tbl:modelr2}
 \end{table}
 
@@ -58,7 +56,7 @@ Table~\ref{tbl:modelr2} lists the coefficients of determination ($R^2$) for the 
     \label{fig:Gdistrib}
 \end{figure}
 
-Fig.~\ref{fig:cirsImage} depicts, for 55 V ARF excitations, DoPIo images of times-intersect and estimated shear modulus for the background and inclusions in the calibrated elasticity phantom. The estimated median and median absolute deviation of elasticity estimates were 9.0 ± 0.8 kPa in the 8.7 kPa background, 1.6 ± 0.1 kPa in the 2.2 kPa "Type 1" inclusion, 4.5 ± 0.2 kPa in the 5.1 kPa "Type 2" inclusion, and 13.0 ± 0.5 kPa in the 16.3 kPa "Type 3" inclusion, yielding contrast transfer efficiencies of 1.39, 1.19, and 1.30, respectively. The corresponding distributions of estimated moduli for all six employed ARF voltages levels, as well as example images of the Type 2 inclusion across these power levels, are shown in Fig.~\ref{fig:cirsBoxplot}. Fig.~\ref{fig:liver} depicts images of DoPIo times-intersect and estimated shear moduli in the custom liver phantom. The associated distributions of estimated moduli in the background liver tissue and the gelatin inclusion for the six ARF voltage levels are also shown, with the SWEI validation standard indicated in orange. 
+Fig.~\ref{fig:cirsImage} depicts, for 55 V ARF excitations, DoPIo images of times-intersect and estimated shear modulus for the background and inclusions in the calibrated elasticity phantom. The estimated median and median absolute deviation of elasticity estimates were 9.0 ± 0.8 kPa in the 8.7 kPa background, 1.6 ± 0.1 kPa in the 2.2 kPa "Type 1" inclusion, 4.5 ± 0.2 kPa in the 5.1 kPa "Type 2" inclusion, and 13.0 ± 0.5 kPa in the 16.3 kPa "Type 3" inclusion, yielding contrast transfer efficiencies of 1.39, 1.19, and 1.30, respectively. The corresponding distributions of estimated moduli for all six employed ARF voltages levels, as well as example images of the Type 2 inclusion across these power levels, are shown in Fig.~\ref{fig:cirsPower} and Fig.~\ref{cirsBoxplot}. Fig.~\ref{fig:liver} depicts images of DoPIo times-intersect and estimated shear moduli in the custom liver phantom. The associated distributions of estimated moduli in the background liver tissue and the gelatin inclusion for the six ARF voltage levels are also shown, with the SWEI validation standard indicated in orange. 
 
 \begin{figure}[htbp]
     \centering
@@ -69,14 +67,21 @@ Fig.~\ref{fig:cirsImage} depicts, for 55 V ARF excitations, DoPIo images of time
 
 \begin{figure*}[htbp]
     \centering
+    \includegraphics[width=\linewidth]{parts/dopio/fig/modulus-cirs-power.eps}
+    \caption{Images of DoPIo-derived elastic modulus for a 5.1 kPa inclusion embedded in an 8.7 kPa background, obtained using ARF push amplitudes ranging from 35 V to 60 V in 5 V increments (a-f).}
+    \label{fig:cirsPower}
+\end{figure*}
+
+\begin{figure*}[htbp]
+    \centering
     \includegraphics[width=\linewidth]{parts/dopio/fig/modulus-cirs-plot.eps}
-    \caption{Images of DoPIo-derived elastic modulus for a 5.1 kPa inclusion embedded in an 8.7 kPa background, obtained using ARF push amplitudes ranging from 35 V to 60 V in 5 V increments (a-f). Corresponding distributions of modulus estimates are shown for inclusions with nominal elasticities of 2.2 kPa, 5.1 kPa, and 16.3 kPa within the same 8.7 kPa background. Lines indicate pairs of distributions that differ significantly based on the Kruskal-Wallis test with Bonferroni post hoc correction ($p \leq 0.05$).}
+    \caption{Box plot of DoPIo-derived elastic modulus from calibration phantom. Inclusions with nominal elasticities of 2.2 kPa, 5.1 kPa, and 16.3 kPa were imaged within the same 8.7 kPa background. Lines indicate pairs of distributions that differ significantly based on the Kruskal-Wallis test with Bonferroni post hoc correction ($p \leq 0.05$).}
     \label{fig:cirsBoxplot}
 \end{figure*}
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[width=\linewidth]{parts/dopio/fig/modulus-liver.eps}
+    \includegraphics[width=0.8\linewidth]{parts/dopio/fig/modulus-liver.eps}
     \caption{B-mode (a), DoPIo times-intersect (b), and DoPIo-derived elastic modulus (c) images of an ex vivo porcine liver containing a gelatin inclusion. The inclusion boundary, delineated under B-mode guidance, is outlined with white dotted lines. The yellow box in (a) indicates the region used to generate the times-intersect and DoPIo modulus estimate images. Corresponding box plots of DoPIo-derived shear elastic modulus estimates (d). The orange box denotes estimates obtained using the Siemens Sequoia system, and gray lines indicate pairs of distributions that differ significantly based on the Kruskal-Wallis test with Bonferroni post hoc correction ($p \leq 0.05$).}
     \label{fig:liver}
 \end{figure*}
