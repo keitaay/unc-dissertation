@@ -3,14 +3,14 @@
 \begin{landscape}
     \singlespacing
     \centering
-    \fontsize{9}{10}\selectfont
+    \fontsize{9}{10.5}\selectfont
     \begin{longtable}{
-        p{0.40in} 
+        p{0.50in} 
         p{0.90in} | 
-        p{0.70in} p{0.75in} | 
-        p{0.70in} p{0.75in} | 
-        p{0.70in} p{0.75in} | 
-        p{0.70in} p{0.75in}}
+        w{r}{0.70in} w{l}{0.75in} | 
+        w{r}{0.70in} w{l}{0.75in} | 
+        w{r}{0.70in} w{l}{0.75in} | 
+        w{r}{0.70in} w{l}{0.75in}}
         \caption{Performance of binary classification of renal IRI types using VisR versus DoPIo-derived metrics}\\
         \label{tbl:auc}\\
         \toprule
@@ -34,146 +34,117 @@
         \endfirsthead
         \endhead
         \endlastfoot
-        VisR &
-        RE only &
-        0.62 ± 0.10 &
-        oC &
-        0.69 ± 0.14 &
-        oM &
-        \textbf{*0.69 ± 0.13} &
-        \textbf{oC} &
-        0.54 ± 0.17 &
-        oM \\
-        DoPIo &
-        Modulus (G) only &
-        \textbf{*0.83 ± 0.05} &
-        \textbf{iM} &
-        0.68 ± 0.04 &
-        iM &
-        0.56 ± 0.06 &
-        oM &
-        \textbf{*0.85 ± 0.03} &
-        \textbf{oM} \\ \hline
-        VisR &
-        RR only &
-        0.61 ± 0.09 &
-        oC iC oM iM &
-        0.71 ± 0.06 &
-        oC iC iM &
-        0.65 ± 0.11 &
-        iC oM &
-        0.67 ± 0.16 &
-        iC oM \\
-        DoPIo &
-        RR only &
-        \textbf{*0.66 ± 0.05} &
-        \textbf{oC oM} &
-        0.70 ± 0.07 &
-        iC iM &
-        0.57 ± 0.07 &
-        oM iM &
-        0.65 ± 0.08 &
-        oM iM \\ \hline
-        VisR &
-        DoA only &
-        0.64 ± 0.07 &
-        iM &
-        0.46 ± 0.10 &
-        oC oM &
-        0.56 ± 0.14 &
-        iM &
-        0.52 ± 0.16 &
-        iM \\
-        DoPIo &
-        DoA only &
-        0.67 ± 0.06 &
-        oM &
-        \textbf{*0.59 ± 0.09} &
-        \textbf{oM} &
-        0.60 ± 0.08 &
-        oM &
-        0.65 ± 0.06 &
-        iC \\ \hline
-        VisR &
-        RE + RR &
-        0.58 ± 0.12 &
-        oC iC oM iM &
-        0.73 ± 0.13 &
-        iC oM iM &
-        \textbf{*0.69 ± 0.13} &
-        \textbf{oC iC iM} &
-        0.59 ± 0.22 &
-        iC oM iM \\
-        DoPIo &
-        G + RR &
-        \textbf{*0.80 ± 0.08} &
-        \textbf{oC iC iM} &
-        0.55 ± 0.11 &
-        iC oM iM &
-        0.59 ± 0.08 &
-        oC iC oM &
-        \textbf{*0.83 ± 0.03} &
-        \textbf{oC iC oM} \\ \hline
-        VisR &
-        RE + DoA &
-        0.63 ± 0.13 &
-        oC iC iM &
-        0.73 ± 0.13 &
-        iC oM &
-        \textbf{*0.69 ± 0.13} &
-        \textbf{oC iC} &
-        0.59 ± 0.22 &
-        oM iM \\
-        DoPIo &
-        G + DoA &
-        \textbf{*0.80 ± 0.08} &
-        \textbf{oC iC iM} &
-        0.55 ± 0.11 &
-        iC oM iM &
-        0.59 ± 0.08 &
-        oC oM &
-        0.76 ± 0.05 &
-        oC oM iM \\ \hline
-        VisR &
-        RR + DoA &
-        0.51 ± 0.13 &
-        iC oM iM &
-        0.69 ± 0.17 &
-        oC iC oM iM &
-        0.59 ± 0.12 &
-        oC oM iM &
-        0.55 ± 0.23 &
-        oC iC oM iM \\
-        DoPIo &
-        RR + DoA &
-        0.61 ± 0.07 &
-        oC iC oM iM &
-        0.66 ± 0.07 &
-        oC iC oM iM &
-        0.58 ± 0.08 &
-        oC iC oM iM &
-        0.63 ± 0.09 &
-        oC iC oM iM \\ \hline
-        VisR &
-        RE + RR + DoA &
-        0.62 ± 0.14 &
-        oC iC iM &
-        0.70 ± 0.13 &
-        oC iC oM iM &
-        0.69 ± 0.13 &
-        oC iC iM &
-        0.57 ± 0.22 &
-        iC oM iM \\
-        DoPIo &
-        G + RR + DoA &
-        \textbf{*0.82 ± 0.05} &
-        \textbf{iC oM iM} &
-        0.64 ± 0.06 &
-        iC oM iM &
-        0.56 ± 0.08 &
-        oC iC oM iM &
-        \textbf{*0.80 ± 0.08} &
-        \textbf{oC iC oM iM} \\ 
+        VisR RE & RE only &
+        0.62 ± 0.10 & oC &
+        0.69 ± 0.14 & oM &
+        \textbf{*0.69 ± 0.13} & \textbf{oC} &
+        0.54 ± 0.17 & oM \\
+        VisR RV & RV only &
+        0.71 ± 0.10 & oM &
+        0.65 ± 0.10 & oM &
+        0.68 ± 0.15 & iM &
+        0.72 ± 0.18 & oM \\
+        DoPIo & Modulus (G) only &
+        \textbf{*0.83 ± 0.05} & \textbf{iM} &
+        0.68 ± 0.04 & iM &
+        0.56 ± 0.06 & oM &
+        \textbf{*0.85 ± 0.03} & \textbf{oM} \\
+        \midrule
+        VisR RE & RR only &
+        0.61 ± 0.09 & oC iC oM iM &
+        0.71 ± 0.06 & oC iC iM &
+        0.65 ± 0.11 & iC oM &
+        0.67 ± 0.16 & iC oM \\
+        VisR RV & RR only &
+        0.74 ± 0.07 & iC oM &
+        0.77 ± 0.12 & iC oM &
+        0.69 ± 0.12 & iC iM &
+        0.67 ± 0.19 & oC iC \\
+        DoPIo & RR only &
+        \textbf{*0.66 ± 0.05} & \textbf{oC oM} &
+        0.70 ± 0.07 & iC iM &
+        0.57 ± 0.07 & oM iM &
+        0.65 ± 0.08 & oM iM \\ 
+        \midrule
+        VisR RE & DoA only &
+        0.64 ± 0.07 & iM &
+        0.46 ± 0.10 & oC oM &
+        0.56 ± 0.14 & iM &
+        0.52 ± 0.16 & iM \\
+        VisR RV & DoA only &
+        0.55 ± 0.10 & iM &
+        0.61 ± 0.11 & iM &
+        0.61 ± 0.15 & oC &
+        0.54 ± 0.14 & oM iM \\
+        DoPIo & DoA only &
+        0.67 ± 0.06 & oM &
+        \textbf{*0.59 ± 0.09} & \textbf{oM} &
+        0.60 ± 0.08 & oM &
+        0.65 ± 0.06 & iC \\ 
+        \midrule
+        VisR RE & RE + RR &
+        0.58 ± 0.12 & oC iC oM iM &
+        0.73 ± 0.13 & iC oM iM &
+        \textbf{*0.69 ± 0.13} & \textbf{oC iC iM} &
+        0.59 ± 0.22 & iC oM iM \\
+        VisR RV & RV + RR &
+        0.71 ± 0.10 & iC oM iM &
+        0.62 ± 0.15 & iC oM iM &
+        0.58 ± 0.14 & oC iC oM iM &
+        0.72 ± 0.18 & iC oM iM \\
+        DoPIo & G + RR &
+        \textbf{*0.80 ± 0.08} & \textbf{oC iC iM} &
+        0.55 ± 0.11 & iC oM iM &
+        0.59 ± 0.08 & oC iC oM &
+        \textbf{*0.83 ± 0.03} & \textbf{oC iC oM} \\ 
+        \midrule
+        VisR RE & RE + DoA &
+        0.63 ± 0.13 & oC iC iM &
+        0.73 ± 0.13 & iC oM &
+        \textbf{*0.69 ± 0.13} & \textbf{oC iC} &
+        0.59 ± 0.22 & oM iM \\
+        VisR RV & RV + DoA &
+        0.71 ± 0.10 & iC oM iM &
+        0.62 ± 0.15 & iC oM iM &
+        0.60 ± 0.15 & iC oM iM &
+        0.72 ± 0.18 & iC oM \\
+        DoPIo & G + DoA &
+        \textbf{*0.80 ± 0.08} & \textbf{oC iC iM} &
+        0.55 ± 0.11 & iC oM iM &
+        0.59 ± 0.08 & oC oM &
+        0.76 ± 0.05 & oC oM iM \\ 
+        \midrule
+        VisR RE & RR + DoA &
+        0.51 ± 0.13 & iC oM iM &
+        0.69 ± 0.17 & oC iC oM iM &
+        0.59 ± 0.12 & oC oM iM &
+        0.55 ± 0.23 & oC iC oM iM \\
+        VisR RV & RR + DoA &
+        0.72 ± 0.12 & oC iC oM iM &
+        0.66 ± 0.17 & oC iC oM iM &
+        0.69 ± 0.13 & oC iC iM &
+        0.60 ± 0.19 & iC oM iM \\
+        DoPIo & RR + DoA &
+        0.61 ± 0.07 & oC iC oM iM &
+        0.66 ± 0.07 & oC iC oM iM &
+        0.58 ± 0.08 & oC iC oM iM &
+        0.63 ± 0.09 & oC iC oM iM \\ 
+        \midrule
+        VisR RE & RE + RR + DoA &
+        0.62 ± 0.14 & oC iC iM &
+        0.70 ± 0.13 & oC iC oM iM &
+        0.69 ± 0.13 & oC iC iM &
+        0.57 ± 0.22 & iC oM iM \\
+        VisR RV & RV + RR + DoA &
+        0.61 ± 0.13 & oC iC oM iM &
+        0.68 ± 0.16 & oC iC oM iM &
+        0.60 ± 0.15 & oC iC oM iM &
+        0.72 ± 0.18 & iC oM iM \\
+        DoPIo & G + RR + DoA &
+        \textbf{*0.82 ± 0.05} & \textbf{iC oM iM} &
+        0.64 ± 0.06 & iC oM iM &
+        0.56 ± 0.08 & oC iC oM iM &
+        \textbf{*0.80 ± 0.08} & \textbf{oC iC oM iM} \\ 
         \bottomrule
     \end{longtable}
     \par\vspace{0.5em}

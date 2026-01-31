@@ -1,28 +1,34 @@
 % !TeX root = ../../../main.tex
 \section{Results}
 
-Figure~\ref{fig:example} shows representative examples of acquired images from all four cohorts of kidneys and of all imaging modalities. All images were taken with the transducer in the 0 degree orientation, with parametric images of VisR RE, DoPIo times-intersect, and shear elasticity estimates shown overlaid on top of B-modes. Where there are appreciable differences, the VisR and DoPIo images show elastic differences in similar locations. For example, in the combined injury example (4th row), the medulla appears as a soft feature while the cortex appears to its right as a stiffer feature.
+Figure~\ref{fig:example} shows representative examples of acquired images from all four cohorts of kidneys and of all imaging modalities. All images were taken with the transducer in the 0 degree orientation, with parametric images of VisR RE, RV, DoPIo times-intersect, and shear elasticity estimates shown overlaid on top of B-modes. Where there are appreciable differences, the VisR and DoPIo images show elastic differences in similar locations. For example, in the combined injury example (4th row), the medulla appears as a soft feature while the cortex appears to its right as a stiffer feature.
 
 \begin{figure*}[tbp]
     \centering
     \includegraphics[width=\textwidth]{parts/iri/figs/examples.eps}
-    \caption{Example of acquired images for (top to bottom rows) an uninjured kidney as well as injured kidneys from the acute, chronic, and combined injury cohorts. Columns denote, from left to right, B-modes with renal capsule and medulla outlined in yellow, ARFI depth-normalized peak displacement, VisR RE, DoPIo times-intersect, and DoPIo-estimated shear elasticity given the times-intersect in (c). Boxes denote sample ROIs used for the outer cortex (oC), inner cortex (iC), outer medulla (oM), and inner medulla (iM).}
+    \caption{Example of acquired images for (top to bottom rows) an uninjured kidney as well as injured kidneys from the acute, chronic, and combined injury cohorts. Columns denote, from left to right, B-modes with renal capsule and medulla outlined in yellow, ARFI depth-normalized peak displacement, VisR RE, RV, DoPIo times-intersect, and DoPIo-estimated shear elasticity given the times-intersect in (c). Boxes denote sample ROIs used for the outer cortex (oC), inner cortex (iC), outer medulla (oM), and inner medulla (iM).}
     \label{fig:example}
 \end{figure*}
 
-The distribution of VisR RE and DoPIo modulus parameters seen in Figure \ref{fig:example}, as well as those from all other acquisitions, are depicted as box plots in Figures \ref{fig:boxplotVisr} and \ref{fig:boxplotDopio}, respectively. Note that each box for injured kidneys represents data pooled from three repeated acquisitions of images for five pigs in each injury cohort (i.e. 15 total acquisitions per box) whereas boxes for uninjured kidneys represent data pooled from three repeated acquisitions of images for both kidneys of three uninjured pigs (i.e. 18 total acquisitions per box).
+The distribution of VisR RE, RV, and DoPIo modulus parameters seen in Figure \ref{fig:example}, as well as those from all other acquisitions, are depicted as box plots in Figures \ref{fig:boxplotRe}, \ref{fig:boxplotRv}, and \ref{fig:boxplotDopio}, respectively. Note that each box for injured kidneys represents data pooled from three repeated acquisitions of images for five pigs in each injury cohort (i.e. 15 total acquisitions per box) whereas boxes for uninjured kidneys represent data pooled from three repeated acquisitions of images for both kidneys of three uninjured pigs (i.e. 18 total acquisitions per box).
 
-Natural logarithms of DoA metrics (i.e. ln(DoA)) for VisR and DoPIo are shown in Figures \ref{fig:boxplotVisrDoa} and \ref{fig:boxplotDopioDoa}. DoA measurements were taken as ratios between elasticity measurements taken at 0 degree transducer orientations versus those from 90 degree orientations for each of three acquisitions (e.g. 0 / 90 degrees for the first, second, and third repeated acquisitions of each pig cohort). Note that in DoA measurements, the 0 degree orientation can appear stiffer than the 90 degree orientation in some cases, leading the ln(DoA) value to be negative. Note that this change in expression is unaffected for the Kruskal-Wallis test since the ranks of values in each distribution are unchanged.
+Natural logarithms of DoA metrics (i.e. ln(DoA)) for VisR and DoPIo are shown in Figures \ref{fig:boxplotReDoa}, \ref{fig:boxplotRvDoa}, and \ref{fig:boxplotDopioDoa}. DoA measurements were taken as ratios between elasticity or viscosity measurements taken at 0 degree transducer orientations versus those from 90 degree orientations for each of three acquisitions (e.g. 0 / 90 degrees for the first, second, and third repeated acquisitions of each pig cohort). Note that in DoA measurements, the 0 degree orientation can appear stiffer than the 90 degree orientation in some cases, leading the ln(DoA) value to be negative. Note that this change in expression is unaffected for the Kruskal-Wallis test since the ranks of values in each distribution are unchanged.
 
-Similarly, logarithmically transformed RR metrics, ln(RR), for VisR and DoPIo were calculated and plotted in Figures \ref{fig:boxplotVisrRr} and \ref{fig:boxplotDopioRr}. RR measurements were taken solely at the 0 degree transducer orientation, and calculated as ratios between elasticity measurements taken in one anatomical region versus another anatomical region in the same acquisition (e.g. outer cortex versus inner cortex for a given pig cohort and acquisition). If a VisR RE value or DoPIo modulus estimate has a higher elasticity metric in the more superficial feature, it is plotted higher on the vertical axis; likewise, an RR value is plotted lower if a deeper feature has the dominant elasticity metric. The AUCs of classifiers using these inputs are shown in Table~\ref{tbl:auc}. Sensitivity and specificity are not shown, but specificity is considerably higher than sensitivity in most cases.
+Similarly, logarithmically transformed RR metrics, ln(RR), for VisR and DoPIo were calculated and plotted in Figures \ref{fig:boxplotReRr}, \ref{fig:boxplotRvRr}, and \ref{fig:boxplotDopioRr}. RR measurements were taken solely at the 0 degree transducer orientation, and calculated as ratios between elasticity measurements taken in one anatomical region versus another anatomical region in the same acquisition (e.g. outer cortex versus inner cortex for a given pig cohort and acquisition). If a VisR RE or RV values or DoPIo modulus estimate has a higher elasticity metric in the more superficial feature, it is plotted higher on the vertical axis; likewise, an RR value is plotted lower if a deeper feature has the dominant elasticity metric. The AUCs of classifiers using these inputs are shown in Fig~\ref{fig:auc}. Sensitivity and specificity are not shown, but specificity is considerably higher than sensitivity in most cases.
 
 Representative examples of pathology slides from the cortex and medulla of the four cohorts are shown in Fig.~\ref{fig:histo}. Summary statistics of the ordinal scores are shown in Table~\ref{tbl:histoQuant}, with the median and median absolute deviation (MAD) of each finding listed for each cohort. Microscopic findings were consistent with expected injuries due to IRI. All microscopic findings were based on H\&E slides unless marked otherwise. Inflammation scores were based on the presence of mononuclear cell infiltrates in the cortical and medullary interstitia. No sex differences in findings were identified. Note that one contralateral kidney from the acute injury cohort was excluded from analysis due to the presence of unanticipated mild interstitial inflammation, tubular epithelial hyperplasia, and epithelial intranuclear inclusions as the result of a porcine adenovirus infection. Contralateral kidneys are listed in Table~\ref{tbl:histoQuant} solely to demonstrate their difference from truly-uninjured controls, and are not quantitatively compared elsewhere in this work.
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=0.8\textwidth]{parts/iri/figs/visr.eps}
+    \includegraphics[width=0.8\textwidth]{parts/iri/figs/re.eps}
     \caption{Box plots of VisR RE values collected in various regions of porcine renal parenchyma for kidneys of uninjured pigs and the injured pigs from each injury cohort. The boxes represent the interquartile range (IQR) of the data, with the median value indicated by the circle within the box. Whiskers represent the range of the data up to the 95\% confidence interval, with outliers indicated by the crosses. Results of the Kruskal-\allowbreak{}Wallis test and Bonferroni post-hoc analyses for each anatomical region versus control kidneys are indicated by the shapes above the boxes.}
-    \label{fig:boxplotVisr}
+    \label{fig:boxplotRe}
+\end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.8\textwidth]{parts/iri/figs/rv.eps}
+    \caption{Box plots of VisR RV values collected in various regions of porcine renal parenchyma for kidneys of uninjured pigs and the injured pigs from each injury cohort. The boxes represent the interquartile range (IQR) of the data, with the median value indicated by the circle within the box. Whiskers represent the range of the data up to the 95\% confidence interval, with outliers indicated by the crosses. Results of the Kruskal-\allowbreak{}Wallis test and Bonferroni post-hoc analyses for each anatomical region versus control kidneys are indicated by the shapes above the boxes.}
+    \label{fig:boxplotRv}
 \end{figure}
 \begin{figure}[p]
     \centering
@@ -33,9 +39,15 @@ Representative examples of pathology slides from the cortex and medulla of the f
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=0.8\textwidth]{parts/iri/figs/visrDoA.eps}
+    \includegraphics[width=0.8\textwidth]{parts/iri/figs/reDoA.eps}
     \caption{Box plots of ln(DoA) calculated from VisR RE values in various regions of porcine renal parenchyma. The boxes represent the interquartile range (IQR) of the data, with the median value indicated by the circle within the box. Whiskers represent the range of the data up to the 95\% confidence interval, with outliers indicated by the crosses. Results of the Kruskal-Wallis test and Bonferroni post-hoc analyses for each anatomical region versus control kidneys are indicated by the shapes above the boxes.}
-    \label{fig:boxplotVisrDoa}
+    \label{fig:boxplotReDoa}
+\end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.8\textwidth]{parts/iri/figs/rvDoA.eps}
+    \caption{Box plots of ln(DoA) calculated from VisR RV values in various regions of porcine renal parenchyma. The boxes represent the interquartile range (IQR) of the data, with the median value indicated by the circle within the box. Whiskers represent the range of the data up to the 95\% confidence interval, with outliers indicated by the crosses. Results of the Kruskal-Wallis test and Bonferroni post-hoc analyses for each anatomical region versus control kidneys are indicated by the shapes above the boxes.}
+    \label{fig:boxplotRvDoa}
 \end{figure}
 \begin{figure}[p]
     \centering
@@ -46,9 +58,15 @@ Representative examples of pathology slides from the cortex and medulla of the f
 
 \begin{figure}[p]
     \centering
-    \includegraphics[width=0.8\textwidth]{parts/iri/figs/visrRR.eps}
+    \includegraphics[width=0.8\textwidth]{parts/iri/figs/reRR.eps}
     \caption{Box plots of ln(RR) calculated from VisR relative elasticity values in various regions of porcine renal parenchyma. The boxes represent the interquartile range (IQR) of the data, with the median value indicated by the circle within the box. Whiskers represent the range of the data up to the 95\% confidence interval, with outliers indicated by the crosses. Results of the Kruskal-\allowbreak{}Wallis test and Bonferroni post-hoc analyses for each anatomical region versus control kidneys are indicated by the shapes above the boxes.}
-    \label{fig:boxplotVisrRr}
+    \label{fig:boxplotReRr}
+\end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.8\textwidth]{parts/iri/figs/rvRR.eps}
+    \caption{Box plots of ln(RR) calculated from VisR relative viscosity values in various regions of porcine renal parenchyma. The boxes represent the interquartile range (IQR) of the data, with the median value indicated by the circle within the box. Whiskers represent the range of the data up to the 95\% confidence interval, with outliers indicated by the crosses. Results of the Kruskal-\allowbreak{}Wallis test and Bonferroni post-hoc analyses for each anatomical region versus control kidneys are indicated by the shapes above the boxes.}
+    \label{fig:boxplotRvRr}
 \end{figure}
 \begin{figure}[p]
     \centering
@@ -64,7 +82,13 @@ Representative examples of pathology slides from the cortex and medulla of the f
     \label{fig:histo}
 \end{figure}
 
-\input{parts/iri/source/tbl2.tex}
+%\input{parts/iri/source/tbl2.tex}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.8\textwidth]{parts/iri/figs/auc.eps}
+    \caption{Bar graph of AUC for binary classifiers of (a) measurements from kidneys with any injury, as well as measurements specifically from the (b) acute, (c) chronic, and (d) combined injury cohorts, using the best combination of VisR RE, RV, or DoPIo-derived metrics as inputs. AUC is reported as median ± median absolute deviation (MAD). Gray bars indicate pairs of AUC distributions that were found to be significantly different from a Kruskal-Wallis test and Bonferroni post-hoc analyses. Inputs that gave the best performance for each injury type and input type are indicated next to the readout of plotted median AUC values, with "i" indicating an "inner" part of a renal structure, "o" for outer, "C" for cortex, and "M" for medulla.}
+    \label{fig:auc}
+\end{figure}
 
 \input{parts/iri/source/tbl3.tex}
 
