@@ -6,29 +6,48 @@
 % Double-space text
 \doublespacing
 
+% Capture the (current) double-spaced baseline as a fixed length.
+% Using a fixed length avoids titlesec/setspace interactions later.
+\newlength{\docdoubleskip}
+\setlength{\docdoubleskip}{\baselineskip}
+
 % Format chapter titles:
 \titleformat{\chapter}[block]
   {\centering\bfseries\singlespacing} % applied to both label and title
   {\MakeUppercase{\chaptertitlename\ \thechapter:}}
   {0.5em}                           % separation between label and title
   {\MakeUppercase}                  % ensure title is still uppercased
-  [\thispagestyle{empty}\doublespacing] % restore double-spacing after title
+  [\thispagestyle{plain}\vspace{0.125\docdoubleskip}] % fixed double-space gap after title
+\pagestyle{plain}
+
+% Make chapter entries match the style of chapter titles
+\renewcommand{\cftchappresnum}{CHAPTER~}
+\renewcommand{\cftchapaftersnum}{:\space}
+\renewcommand{\cftchapfont}{\normalfont\setstretch{1}}     % single-space wrapped lines
+\renewcommand{\cftchappagefont}{\normalfont\setstretch{1}} % single-space wrapped lines
+
+% Ensure chapter entries are aligned with other top-level TOC items
+\setlength{\cftchapindent}{0pt}
+
+% Make the chapter label box wide enough so the title never overlaps it
+\newlength{\tocchapnumwidth}
+\settowidth{\tocchapnumwidth}{\normalfont CHAPTER~88:\space}
+\addtolength{\tocchapnumwidth}{0.25em} % small safety padding
+\setlength{\cftchapnumwidth}{\tocchapnumwidth}
 
 % Extend top margins to 2in + double-space line break after heading
-\titlespacing{\chapter}{0in}{0.62in}{2em}
+\titlespacing*{\chapter}{0pt}{0.62in}{0pt}
+
+% Keep section/subsection spacing at a single double-spaced line.
+% Extra vertical space here stacks with double spacing and looks too large.
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
 
 % Indent paragraphs four spaces throughout the document
 \setlength{\parindent}{4ex}
 
 % Tweak spacing of paragraph labels
 \titlespacing{\paragraph}{0in}{0.08in}{0.07in}
-
-% We want numbered subsubsections
-% \setcounter{secnumdepth}{3}
-% \setcounter{tocdepth}{3}
-
-% Double-space line breaks between footnotes
-\setlength{\footnotesep}{\baselineskip}
 
 % We don't want crazy vertical spacing
 \raggedbottom
@@ -40,26 +59,8 @@
 % Prevent awkward hyphenations
 \hyphenation{Raj-kumar}
 
-% Fully left-align footnotes
-\makeatletter
-\renewcommand\@makefntext[1]{%
-  \noindent\makebox[7pt][r]{\@makefnmark\ }#1}
-\makeatother
-
-% Make footnotes same size as rest of text
-\renewcommand{\footnotesize}{\normalsize}
-
 % Ensure superscripts and subscripts are only slightly smaller
 % compared to the font size of the main text. Note that the
 % arguments define the base, normal text, subscript, and
 % superscript font sizes, respectively.
 \DeclareMathSizes{12}{12}{10}{10}
-
-% Single space footnotes if they are longer than one line
-\makeatletter
-\renewcommand{\@makefntext}[1]{%
-  \setstretch{1.0}% single spacing
-  \parindent 1em%
-  \noindent\hbox to 1.8em{\hss\@makefnmark}#1%
-}
-\makeatother

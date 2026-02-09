@@ -1,5 +1,7 @@
+% !TeX root = ../main.tex
+
 \begin{titlepage}
-\begin{center} % Center-align title of thesis/dissertation and your name
+\begin{center} % Center-align title, name, statement, date, and year
 
 % Title must begin 2 in. below the top of the page
 \vspace{2in}
@@ -9,8 +11,7 @@
 
 % Your name is placed 1 in. below the title
 \vspace{1in} % 1 in = 72pt, 11pt for the line with text
-\large \docAuthorFull
-\end{center}
+\docAuthorFull
 
 % The following statement must be placed 1 in. below your name:
 %
@@ -28,7 +29,7 @@
 % the idea of departments is looser in Adams School of Dentistry,
 % "...for the degree of Master of Science in the Adams School of 
 % Dentistry (Endodontics)."  may be more appropriate.
-\vspace{40pt}
+\vspace{1in}
 \begin{singlespace}
 \noindent
 A dissertation submitted to the faculty of the University of North Carolina at Chapel Hill in partial fulfillment of the requirements for the degree of Doctor of Philosophy in the Lampe Joint Department of Biomedical Engineering in the School of Medicine.
@@ -39,7 +40,6 @@ A dissertation submitted to the faculty of the University of North Carolina at C
 % year in which your committee approves the completed
 % thesis/dissertation.
 \vspace{1in}
-\begin{center}
 \begin{singlespace}
 Chapel Hill\\
 \the\year{} % Automatically shows current year
@@ -50,9 +50,24 @@ Chapel Hill\\
 % followed by the name of your advisor as well as each member of
 % your dissertation/thesis committee. Only enter the names of each
 % committee member; do not include titles or position names.
+% Remember to manually do the following:
+% 
+% 1. Adjust the "vspace" height to ensure that the bottom of the
+%    line that lists the last committee member's name is at
+%    exactly 1 in. from the bottom of the page
+%
+% 2. Adjust the "minipage" width to ensure that all names fit on
+%    one line AND they are left-aligned such that the last letter
+%    of the longest name is exactly 1 in. from the right edge of the page.
+%
+% 3. Use either "Approved by:" or "To be approved by:" depending on whether
+%    your committee has already approved your thesis/dissertation or not.
+%
+% 4. Ensure that the names of your advisor and committee members are
+%    spelled correctly and listed in the intended order.
 \vspace{0.3in}
 \begin{flushright}
-\begin{minipage}[t]{2in}
+\begin{minipage}[t]{1.45in}
 Approved by:\\
 %To be approved by: \\
 Caterina M. Gallippi \\
