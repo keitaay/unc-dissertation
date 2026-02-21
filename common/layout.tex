@@ -23,7 +23,7 @@
 % Make chapter entries match the style of chapter titles
 \renewcommand{\cftchappresnum}{CHAPTER~}
 \renewcommand{\cftchapaftersnum}{:\space}
-\renewcommand{\cftchapfont}{\normalfont\setstretch{1}}     % single-space wrapped lines
+\renewcommand{\cftchapfont}{\normalfont\setstretch{1}} % single-space wrapped lines
 \renewcommand{\cftchappagefont}{\normalfont\setstretch{1}} % single-space wrapped lines
 
 % Ensure chapter entries are aligned with other top-level TOC items
@@ -49,8 +49,13 @@
 % Tweak spacing of paragraph labels
 \titlespacing{\paragraph}{0in}{0.08in}{0.07in}
 
-% We don't want crazy vertical spacing
-\raggedbottom
+% Keep text/footnote blocks anchored to the page bottom consistently
+\flushbottom
+
+% Place footer page numbers slightly past 0.5in from the bottom margin
+% so that the bottom of page numbers align as close to 0.5in from the
+% bottom of the page as possible (i.e. removing descender space)
+\setlength{\footskip}{0.51in}
 
 % We don't want abandoned words
 \clubpenalty=10000 
