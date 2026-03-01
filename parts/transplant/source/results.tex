@@ -50,16 +50,18 @@ Fig.~\ref{fig:clinicalVisrExample} shows example images of a transplanted kidney
 
 Fig.~\ref{fig:clinicalVisrDoa} shows box plots of DoA calculated from PD, RE, and RV measurements in various anatomical regions of the renal parenchyma measured. DoA values from PD, RE, and RV are dichotomized based on associated biopsy findings of \emph{i} (interstitial inflammation) scores, IFTA (interstitial fibrosis/tubular atrophy) grading, and \emph{i-IFTA} (inflammation in areas of IFTA) scores using the thresholds shown in the legends of each subfigures. Only DoA values from ROIs where imaging dates could be matched with biopsy findings are shown. Some groupings of biopsy scores (e.g. across individual \emph{i} scores of 0, 1, 2, and 3) were not possible due to the limited number of indication biopsies with those scores. Fig.~\ref{fig:clinicalVisrRr} shows RR calculated from PD, RE, and RV measurements in select pairs of anatomical regions of the renal parenchyma using the same format.
 
-Table~\ref{tbl:clinicalRegressor} summarizes the Spearman's rank correlation coefficient and estimation error metrics of regression models that relate clinical variables to VisR-derived DoA and RR metrics. As mentioned previously, only variables that allowed for meaningful regression analyses (i.e. those based on continous scales or ordinal scales with more than two categories) were included. Likewise, Table~\ref{tbl:clinicalClassifier} summarizes the performance metrics of classification models predicting clinical variables from VisR-derived DoA and RR metrics. In both tables, metrics are reported for models trained using PD, RE, and RV metrics separately. Metrics marked with an asterisk (*) indicate the best performing model for each clinical variable.
-
 % Box plot of PD, RE, RV-based DoA strat by i, IFTA, i-IFTA scores, rejection
 \input{parts/transplant/source/fig-doa-all.tex}
 
 % Box plot of PD, RE, RV-based RR strat by i, IFTA, i-IFTA scores, rejection
 \input{parts/transplant/source/fig-rr-all.tex}
 
-% Table of regressor performance metrics for clinical variables
-\input{parts/transplant/source/table-regression.tex}
+Table~\ref{tbl:clinicalRegressor} summarizes the Spearman's rank correlation coefficient and estimation error metrics of regression models that relate clinical variables to VisR-derived DoA and RR metrics. As mentioned previously, only variables that allowed for meaningful regression analyses (i.e. those based on continous scales or ordinal scales with more than two categories) were included. Likewise, Table~\ref{tbl:clinicalClassifier} summarizes the performance metrics of classification models predicting clinical variables from VisR-derived DoA and RR metrics. In both tables, metrics are reported for models trained using PD, RE, and RV metrics separately. Metrics marked with an asterisk (*) indicate the best performing model for each clinical variable.
 
-% Table of classifier performance metrics for clinical variables
-\input{parts/transplant/source/table-classification.tex}
+% Table of regressor performance metrics for clinical variables
+\afterpage{%
+    \clearpage
+    \input{parts/transplant/source/table-regression.tex}
+    \input{parts/transplant/source/table-classification.tex}
+    \clearpage
+}
