@@ -1,11 +1,11 @@
 % Set position and line margins for the table list title
-\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\listtablename}{\textbf{LIST OF TABLES}}
 \phantomsection
 \addcontentsline{toc}{chapter}{LIST OF TABLES}
 
 % Format table list like other lists
 \setlength{\cftbeforelottitleskip}{-11pt}
-\setlength{\cftafterlottitleskip}{22pt}
+\setlength{\cftafterlottitleskip}{11pt} % undo above
 \renewcommand{\cftlottitlefont}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 

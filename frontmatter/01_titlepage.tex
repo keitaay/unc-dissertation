@@ -1,16 +1,25 @@
+% !TeX root = ../main.tex
+
+% Begin format of the title page, where the title, author name,
+% degree statement, and publication info must be centered and
+% spaced 1 in. apart from each other between the bottom baseline
+% and upper cap line of adjacent text lines (that exact nuance
+% is not explicit in the university's rules but has been the
+% reason for multiple formatting rejections in the past). This
+% spacing is governed by the custom "TitleGap" command!
 \begin{titlepage}
-\begin{center} % Center-align title of thesis/dissertation and your name
-
-% Title must begin 2 in. below the top of the page
-\vspace{2in}
+\begin{center}
+\begingroup
+\newcommand{\TitleGap}{\vspace*{\dimexpr 1in-0.25\baselineskip\relax}}
 \begin{singlespace}
-\MakeUppercase{\docTitle}
-\end{singlespace}
 
-% Your name is placed 1 in. below the title
-\vspace{1in} % 1 in = 72pt, 11pt for the line with text
-\large \docAuthorFull
-\end{center}
+% Title must in all caps, and begin 2 in. below top of page
+% (placement is governed by layout.tex; no need for vspace)
+\MakeUppercase{\docTitle}
+
+% Author name must be 1 in. below the title, in regular caps
+\TitleGap
+\docAuthorFull
 
 % The following statement must be placed 1 in. below your name:
 %
@@ -28,31 +37,45 @@
 % the idea of departments is looser in Adams School of Dentistry,
 % "...for the degree of Master of Science in the Adams School of 
 % Dentistry (Endodontics)."  may be more appropriate.
-\vspace{40pt}
-\begin{singlespace}
+\TitleGap
 \noindent
 A [thesis or dissertation] submitted to the faculty of the University of North Carolina at Chapel Hill in partial fulfillment of the requirements for the degree of [degree] in the [department] ([curriculum]) in the [school] ([curriculum]).
-\end{singlespace}
 
 % 1 in. below the degree statement, you must enter the words
 % "Chapel Hill". One line below this, you must also enter the
 % year in which your committee approves the completed
 % thesis/dissertation.
-\vspace{1in}
-\begin{center}
-\begin{singlespace}
+\TitleGap
 Chapel Hill\\
 \the\year{} % Automatically shows current year
+
+% Close out the main (non-committee) part of the title page
 \end{singlespace}
+\endgroup
 \end{center}
 
 % On the right-hand side of the page, enter the words "Approved by,"
 % followed by the name of your advisor as well as each member of
 % your dissertation/thesis committee. Only enter the names of each
 % committee member; do not include titles or position names.
-\vspace{1in}
+% Remember to manually do the following:
+% 
+% 1. Manually adjust the "vspace" height to ensure that the bottom
+%    of the line that lists the last committee member's name is at
+%    exactly 1 in. from the bottom of the page
+%
+% 2. Adjust the "minipage" width to ensure that all names fit on
+%    one line AND they are left-aligned such that the last letter
+%    of the longest name is exactly 1 in. from the right edge of the page.
+%
+% 3. Use either "Approved by:" or "To be approved by:" depending on whether
+%    your committee has already approved your thesis/dissertation or not.
+%
+% 4. Ensure that the names of your advisor and committee members are
+%    spelled correctly and listed in the intended order.
+\vspace{0.845in}
 \begin{flushright}
-\begin{minipage}[t]{2in}
+\begin{minipage}[t]{1.38in}
 Approved by:\\
 %To be approved by: \\
 Advisor A. Name \\

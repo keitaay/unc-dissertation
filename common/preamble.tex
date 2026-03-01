@@ -1,20 +1,23 @@
+% !TeX root = ../main.tex
 \documentclass[12pt,letterpaper,twoside,openany]{report}
 
 % Input encoding (not needed with XeLaTeX)
 \usepackage[utf8]{inputenc}
 
 % Layout
+\usepackage{array,multirow,siunitx,stfloats,svg,wrapfig,colortbl}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{tocloft}
-\usepackage{multirow}
-\usepackage{float}
 \usepackage{lscape}
+\usepackage{pdflscape}
 \usepackage{longtable}
+\usepackage{threeparttablex}
+\usepackage{indentfirst}
 
 % Margins
-%\usepackage[hang, flushmargin]{footmisc} % keeping footnotes flush with margins, no indentation
+\usepackage[hang,flushmargin,bottom]{footmisc} % keep footnotes flush and anchored at page bottom
 \usepackage{enumitem}
 
 % Figures
@@ -27,19 +30,32 @@
 \usepackage{float} % for arranging figures
 \usepackage{subcaption} % allows 2+ captioned figures/tables in one float
 \usepackage{placeins} % for FloatBarrier
+\usepackage{afterpage} % defer non-float blocks (e.g. landscape longtables)
 \usepackage{comment}
 \usepackage{rotating}
+\usepackage{textcomp}
+\usepackage{xcolor}
 
 % Math
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{ntheorem}
+\usepackage{amsmath,amssymb,amsfonts,algorithmic,ntheorem,mathrsfs}
 \newtheorem{hyp}{Hypothesis} 
 \newtheorem{subhyp}{Hypothesis}
 \renewcommand\thesubhyp{\thehyp\alph{subhyp}}
+\sisetup{
+    mode = match,
+    propagate-math-font = true,
+    reset-math-version = false,
+    reset-text-family = false,
+    reset-text-series = false,
+    reset-text-shape = false,
+    text-family-to-math = true,
+    text-series-to-math = true
+}
 
 % Typography
 \usepackage{times}
+\usepackage{textcomp}
+%\usepackage{fontspec} 
 
 % Macro support
 \usepackage{xspace}
@@ -56,31 +72,21 @@
 \titleformat*{\subsection}{\fontsize{12}{14}\selectfont\itshape\singlespacing}
 
 % Bibliography
-\usepackage[american]{babel}
-\usepackage{csquotes}
-\usepackage[authordate,
+%\usepackage{cite}
+%\usepackage[numbers]{natbib}
+%\renewcommand*{\bibfont}{\footnotesize}
+%\setlength{\biblabelsep}{\labelsep}
+\usepackage[
   backend=biber,
-  noibid,
-  natbib,
-  alldates=iso,        % keep if you want ISO-style dates
-  eventtime=24h,       % explicitly satisfy dependent options
-  datezeros=true,
-  seconds=true,
-  origtime=24h,
-  labeltime=24h,
-  sorting=nyt,
-  sortcites,
-  annotation,
-  doi=false,
-  isbn=false,
-  url=false,
-  eprint=false, 
-  giveninits=false,
-  maxcitenames=3,
-  uniquename=false,
-  uniquelist=false,
-  cmsdate=both,
-  date=year]{biblatex-chicago}
+  bibstyle=ieee,
+  citestyle=numeric-comp,
+  sorting=none,
+  sortcites=true,
+  dashed=true]{biblatex}
+\renewcommand*{\bibopenbracket}{}%
+\renewcommand*{\bibclosebracket}{}%
+\DeclareFieldFormat{labelnumber}{\mkbibbrackets{[#1]}}
+\addbibresource{references.bib}
 \AtEveryBibitem{
     \clearfield{urlyear}
     \clearfield{urlmonth}
@@ -91,7 +97,6 @@
 \usepackage{microtype} % Improves justification
 
 % Call local resources
-\graphicspath{{figures/}}
+\graphicspath{{parts/dopio/fig/}}
 \input{common/layout.tex}
 \input{common/macros.tex}
-

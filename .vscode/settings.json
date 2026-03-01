@@ -1,4 +1,6 @@
 {
+  "latex-workshop.formatting.latex": "none",
+  "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.latex.tools": [
     {
       "name": "bashBuild",

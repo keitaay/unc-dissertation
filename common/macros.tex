@@ -1,3 +1,5 @@
+% !TeX root = ../main.tex
+
 % Common abbreviations
 \newcommand{\eg}{{\it e.g.}\xspace}
 \newcommand{\ie}{{\it i.e.}\xspace}
@@ -19,6 +21,34 @@
 \newcommand{\inequref}[1]{Inequality~(\ref{eq:#1})\xspace}
 \newcommand{\lstref}[1]{Listing~\ref{lst:#1}\xspace}
 \newcommand{\pref}[1]{page~\pageref{p:#1}\xspace}
+
+% Change the header and margins for the title, abstract,
+% dedication, acknowledgment, and preface pages (i.e. section-l
+% ike pages that precede in, and are not included in, the table
+% of contents). This will ensure that:
+%
+% - Text start exactly 2in from the top of the page, overriding
+%   TeX's implicit first-line top offset of 1em via "topskip"
+%
+% - Text is single-spaced
+%
+% Use this like:
+% \pretocheader{\bfseries Title}
+\newcommand{\pretocheader}[1]{%
+  \par % end any prior paragraph
+  \begingroup
+    \parskip=0pt%
+    \parindent=0pt%
+    \singlespacing%
+    \setlength{\topskip}{0pt}%
+    \vspace*{1in}%
+    \noindent\vbox{%
+      \hsize=\textwidth
+      \centering\normalfont #1\par
+    }\par%
+    \vspace{\baselineskip}%
+  \endgroup
+}
 
 % Flush words right at end of paragraph, per:
 % http://tex.stackexchange.com/questions/16330/hfill-after-linebreak

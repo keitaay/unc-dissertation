@@ -1,11 +1,11 @@
 % Set position and line margins for the figure list title
-\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\listfigurename}{\textbf{LIST OF FIGURES}}
 \phantomsection
 \addcontentsline{toc}{chapter}{LIST OF FIGURES}
 
 % Format figure list like other lists
 \setlength{\cftbeforeloftitleskip}{-11pt}
-\setlength{\cftafterloftitleskip}{22pt}
+\setlength{\cftafterloftitleskip}{11pt} % undo above
 \renewcommand{\cftloftitlefont}{\hfill}
 \renewcommand{\cftafterloftitle}{\hfill}
 
