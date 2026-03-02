@@ -23,8 +23,8 @@
 \newcommand{\pref}[1]{page~\pageref{p:#1}\xspace}
 
 % Change the header and margins for the title, abstract,
-% dedication, acknowledgment, and preface pages (i.e. section-l
-% ike pages that precede in, and are not included in, the table
+% dedication, acknowledgment, and preface pages (i.e. section-like
+% pages that precede, and are not included in, the table
 % of contents). This will ensure that:
 %
 % - Text start exactly 2in from the top of the page, overriding
@@ -50,12 +50,31 @@
   \endgroup
 }
 
+% Add a frontmatter chapter-like heading once, with:
+% - sentence case in PDF bookmarks metadata (\addcontentsline text),
+% - uppercase in the visible heading (text-only uppercase transform),
+% - uppercase in the printed ToC (handled by \l@chapter override).
+\newcommand{\frontmatterheading}[1]{%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{#1}%
+  \begin{center}
+    {\normalfont \textbf{\MakeTextUppercase{#1}}}
+  \end{center}
+}
+
+% Configure list headings (e.g. LoT/LoF) from one sentence-cased title.
+\newcommand{\frontmatterlistheading}[2]{%
+  \renewcommand{#1}{\textbf{\MakeTextUppercase{#2}}}%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{#2}%
+}
+
 % Flush words right at end of paragraph, per:
 % http://tex.stackexchange.com/questions/16330/hfill-after-linebreak
 \newcommand\rightparend[1]{{%
-	\unskip\nobreak\hfil\penalty50
-	\hskip2em\hbox{}\nobreak\hfil\textbf{#1}%
-	\parfillskip=0pt \finalhyphendemerits=0 \par}
+  \unskip\nobreak\hfil\penalty50
+  \hskip2em\hbox{}\nobreak\hfil\textbf{#1}%
+  \parfillskip=0pt \finalhyphendemerits=0 \par}
 }
 
 % Use for commenting

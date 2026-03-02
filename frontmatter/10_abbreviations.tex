@@ -1,10 +1,5 @@
-\phantomsection
-\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
-
-% Center-align section heading
-\begin{center}
-{\normalfont \textbf{LIST OF ABBREVIATIONS}}
-\end{center}
+% !TEX root = ../main.tex
+\frontmatterheading{List of Abbreviations}
 
 % Define the list of abbreviations in alphabetical order
 % within the "tabbing" block. Use the custom functions 
@@ -15,6 +10,7 @@
 %
 % Every subsequent entry should use the same arguments,
 % but the command should be \Ab instead of \Abi
+\begingroup
 \newcommand{\Ab}[2]{\noindent  #1 \> #2 \\}
 \newcommand{\Abi}[2]{\noindent #1 \hspace{1.5cm} \= #2 \\}
 \begin{tabbing}
@@ -28,4 +24,5 @@
     \Ab{WSS}{Working Set Size}
     \Ab{AYO}{Add Your Own in alphabetic order\ldots}
 \end{tabbing}
+\endgroup
 \clearpage

@@ -2,10 +2,6 @@
 
 This repository is a template for writing a doctoral dissertation or Master's thesis at the University of North Carolina at Chapel Hill. It's split into several modules and contains lots of inline comments to aid users who may otherwise be new to LaTeX.
 
-Note that formatting requirements for dissertations at UNC have subtly shifted year to year. Please double-check [the university's current requirements](https://gradweb.unc.edu/content/academics/thesis-diss/guide/) and ensure that your submission matches them before submitting your written document.
-
-This repository is intended to serve as an open and evolving resource going forward. If you use this template for your own dissertation in future years, please consider forking this repository or submitting a pull request with your changes so that it can stay up to date for future PhD students!
-
 Significant contributors for this version include the following. However, many other people have contributed to the original template, its predecessors, and additional branches - so this list is not exhaustive:
 
 - [Kéita Yokoyama](https://keitaay.com)
@@ -13,6 +9,11 @@ Significant contributors for this version include the following. However, many o
 - [J. Rob Williams](https://jayrobwilliams.com/) - owner of this repository
 - [Chelsea Estancona](https://clestancona.wixsite.com/chelseaestancona)
 - [Björn B. Brandenburg](https://people.mpi-sws.org/~bbb/)
+
+Formatting requirements for dissertations at UNC have subtly shifted year to year. Please double-check [the university's current requirements](https://gradweb.unc.edu/content/academics/thesis-diss/guide/) and ensure that your submission matches them before submitting your written document.
+
+>[!NOTE]
+> This repository is intended to serve as an open and evolving resource going forward. If you use this template for your own dissertation in future years, please consider forking this repository or submitting a pull request with your changes so that it can stay up to date for future PhD students!
 
 ## 🛠️ Prerequisites
 
@@ -38,9 +39,11 @@ The root repository for this template contains the following resources:
 
 - `frontmatter/`: Files, LaTeX package definitions etc. are included in the front matter of the dissertation. This includes the title page, abstract, acknowledgments, and table of contents.
 
+- `logs/`: Log files generated during the LaTeX compilation process. These can be useful for debugging and troubleshooting any issues that arise during document compilation.
+
 - `parts/`: Parts of the main body of the dissertation. Each part is a separate file that can be included in the main document. This allows you to easily add, move, or delete parts as needed (especially if you're incorporating previously published work that was written using LaTeX).
 
-- `results/`: Results of conversion to other formats, such as HTML or DOCX. Note that, if you used the `build.bash` script to compile the dissertation to a PDF, output artifacts are available in the `logs` subfolder inside this folder.
+- `results/`: Results of conversion to other formats, such as HTML or DOCX.
 
 - `build.bash`: Bash script for quickly building the LaTeX document and generating a PDF.
 
@@ -54,8 +57,7 @@ The root repository for this template contains the following resources:
 
   ***Important:*** If you need to move this file or add multiple BibTeX files, you will need to update `main.tex`, `common/references.tex`, and possibly `frontmatter/_frontmatter.tex` to point to the correct location(s).
 
-> ### 💡 Tip
->
+>[!TIP] VSCode Configuration
 > The recommended settings for VSCode includes document build recipes that call build.bash and convert.bash. Use them to quickly build your document or convert it to other formats like HTML or Markdown!
 
 ## 🚀 Usage

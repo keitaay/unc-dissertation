@@ -14,9 +14,9 @@
 % Format chapter titles:
 \titleformat{\chapter}[block]
   {\centering\bfseries\singlespacing} % applied to both label and title
-  {\MakeUppercase{\chaptertitlename\ \thechapter:}}
+  {\MakeTextUppercase{\chaptertitlename\ \thechapter:}}
   {0.5em}                           % separation between label and title
-  {\MakeUppercase}                  % ensure title is still uppercased
+  {\MakeTextUppercase}              % uppercase text only; preserve math/symbols
   [\thispagestyle{plain}\vspace{0.125\docdoubleskip}] % fixed double-space gap after title
 \pagestyle{plain}
 
@@ -31,9 +31,16 @@
 
 % Make the chapter label box wide enough so the title never overlaps it
 \newlength{\tocchapnumwidth}
-\settowidth{\tocchapnumwidth}{\normalfont CHAPTER~88:\space}
+\settowidth{\tocchapnumwidth}{\normalfont APPENDIX~88:\space}
 \addtolength{\tocchapnumwidth}{0.25em} % small safety padding
 \setlength{\cftchapnumwidth}{\tocchapnumwidth}
+
+% Render all chapter-level ToC entries in uppercase regardless of source title case.
+% This affects numbered chapters plus custom chapter entries added via \addcontentsline.
+\makeatletter
+\let\origl@chapter\l@chapter
+\renewcommand*{\l@chapter}[2]{\origl@chapter{\MakeTextUppercase{#1}}{#2}}
+\makeatother
 
 % Extend top margins to 2in + double-space line break after heading
 \titlespacing*{\chapter}{0pt}{0.62in}{0pt}
@@ -53,6 +60,7 @@
 
 % Keep text/footnote blocks anchored to the page bottom consistently
 \flushbottom
+\vbadness=10000 % prevent "Underfull \vbox" warnings from flushbottom
 
 % Place footer page numbers slightly past 0.5in from the bottom margin
 % so that the bottom of page numbers align as close to 0.5in from the

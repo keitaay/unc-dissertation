@@ -1,42 +1,43 @@
 % !TeX root = main.tex
-% Set some preamble variables
-\input{common/preamble}
-\addbibresource{references.bib}
 
-% Define document-wide variables
+% Shared packages, layout, and macros
+\input{common/preamble}
+
+% Document-wide metadata
 \def\docTitle{Title}
-\def\docAuthorFull{Your Full-Accxording-to-Literature Name}
+\def\docAuthorFull{Your Full-According-to-Literature Name}
 \def\docAuthorShort{Your F. Name}
 
-% Title page, table of contents etc.
+% Helper: keep each major unit on a new page
+\newcommand{\inputwithclearpage}[1]{%
+  \input{#1}
+  \clearpage
+}
+
+% Front matter and main content
 \begin{document}
 \input{frontmatter/_frontmatter}
-%\pagebreak
 
-% Include each chapter as individual files using the format
-% "\input{nameOfFile}", followed by a "\clearpage" command.
-% This ensures that each chapter starts on a new page.
-% If you have appendices, treat them just like you would
-% for any "regular" chapter in your document.
-\input{parts/intro}
-\clearpage
+% Main chapters
+\inputwithclearpage{parts/intro}
+\inputwithclearpage{parts/paper1}
+\inputwithclearpage{parts/paper2}
+\inputwithclearpage{parts/conclusion}
 
-\input{parts/paper1}
-\clearpage
+% Appendices: switch heading label and numbering style
+\appendix
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\cftchappresnum}{APPENDIX~}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{APPENDIX~}}
 
-\input{parts/paper2}
-\clearpage
+\inputwithclearpage{parts/app_paper1}
+\inputwithclearpage{parts/app_paper2}
 
-\input{parts/conclusion}
-\clearpage
+% Reset ToC prefix for any later chapter-style entries
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{CHAPTER~}}
 
-\input{parts/app_paper1}
-\clearpage
-
-\input{parts/app_paper2}
-\clearpage
-
-% Get references for entire document
+% References
 \input{common/references}
 
 \end{document}

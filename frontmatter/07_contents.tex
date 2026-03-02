@@ -1,7 +1,8 @@
 % Set position and line margins for the ToC title
 
-% Set title; the trailing "hfill" center-aligns the title
-\renewcommand{\contentsname}{\textbf{TABLE OF CONTENTS}\hfill}
+% Set title; visible heading in ALL CAPS, PDF metadata/bookmark in sentence case.
+% The trailing "hfill" keeps the visible heading centered.
+\renewcommand{\contentsname}{\texorpdfstring{\textbf{\MakeTextUppercase{Table of Contents}}\hfill}{Table of Contents}}
 \renewcommand{\cfttoctitlefont}{\hfill}
 \renewcommand{\cftaftertoctitle}{\hfill}
 

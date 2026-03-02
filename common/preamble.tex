@@ -4,68 +4,81 @@
 % Input encoding (not needed with XeLaTeX)
 \usepackage[utf8]{inputenc}
 
-% Layout
-\usepackage{array,multirow,siunitx,stfloats,svg,wrapfig,colortbl}
-\usepackage{geometry}
-\usepackage{setspace}
-\usepackage{titlesec}
-\usepackage{tocloft}
-\usepackage{lscape}
-\usepackage{pdflscape}
-\usepackage{longtable}
-\usepackage{threeparttablex}
-\usepackage{indentfirst}
+% Layout: allow fine-grained control over margins, spacing,
+% section titles, tables of contents, and other formatting details
+\usepackage{array,stfloats,wrapfig}
+\usepackage{geometry,setspace,titlesec,tocloft}
 
-% Margins
-\usepackage[hang,flushmargin,bottom]{footmisc} % keep footnotes flush and anchored at page bottom
+% Margins: keep footnotes flush and anchored at bottom of page,
+% and enumerate each footnote with a number
+\usepackage[hang,flushmargin,bottom]{footmisc}
 \usepackage{enumitem}
 
-% Figures
-\usepackage{graphicx}
-\usepackage{epsfig}
-\usepackage{booktabs}
-\usepackage{multicol}
-\usepackage{listings}
-\usepackage{caption}
-\usepackage{float} % for arranging figures
-\usepackage{subcaption} % allows 2+ captioned figures/tables in one float
-\usepackage{placeins} % for FloatBarrier
-\usepackage{afterpage} % defer non-float blocks (e.g. landscape longtables)
-\usepackage{comment}
-\usepackage{rotating}
-\usepackage{textcomp}
-\usepackage{xcolor}
+% Figures and Tables: allow tables and figures that span multiple pages
+% or require pages to be oriented in landscape mode, as well as tables
+% where some cells can span multiple columns or rows
+\usepackage{lscape,pdflscape,longtable,rotating,multirow,multicol}
 
-% Math
-\usepackage{amsmath,amssymb,amsfonts,algorithmic,ntheorem,mathrsfs}
+% Figures and Tables: general features
+\usepackage{graphicx,xcolor}
+\usepackage{epsfig,svg} % Allow use of EPS and SVG images
+\usepackage{listings}   % Allow syntax highlighting of code snippets
+\usepackage{caption}    % Allow caption formatting and spacing control
+\usepackage{float}      % Give additional control for arranging figures
+\usepackage{subcaption} % Allow 2+ captioned figures/tables in one float
+\usepackage{placeins}   % Restrict float position using FloatBarrier
+\usepackage{afterpage}  % Defer non-float blocks (e.g. landscape longtables)
+\usepackage{comment}    % Allow special comments for debug/development
+\usepackage{colortbl}   % Allow coloring of table cells
+
+% Tables: allow cleaner tables with better spacing and formatting
+\usepackage{booktabs,threeparttablex}
+
+% Math: allow standard math symbols, (sub)hypotheses for formal
+% proof statements, and pseudo-code writing. Note that coding and
+% table-related packages can interact with math packages - sometimes
+% in necessary ways (e.g. multirow for multi-row equations), but
+% sometimes in undesirable ways (e.g. booktabs and amsmath can interact
+% to cause extra vertical space in tables).
+\usepackage{amsmath,amssymb,amsfonts,ntheorem,mathrsfs}
+\usepackage{algorithm,algorithmic} % replace with algorithm2e, if desired
 \newtheorem{hyp}{Hypothesis} 
 \newtheorem{subhyp}{Hypothesis}
 \renewcommand\thesubhyp{\thehyp\alph{subhyp}}
+
+% Physics: allow proper typesetting of units and numbers
+% without needing to use awkward math mode syntax
+\usepackage{siunitx}
 \sisetup{
-    mode = match,
-    propagate-math-font = true,
-    reset-math-version = false,
-    reset-text-family = false,
-    reset-text-series = false,
-    reset-text-shape = false,
-    text-family-to-math = true,
-    text-series-to-math = true
+  mode = match,
+  propagate-math-font = true,
+  reset-math-version = false,
+  reset-text-family = false,
+  reset-text-series = false,
+  reset-text-shape = false,
+  text-family-to-math = true,
+  text-series-to-math = true
 }
 
-% Typography
-\usepackage{times}
-\usepackage{textcomp}
-%\usepackage{fontspec} 
+% General Typography
+\usepackage{times}       % Use Times New Roman font
+\usepackage{textcomp}    % Allow proper typesetting of text symbols
+\usepackage{textcase}    % Text-only case transforms (leave math/symbols intact)
+%\usepackage{fontspec}    % Use system fonts (for XeLaTeX and LuaLaTeX)
+\usepackage{indentfirst} % Indent first paragraph of each section
 
-% Macro support
+% Macro support: allow macros that do not consume space in text mode
 \usepackage{xspace}
 
-% PDF links
-\usepackage[hidelinks,
-  unicode=true]{hyperref} % backref=page
+% PDF links: allow clickable links in the PDF output; hide link borders
+\usepackage[hidelinks,unicode=true]{hyperref} % backref=page
 \usepackage{bookmark}
 
-% Section header formatting
+% Section header formatting:
+% - Center-align and uppercase chapter titles
+% - Single-space chapter titles and section headers
+% - Retain double-spacing between chapter titles and following text
+% - Retain double-spacing between section headers and following text
 \titleformat*{\section}{\bfseries\fontsize{12}{14}\selectfont\singlespacing}
 \titleformat{name=\chapter,numberless}[block]
 {\normalfont\normalsize\filcenter\singlespacing}{}{0pt}{\normalsize}
@@ -83,20 +96,19 @@
   sorting=none,
   sortcites=true,
   dashed=true]{biblatex}
-\renewcommand*{\bibopenbracket}{}%
-\renewcommand*{\bibclosebracket}{}%
+\renewcommand*{\bibopenbracket}{}  % Remove brackets around reference no.
+\renewcommand*{\bibclosebracket}{}
 \DeclareFieldFormat{labelnumber}{\mkbibbrackets{[#1]}}
 \addbibresource{references.bib}
 \AtEveryBibitem{
-    \clearfield{urlyear}
-    \clearfield{urlmonth}
-    \clearfield{url}
-} % Clear accessed date and URL
-\setlength{\bibitemsep}{12pt} % Double-spacing between references
-\appto{\bibsetup}{\setstretch{1.0}} % Single-spacing within each reference
-\usepackage{microtype} % Improves justification
+  \clearfield{urlyear}  % Access date is hidden
+  \clearfield{urlmonth}
+  \clearfield{url}      % non-DOI URL is hidden
+}
+\setlength{\bibitemsep}{12pt}       % Double-space between references
+\appto{\bibsetup}{\setstretch{1.0}} % Single-space within each reference
+\usepackage{microtype}              % Improves justification
 
 % Call local resources
-\graphicspath{{parts/dopio/fig/}}
 \input{common/layout.tex}
 \input{common/macros.tex}

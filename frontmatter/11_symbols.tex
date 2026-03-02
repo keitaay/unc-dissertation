@@ -1,0 +1,28 @@
+% !TEX root = ../main.tex
+\frontmatterheading{List of Symbols}
+
+% Define the list of symbols in alphabetical order
+% within the "tabbing" block. Use the custom functions 
+% immediately below this comment block to properly align 
+% each item. Enter the first item using this syntax:
+%
+% \Abi{SYMBOL}{What the symbol means}
+%
+% Every subsequent entry should use the same arguments,
+% but the command should be \Ab instead of \Abi
+\begingroup
+\newcommand{\Ab}[2]{\noindent  #1 \> #2 \\}
+\newcommand{\Abi}[2]{\noindent #1 \hspace{1.5cm} \= #2 \\}
+\begin{tabbing}
+    % Enter your first item using \Abi
+    \Abi{$a$}{The first thing}
+
+    % All remaining abbreviations must use \Ab
+    \Ab{$B$}{Another thing using Latin letters}
+    \Ab{$c_{\nu}$}{Yet another symbol that starts with Latin letters}
+    \Ab{$\alpha$}{Something starting with a Greek letter}
+    \Ab{$\beta$}{Another Greek letter}
+    \Ab{$\Gamma$}{Add Your Own in alphabetic order\ldots}
+\end{tabbing}
+\endgroup
+\clearpage

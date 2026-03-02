@@ -1,16 +1,15 @@
 % !TeX root = ../main.tex
 
-% For a majority of the document, the table of contents-based
-% chapter titles will be automatically formatted so that
-% each chapter starts with a 2 in header, but all following
-% pages will have 1 in top margins.
+% Most chapter-like pages are styled so that:
+% - the first page starts 2in from the top,
+% - following pages use a 1in top margin.
 %
 % However, the first two pages of our document - i.e. your
 % title and copyright pages - are an exception. For those,
 % we'll manually configure the margins.
 \newgeometry{left=1in,top=2in,right=1in,bottom=1in,nohead}
 
-% All content before the main text must use Roman numberals.
+% All content before the main text must use Roman numerals.
 \pagenumbering{roman}
 
 % Title Page
@@ -34,25 +33,23 @@
 \clearpage
 \input{frontmatter/05_acknowledgement}
 \clearpage
-%\input{frontmatter/06_preface}
-%\clearpage
+\input{frontmatter/06_preface}
+\clearpage
 
 % Table of Contents, with page references
 \input{frontmatter/07_contents}
 \clearpage
 
-% List of tables, figures, and illustrations, if applicable
+% List of tables and figures
 \input{frontmatter/08_tables}
 \clearpage
 \input{frontmatter/09_figures}
 \clearpage
-%\input{frontmatter/10_illustrations}
-%\clearpage
 
 % List of abbreviations and symbols, if applicable
-\input{frontmatter/11_abbreviations}
+\input{frontmatter/10_abbreviations}
 \clearpage
-\input{frontmatter/12_symbols}
+\input{frontmatter/11_symbols}
 \clearpage
 
 % After all front matter, we can return to using Arabic numerals.

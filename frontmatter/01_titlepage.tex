@@ -58,33 +58,40 @@ Chapel Hill\\
 % followed by the name of your advisor as well as each member of
 % your dissertation/thesis committee. Only enter the names of each
 % committee member; do not include titles or position names.
-% Remember to manually do the following:
+% Remember to ensure the following:
 % 
-% 1. Manually adjust the "vspace" height to ensure that the bottom
-%    of the line that lists the last committee member's name is at
+% 1. The bottom of the last committee member's name is placed
 %    exactly 1 in. from the bottom of the page
 %
-% 2. Adjust the "minipage" width to ensure that all names fit on
-%    one line AND they are left-aligned such that the last letter
-%    of the longest name is exactly 1 in. from the right edge of the page.
+% 2. Each name fits on one line. The block below auto-sizes
+%    to the longest line, and its right edge is aligned to the right
+%    margin (which is 1 in. from the page edge per geometry).
 %
 % 3. Use either "Approved by:" or "To be approved by:" depending on whether
 %    your committee has already approved your thesis/dissertation or not.
 %
 % 4. Ensure that the names of your advisor and committee members are
 %    spelled correctly and listed in the intended order.
-\vspace{0.845in}
-\begin{flushright}
-\begin{minipage}[t]{1.38in}
-Approved by:\\
-%To be approved by: \\
-Advisor A. Name \\
-Committee P. Chair \\
-Another F. Member \\
-Yet A. Committee-Member \\
-Some O. Person \\
-One Final-Member
-\end{minipage}
-\end{flushright}
-
+%
+% Note that `\vspace*{\fill}` anchors the box for committee member names
+% at the bottom of the text area (as opposed to the text, themselves).
+% Since text in this document is double-spaced by default, TeX typically
+% reserves a bit of depth below the last % baseline (descenders/struts),
+% causing the last baseline to appear slightly high to the point that the
+% university has rejected dissertation submissions. The subtraction by
+% `\dp\strutbox` compensates for that depth automatically.
+\vspace*{\fill}\vspace*{-\dp\strutbox}
+\noindent\hspace*{\fill}%
+\makebox[0pt][r]{%
+\begin{tabular}[b]{@{}l@{}}
+    Approved by:\\
+    %To be approved by:\\
+    Advisor A. Name\\
+    Committee P. Chair\\
+    Another F. Member\\
+    Yet A. Member-with-a-Very-Long-Name\\
+    Some O. Person\\
+    One Final-Member
+    \end{tabular}%
+}
 \end{titlepage}
