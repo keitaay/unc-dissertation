@@ -3,6 +3,7 @@
 
 % Input encoding (not needed with XeLaTeX)
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 % Layout: allow fine-grained control over margins, spacing,
 % section titles, tables of contents, and other formatting details
@@ -41,7 +42,8 @@
 % sometimes in undesirable ways (e.g. booktabs and amsmath can interact
 % to cause extra vertical space in tables).
 \usepackage{amsmath,amssymb,amsfonts,ntheorem,mathrsfs}
-\usepackage{algorithm,algorithmic} % replace with algorithm2e, if desired
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \newtheorem{hyp}{Hypothesis} 
 \newtheorem{subhyp}{Hypothesis}
 \renewcommand\thesubhyp{\thehyp\alph{subhyp}}
@@ -61,7 +63,7 @@
 }
 
 % General Typography
-\usepackage{times}       % Use Times New Roman font
+\usepackage{mathptmx}    % Times-like font with T1 support
 \usepackage{textcomp}    % Allow proper typesetting of text symbols
 \usepackage{textcase}    % Text-only case transforms (leave math/symbols intact)
 %\usepackage{fontspec}    % Use system fonts (for XeLaTeX and LuaLaTeX)
