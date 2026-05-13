@@ -73,17 +73,13 @@ Chapel Hill\\
 % 4. Ensure that the names of your advisor and committee members are
 %    spelled correctly and listed in the intended order.
 %
-% Note that `\vspace*{\fill}` anchors the box for committee member names
-% at the bottom of the text area (as opposed to the text, themselves).
-% Since text in this document is double-spaced by default, TeX typically
-% reserves a bit of depth below the last % baseline (descenders/struts),
-% causing the last baseline to appear slightly high to the point that the
-% university has rejected dissertation submissions. The subtraction by
-% `\dp\strutbox` compensates for that depth automatically.
-\vspace*{\fill}\vspace*{-\dp\strutbox}
-\noindent\hspace*{\fill}%
-\makebox[0pt][r]{%
-\begin{tabular}[b]{@{}l@{}}
+% Place the "Approved by:" block 1 in. below the year and
+% approximately 2/3 of the way across the page from the left edge,
+% per the Graduate School's title page formatting requirements.
+% Names are left-aligned under the "A" in "Approved by:".
+\vspace*{\dimexpr 1in-0.25\baselineskip\relax}
+\noindent\hspace*{\dimexpr 0.667\textwidth - 1em\relax}%
+\begin{tabular}[t]{@{}l@{}}
     Approved by:\\
     %To be approved by:\\
     Advisor A. Name\\
@@ -92,6 +88,5 @@ Chapel Hill\\
     Yet A. Member-with-a-Very-Long-Name\\
     Some O. Person\\
     One Final-Member
-    \end{tabular}%
-}
+    \end{tabular}
 \end{titlepage}

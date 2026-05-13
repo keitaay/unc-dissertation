@@ -153,18 +153,18 @@ An example of a theorem is shown in Theorem~\ref{thm:exampleKey}. Theorems are t
 
 Note that this document already defines custom theorems called \texttt{hyp} and \texttt{subhyp} in the preamble. These theorems are already called "Hypothesis" and "Subhypothesis", respectively, and they are meant to be used in a way that is similar to the example theorem shown above. The main difference is that the \texttt{hyp} and \texttt{subhyp} theorems are numbered in a specific way (i.e. Hypothesis 1, Subhypothesis 1a, etc.) to indicate their relationship to each other, while the example theorem shown above is not numbered at all.
 
-Rather than quotes, equations, or theorems, it may also be useful to express text in the form of code or pseudocode. Algorithm~\ref{alg:cap} is an example of a code block, which is formatted using the \texttt{algorithmic} environment. The content of the code block is just some placeholder text, and it is meant to demonstrate how a code block would look in the final document. 
+Rather than quotes, equations, or theorems, it may also be useful to express text in the form of code or pseudocode. Algorithm~\ref{alg:cap} is an example of a code block, which is formatted using the \texttt{algpseudocode} environment. The content of the code block is just some placeholder text, and it is meant to demonstrate how a code block would look in the final document.
 
 \begin{algorithm}[tbp]
 	\caption{An algorithm with caption}\label{alg:cap}
-	\begin{algorithmic}
-		\STATE $i\gets 10$
-		\IF {$i\geq 5$} 
-		\STATE $i\gets i-1$
-		\ELSE
-		\IF {$i\leq 3$}
-			\STATE $i\gets i+2$
-		\ENDIF
-		\ENDIF 
+	\begin{algorithmic}[1]
+		\State $i\gets 10$
+		\If {$i\geq 5$}
+		\State $i\gets i-1$
+		\Else
+		\If {$i\leq 3$}
+			\State $i\gets i+2$
+		\EndIf
+		\EndIf
 	\end{algorithmic}
 \end{algorithm}

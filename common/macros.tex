@@ -50,6 +50,20 @@
   \endgroup
 }
 
+% Appendix heading that matches the Bibliography heading position exactly
+% (1 in. from the top edge of the page). Uses the same \begin{center}
+% mechanism as \frontmatterheading, but steps the chapter counter so
+% that \section numbering works correctly.
+% Usage: replace \chapter{Title} with \appendixheading{Title} in appendix files.
+\newcommand{\appendixheading}[1]{%
+  \stepcounter{chapter}%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+  \begin{center}
+    {\normalfont \textbf{\MakeTextUppercase{\chaptertitlename\ \thechapter: #1}}}
+  \end{center}
+}
+
 % Add a frontmatter chapter-like heading once, with:
 % - sentence case in PDF bookmarks metadata (\addcontentsline text),
 % - uppercase in the visible heading (text-only uppercase transform),
